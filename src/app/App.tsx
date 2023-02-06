@@ -4,6 +4,7 @@ import { useTheme } from "app/providers/ThemeProvider";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppRouter } from "app/providers/router";
 import { NavBar } from "widgets/Navbar";
+import { Sidebar } from "widgets/Sidebar";
 
 const App: FC = () => {
     const { theme } = useTheme();    
@@ -11,7 +12,10 @@ const App: FC = () => {
     return ( 
         <div className={classNames('app', {}, [theme])}>
             <NavBar />                 
-            <AppRouter />  
+            <div className="content-page">
+                <Sidebar />
+                <AppRouter />  
+            </div>
         </div>
     );
 };
