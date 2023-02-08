@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const AboutPage: FC = () => {
@@ -7,6 +7,6 @@ const AboutPage: FC = () => {
   return (
     <div>{t('о странице')}</div>
   );
-}
+};
 
 export default AboutPage;

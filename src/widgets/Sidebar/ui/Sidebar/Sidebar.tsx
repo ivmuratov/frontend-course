@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
@@ -12,16 +12,16 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const onToggle = () => {
-    setCollapsed(prev => !prev);
+    setCollapsed((prev) => !prev);
   };
 
-  return(
-   <div className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}>
-      <button onClick={onToggle}>toggle</button>
+  return (
+    <div className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
+      <button type="button" onClick={onToggle}>toggle</button>
       <div className={cls.switchers}>
         <LangSwitcher className={cls.lang} />
         <ThemeSwitcher />
       </div>
-   </div>
+    </div>
   );
 };
