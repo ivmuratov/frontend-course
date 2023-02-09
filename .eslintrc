@@ -2,7 +2,8 @@
     "root": true,
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -34,7 +35,7 @@
     },
     "rules": {
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".tsx"] }],
-        "i18next/no-literal-string": ["error", { "markupOnly": true, "ignoreAttribute": ["to"] }],   
+        "i18next/no-literal-string": ["error", { "markupOnly": true, "ignoreAttribute": ["to"] }],  
         "no-unused-vars": "warn",
         "react/jsx-props-no-spreading": "warn",
         "import/no-unresolved": "off",
