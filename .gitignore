@@ -1,4 +1,5 @@
-/node_modules/
-/build/
-/extractedTranslations/
+/node_modules
+/build
+/extractedTranslations
+/.vscode
 .env
