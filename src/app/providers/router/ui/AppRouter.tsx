@@ -4,7 +4,7 @@ import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 
 function AppRouter() {
   return (
-    <Suspense fallback={<div>... loading</div>}>
+    <Suspense fallback="">
       <div className="page-wrapper">
         <Routes>
           {Object.values(routeConfig).map(({ path, element }) => (

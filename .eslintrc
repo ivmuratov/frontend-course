@@ -6,7 +6,13 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:i18next/recommended",
         "airbnb"        
+    ],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "i18next"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -16,11 +22,7 @@
         "project": ["./tsconfig.json"],
         "ecmaVersion": "latest",
         "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
+    },    
     "settings": {
         "react": {
           "pragma": "React",
@@ -32,6 +34,7 @@
     },
     "rules": {
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".tsx"] }],
+        "i18next/no-literal-string": ["error", { "markupOnly": true, "ignoreAttribute": ["to"] }],   
         "no-unused-vars": "warn",
         "react/jsx-props-no-spreading": "warn",
         "import/no-unresolved": "off",
