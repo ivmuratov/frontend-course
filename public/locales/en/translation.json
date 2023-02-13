@@ -1,8 +1,8 @@
 {
-    "тестовый пример": "test example",
-    "язык": "russian",
-    "переключатель": "toggle",
-    "главная": "main",
-    "о нас": "about us",
-    "страница не найдена": "page not found"   
+    "test example": "test example",
+    "language": "russian",
+    "toggle": "toggle",
+    "main": "main",
+    "about us": "about us",
+    "page not found": "page not found"   
 }

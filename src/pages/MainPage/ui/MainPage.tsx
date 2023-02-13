@@ -5,7 +5,7 @@ const MainPage: FC = () => {
   const { t } = useTranslation('main');
 
   return (
-    <div>{t('главная страница')}</div>
+    <div>{t('main page')}</div>
   );
 };
 
