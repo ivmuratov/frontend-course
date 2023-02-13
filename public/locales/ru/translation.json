@@ -1,8 +1,11 @@
 {
-    "test example": "тестовый пример",
-    "language": "английский",
-    "toggle": "переключатель",
-    "main": "главная",
-    "about us": "о нас",
-    "page not found": "страница не найдена"  
+  "test example": "тестовый пример",
+  "language": "английский",
+  "toggle": "переключатель",
+  "main": "главная",
+  "about us": "о нас",
+  "page not found": "страница не найдена",
+  "refresh page": "обновить страницу",
+  "an unexpected error occurred": "произошла непредвиденная ошибка",
+  "throw error": "пробросить ошибку"
 }
