@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
-  className, children, theme = ThemeButton.CLEAR, ...props
+  className, children, theme, ...props
 }) => (
   <button type="button" className={classNames(cls.Button, {}, [className, cls[theme]])} {...props}>
     {children}
