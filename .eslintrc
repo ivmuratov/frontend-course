@@ -35,7 +35,7 @@
     },
     "rules": {
         "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".tsx"] }],
-        "i18next/no-literal-string": ["error", { "markupOnly": true, "ignoreAttribute": ["to"] }],  
+        "i18next/no-literal-string": ["error", { "markupOnly": true, "ignoreAttribute": ["to", "data-testid"] }],  
         "no-unused-vars": "warn",
         "react/jsx-props-no-spreading": "warn",
         "import/no-unresolved": "off",
@@ -47,5 +47,13 @@
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
         "no-underscore-dangle": "off"
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/src/**/*.test.{ts,tsx}"],
+            "rules": {
+                "i18next/no-literal-string": "off"
+            }
+        }
+    ]
 }

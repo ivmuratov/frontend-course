@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from 'path';
+
 export default {
   // Automatically clear mock calls, instances and results before every test
   clearMocks: true,
@@ -35,6 +37,7 @@ export default {
   // to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '\\.s?css': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
   },
 
   // The test environment that will be used for testing
