@@ -7,10 +7,14 @@ export interface BuildPaths {
     src: string;
 }
 
-export interface BuildEnv {
+export interface BuildAnalyzeEnv {
+    analyze: boolean;
+    analyzePort: number;
+}
+
+export interface BuildEnv extends BuildAnalyzeEnv {
     mode: BuildMode;
     port: number;
-    analyze: boolean;
 }
 
 export interface BuildOptions extends BuildEnv {
