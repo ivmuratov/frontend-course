@@ -5,7 +5,8 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve --env mode=development port=3000",
-    "build": "webpack --env mode=production",
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
     "build:analyze": "webpack --env analyze mode=production analyzePort=8000",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix",
