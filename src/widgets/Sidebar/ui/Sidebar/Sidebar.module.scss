@@ -5,6 +5,27 @@
   position: relative;
   transition: width 0.3s;
 
+  .items {
+    margin: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        fill: var(--inverted-primary-color);
+      }
+
+      .link {
+        margin-left: 5px;
+        opacity: 1;
+      }
+    }
+  }
+
   .switchers {
     position: absolute;
     bottom: 20px;
@@ -16,8 +37,34 @@
   .lang {
     margin-right: 15px;
   }
+
+  .collapseBtn {
+    position: absolute;
+    right: -32px;
+    bottom: 32px;
+  }
 }
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
+
+  .switchers {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lang {
+    margin: 0;
+  }
+
+  .items {
+    .item {
+      .link {
+        margin: 0;
+        opacity: 0;
+        transition: 0.3s opacity;
+        width: 0;
+      }
+    }
+  }
 }

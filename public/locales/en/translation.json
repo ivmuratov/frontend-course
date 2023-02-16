@@ -1,10 +1,11 @@
 {
   "test example": "test example",
-  "language": "russian",
+  "language": "Russian",
+  "short language": "Ru",
   "toggle": "toggle",
-  "main": "main",
-  "about us": "about us",
-  "page not found": "page not found",
+  "main": "Main",
+  "about us": "About us",
+  "page not found": "Page not found",
   "refresh page": "refresh page",
   "an unexpected error occurred": "an unexpected error occurred",
   "throw error": "throw error"
