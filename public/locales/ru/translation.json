@@ -9,5 +9,7 @@
   "refresh page": "обновить страницу",
   "an unexpected error occurred": "произошла непредвиденная ошибка",
   "throw error": "пробросить ошибку",
-  "enter": "Войти"
+  "enter": "Войти",
+  "enter username": "Введите имя",
+  "enter password": "Введите пароль"
 }

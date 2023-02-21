@@ -9,5 +9,7 @@
   "refresh page": "refresh page",
   "an unexpected error occurred": "an unexpected error occurred",
   "throw error": "throw error",
-  "enter": "Enter"
+  "enter": "Enter",
+  "enter username": "Enter username",
+  "enter password": "Enter password"
 }
