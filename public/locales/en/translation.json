@@ -11,5 +11,8 @@
   "throw error": "throw error",
   "enter": "Enter",
   "enter username": "Enter username",
-  "enter password": "Enter password"
+  "enter password": "Enter password",
+  "auth form": "Authorization form",
+  "incorrect login or password": "Incorrect login or password",
+  "exit": "Exit"
 }

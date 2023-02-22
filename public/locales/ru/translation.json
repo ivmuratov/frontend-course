@@ -11,5 +11,8 @@
   "throw error": "пробросить ошибку",
   "enter": "Войти",
   "enter username": "Введите имя",
-  "enter password": "Введите пароль"
+  "enter password": "Введите пароль",
+  "auth form": "Форма авторизации",
+  "incorrect login or password": "Неправильный логин или пароль",
+  "exit": "Выйти"
 }
