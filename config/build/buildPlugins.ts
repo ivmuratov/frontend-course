@@ -5,7 +5,11 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export const buildPlugins = ({
-  paths, isDev, analyze, analyzePort,
+  paths,
+  isDev,
+  analyze,
+  analyzePort,
+  apiUrl,
 }: BuildOptions): WebpackPluginInstance[] => [
   new HTMLWebpackPlugin({
     template: paths.html,
@@ -17,6 +21,7 @@ export const buildPlugins = ({
   }),
   new DefinePlugin({
     __IS_DEV__: JSON.stringify(isDev),
+    __API__: JSON.stringify(apiUrl),
   }),
   new BundleAnalyzerPlugin({
     analyzerMode: analyze ? 'server' : 'disabled',
