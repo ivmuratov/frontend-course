@@ -36,7 +36,8 @@
 	"globals": {
 		"__IS_DEV__": true,
 		"__API__": true,
-		"JSX": true
+		"JSX": true,
+		"__PROJECT__": true
 	},
 	"rules": {
 		"react-hooks/rules-of-hooks": "error",

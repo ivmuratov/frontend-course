@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
 import StoreDecorator from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
@@ -11,7 +13,19 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({})],
+  decorators: [StoreDecorator({
+    profile: {
+      form: {
+        username: 'admin',
+        age: 26,
+        first: 'Ivan',
+        lastname: 'Muratov',
+        currency: Currency.RUB,
+        country: Country.Russia,
+        city: 'Novosibirsk',
+      },
+    },
+  })],
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
