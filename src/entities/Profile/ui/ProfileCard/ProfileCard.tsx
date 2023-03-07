@@ -91,7 +91,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
           readonly={readonly}
         />
         <Input
-          type="number"
           className={cls.input}
           value={data?.age}
           placeholder={t('your age')}

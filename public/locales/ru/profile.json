@@ -11,5 +11,9 @@
   "your age": "Ваш возраст",
   "your city": "Ваш город",
   "your username": "Ваше имя пользователя",
-  "your avatar": "Ваш аватар"  
+  "your avatar": "Ваш аватар",
+  "first and last name are required": "Имя и фамилия обязательны",
+  "data not specified": "Данные не указаны",
+  "incorrect region": "Некорректный регион",
+  "incorrect age": "Некорректный возраст"
 }

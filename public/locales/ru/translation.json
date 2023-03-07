@@ -17,5 +17,6 @@
   "incorrect login or password": "Неправильный логин или пароль",
   "exit": "Выйти",
   "currency": "Валюта",
-  "country": "Страна"
+  "country": "Страна",
+  "server error on save": "Серверная ошибка при сохранении"
 }

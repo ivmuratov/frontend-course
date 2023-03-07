@@ -7,6 +7,8 @@ import { getProfileForm } from './model/selectors/getProfileForm/getProfileForm'
 import { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileError } from './model/selectors/getProfileError/getProfileError';
 import { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { ValidateProfileError } from './model/types/profile';
 import type { Profile, ProfileSchema } from './model/types/profile';
 
 export {
@@ -20,6 +22,8 @@ export {
   getProfileIsLoading,
   getProfileError,
   getProfileReadonly,
+  getProfileValidateErrors,
+  ValidateProfileError,
   Profile,
   ProfileSchema,
 };
