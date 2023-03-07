@@ -3,5 +3,13 @@
   "edit": "Edit",
   "your lastname": "Your lastname",
   "your firstname": "Your firstname",
-  "my profile": "My profile"
+  "my profile": "My profile",
+  "an error occurred while loading the profile": "An error occurred while loading the profile",
+  "try refreshing the page": "Try refreshing the page",
+  "cancel": "Cancel",
+  "save": "Save",
+  "your age": "Your age",
+  "your city": "Your city",
+  "your username": "Your username",
+  "your avatar": "Your avatar"  
 }

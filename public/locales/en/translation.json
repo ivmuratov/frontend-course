@@ -15,5 +15,7 @@
   "enter password": "Enter password",
   "auth form": "Authorization form",
   "incorrect login or password": "Incorrect login or password",
-  "exit": "Exit"
+  "exit": "Exit",
+  "currency": "Currency",
+  "country": "Country"
 }

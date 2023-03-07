@@ -26,13 +26,13 @@
     }
   ],
   "profile": {
-    "first": "Timur",
-    "lastname": "Ulbi",
+    "city": "Moscow",
+    "first": "Тимур",
+    "lastname": "Ульби",
     "age": 22,
+    "username": "admin",
     "currency": "RUB",
     "country": "Russia",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://yandex.ru/images/search?text=%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%20%D0%B4%D0%BB%D1%8F%20%D1%81%D1%82%D0%B8%D0%BC%D0%B0&from=tabbar&pos=0&img_url=http%3A%2F%2Fproprikol.ru%2Fwp-content%2Fuploads%2F2020%2F06%2Fkartinki-dlya-stima-na-avu-19.jpg&rpt=simage&lr=119195"
+    "avatar": "https://kartinkin.net/uploads/posts/2022-12/thumbs/1670590535_21-kartinkin-net-p-kartinki-dlya-profilya-stim-pinterest-25.jpg"
   }
 }

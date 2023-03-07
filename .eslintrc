@@ -57,7 +57,8 @@
 				"markupOnly": true,
 				"ignoreAttribute": [
 					"to",
-					"data-testid"
+					"data-testid",
+					"alt"
 				]
 			}
 		],
