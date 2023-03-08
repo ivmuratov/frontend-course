@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Avatar } from './Avatar';
-import AvatarImg from '../../assets/tests/storybook.jpg';
+import avatar from '../../assets/tests/avatar.png';
 
 export default {
   title: 'shared/Avatar',
@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    src: AvatarImg,
+    src: avatar,
   },
 } as ComponentMeta<typeof Avatar>;
 

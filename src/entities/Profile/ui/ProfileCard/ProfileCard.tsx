@@ -22,8 +22,8 @@ interface ProfileCardProps {
   onChangeAge?: (value?: string) => void;
   onChangeUsername?: (value?: string) => void;
   onChangeAvatar?: (value?: string) => void;
-  onChangeCurrency?: (currency?: Currency) => void;
-  onChangeCountry?: (country?: Country) => void;
+  onChangeCurrency?: (currency: Currency) => void;
+  onChangeCountry?: (country: Country) => void;
 }
 
 export const ProfileCard: FC<ProfileCardProps> = ({
@@ -74,7 +74,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         {data?.avatar && (
           <div className={cls.avatarWrapper}>
             <Avatar
-              size={100}
+              size={150}
               src={data?.avatar}
               alt="avatar"
             />
