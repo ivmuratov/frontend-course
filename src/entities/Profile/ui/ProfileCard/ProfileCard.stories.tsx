@@ -27,6 +27,12 @@ Primary.args = {
     avatar,
   },
 };
+// крашится из-за аватара на github actions
+Primary.parameters = {
+  loki: {
+    skip: true,
+  },
+};
 
 export const WithError = Template.bind({});
 WithError.args = {

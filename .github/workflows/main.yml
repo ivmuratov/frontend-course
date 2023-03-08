@@ -36,10 +36,4 @@ jobs:
         if: always()
       - name: screenshoot testing
         run: npm run test:ui:ci
-        if: always()
-      - name: Archive screenshots
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v1
-        with:
-          name: design-system
-          path: .loki      
+        if: always()    
