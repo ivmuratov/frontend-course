@@ -74,7 +74,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         {data?.avatar && (
           <div className={cls.avatarWrapper}>
             <Avatar
-              size={150}
+              size={100}
               src={data?.avatar}
               alt="avatar"
             />
