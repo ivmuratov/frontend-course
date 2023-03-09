@@ -27,7 +27,7 @@ Primary.args = {
     avatar,
   },
 };
-// крашится из-за аватара на github actions
+// крашится на github actions из-за аватара
 Primary.parameters = {
   loki: {
     skip: true,
