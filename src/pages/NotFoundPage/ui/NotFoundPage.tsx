@@ -11,7 +11,7 @@ export const NotFoundPage: FC<NotFoundPageProps> = ({ className }) => {
   const { t } = useTranslation();
   return (
     <div className={classNames(cls.NotFoundPage, {}, [className])}>
-      {t('страница не найдена')}
+      {t('page not found')}
     </div>
   );
 };
