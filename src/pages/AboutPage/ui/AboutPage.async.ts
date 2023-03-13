@@ -1,3 +1,7 @@
 import { lazy } from 'react';
 
-export default lazy(() => import('./AboutPage'));
+export default lazy(() => new Promise((resolve) => {
+  // @ts-ignore
+  // для теста
+  setTimeout(() => resolve(import('./AboutPage')), 1000);
+}));
