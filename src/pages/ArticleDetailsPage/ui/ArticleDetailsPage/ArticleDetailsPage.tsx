@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, memo, useEffect } from 'react';
 import {
   ArticleDetails,
   articleDetailsReducer,
@@ -58,7 +58,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 };
 
 // некорректно работает HoC, сначала грузится thunk, потом инициализируется стейт.
-// в связи с этим теряется isLoading, и не возможно отобразить скелетоны
+// в связи с этим теряется isLoading, и невозможно отобразить скелетоны
 /* export default withDynamicModuleLoader(ArticleDetailsPage, reducers, true); */
 
-export default ArticleDetailsPage;
+export default memo(ArticleDetailsPage);
