@@ -23,6 +23,7 @@ export function withDynamicModuleLoader<T>(
         store.reducerManager.add(name as StateSchemaKey, reducer);
         dispatch({ type: `@INIT ${name} reducer` });
       });
+
       return () => {
         if (removeAfterUnmount) {
           Object.entries(reducers).forEach(([name]) => {

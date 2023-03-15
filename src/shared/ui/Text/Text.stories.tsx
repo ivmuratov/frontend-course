@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 export default {
   title: 'shared/Text',
@@ -21,6 +21,16 @@ Primary.args = {
         Repellendus laudantium, consequuntur, provident ut eum sint
         doloribus autem voluptatem beatae magnam
         minus magni distinctio cupiditate amet et eius quisquam possimus porro.`,
+};
+
+export const SizeL = Template.bind({});
+SizeL.args = {
+  title: 'Title',
+  text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Repellendus laudantium, consequuntur, provident ut eum sint
+        doloribus autem voluptatem beatae magnam
+        minus magni distinctio cupiditate amet et eius quisquam possimus porro.`,
+  size: TextSize.L,
 };
 
 export const Error = Template.bind({});

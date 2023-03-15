@@ -1,8 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchArticleById } from '../services/fetchArticleById/fetchArticleById';
-import { Article } from '../types/article';
-import { ArticleDetailsSchema } from '../types/articleDetailsSchema';
+import type { Article, ArticleDetailsSchema } from '../types/article';
 
 const initialState: ArticleDetailsSchema = {
   data: undefined,
@@ -14,7 +13,9 @@ export const articleDetailsSlice = createSlice({
   name: 'articleDetails',
   initialState,
   reducers: {
-
+    testAction: (state, action) => {
+      state.data = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
