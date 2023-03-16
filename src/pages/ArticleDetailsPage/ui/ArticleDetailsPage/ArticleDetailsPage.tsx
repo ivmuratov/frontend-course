@@ -15,10 +15,19 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Text } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
+import { CommentList } from 'entities/Comment';
+import {
+  articleDetailsCommentsReducer,
+  fetchArticleCommentsById,
+  getArticleDetailsComments,
+} from 'features/ArticleDetailsComments';
 import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsCommentsReducer,
 };
 
 interface ArticlesDetailsPageProps {
@@ -27,6 +36,8 @@ interface ArticlesDetailsPageProps {
 
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   const mods: Mods = {};
+
+  const { t } = useTranslation('article');
 
   const { id } = useParams<{ id: string }>();
 
@@ -38,9 +49,19 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
   const error = useSelector(getArticleDetailsError);
 
+  const comments = useSelector(getArticleDetailsComments.selectAll);
+
+  const commentsIsLoading = useSelector(getArticleDetailsIsLoading);
+
   useEffect(() => {
     if (id && __PROJECT__ !== 'storybook') {
       dispatch(fetchArticleById(id));
+    }
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchArticleCommentsById(id));
     }
   }, [dispatch, id]);
 
@@ -51,6 +72,14 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
           data={data}
           isLoading={isLoading}
           error={error}
+        />
+        <Text
+          className={cls.commentTitle}
+          title={t('comments')}
+        />
+        <CommentList
+          isLoading={commentsIsLoading}
+          comments={comments}
         />
       </div>
     </DynamicModuleLoader>

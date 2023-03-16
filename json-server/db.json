@@ -109,13 +109,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://kartinkin.net/uploads/posts/2022-12/thumbs/1670590535_21-kartinkin-net-p-kartinki-dlya-profilya-stim-pinterest-25.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://kartinkin.net/uploads/posts/2022-12/thumbs/1670590535_21-kartinkin-net-p-kartinki-dlya-profilya-stim-pinterest-25.jpg"
     }
   ],
   "profile": {
