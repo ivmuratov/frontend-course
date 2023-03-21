@@ -10,7 +10,7 @@ import {
   getArticleDetailsIsLoading,
 } from 'entities/Article';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
@@ -27,6 +27,8 @@ import {
   addCommentForArticle,
 } from 'features/ArticleDetailsComments';
 import { AddCommentForm } from 'features/AddCommentForm';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
@@ -45,6 +47,8 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const data = useSelector(getArticleDetailsData);
 
   const isLoading = useSelector(getArticleDetailsIsLoading);
@@ -54,6 +58,10 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   const comments = useSelector(getArticleDetailsComments.selectAll);
 
   const commentsIsLoading = useSelector(getArticleDetailsIsLoading);
+
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles);
+  }, [navigate]);
 
   const onSendComment = useCallback((text: string) => {
     dispatch(addCommentForArticle(text));
@@ -76,6 +84,12 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
+        <Button
+          onClick={onBackToList}
+          theme={ButtonTheme.OUTLINE}
+        >
+          {t('back to list')}
+        </Button>
         <ArticleDetails
           data={data}
           isLoading={isLoading}

@@ -11,6 +11,10 @@ const data = {
   createdAt: '',
   type: [],
   blocks: [],
+  user: {
+    id: '1',
+    username: 'ulbi tv',
+  },
 };
 
 describe('articleDetailsSlice', () => {

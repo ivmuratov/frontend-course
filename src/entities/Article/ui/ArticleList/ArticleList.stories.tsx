@@ -1,11 +1,8 @@
-import { Article, ArticleList, ArticleView } from 'entities/Article';
-import { FC, memo } from 'react';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
-import cls from './ArticlesPage.module.scss';
-
-interface ArticlesPageProps {
-  className?: string;
-}
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Theme } from 'app/providers/ThemeProvider';
+import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Article, ArticleView } from '../../model/types/article';
+import { ArticleList } from './ArticleList';
 
 const article = {
   id: '1',
@@ -87,22 +84,42 @@ const article = {
   ],
 } as Article;
 
-const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
-  const mods: Mods = {};
+export default {
+  title: 'entities/Article/ArticleList',
+  component: ArticleList,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+  args: {
+    articles: new Array(16)
+      .fill(0)
+      .map((_, index) => ({
+        ...article,
+        id: `${index}`,
+      })),
+  },
+} as ComponentMeta<typeof ArticleList>;
 
-  return (
-    <div className={classNames(cls.ArticlesPage, mods, [className])}>
-      <ArticleList
-        view={ArticleView.BIG}
-        articles={new Array(16)
-          .fill(0)
-          .map((_, index) => ({
-            ...article,
-            id: `${index}`,
-          }))}
-      />
-    </div>
-  );
+const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+
+export const PrimaryBig = Template.bind({});
+PrimaryBig.args = {
+  view: ArticleView.BIG,
 };
 
-export default memo(ArticlesPage);
+export const PrimarySmall = Template.bind({});
+PrimarySmall.args = {
+  view: ArticleView.SMALL,
+};
+
+export const LoadingBig = Template.bind({});
+LoadingBig.args = {
+  isLoading: true,
+  view: ArticleView.BIG,
+};
+
+export const LoadingSmall = Template.bind({});
+LoadingSmall.args = {
+  isLoading: true,
+  view: ArticleView.SMALL,
+};

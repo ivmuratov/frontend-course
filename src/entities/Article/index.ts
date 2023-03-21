@@ -6,7 +6,12 @@ import {
   getArticleDetailsError,
 } from './model/selectors/articleDetails';
 import { articleDetailsReducer } from './model/slice/articleDetailsSlice';
-import type { Article, ArticleDetailsSchema } from './model/types/article';
+import { ArticleView } from './model/types/article';
+import { ArticleList } from './ui/ArticleList/ArticleList';
+import type {
+  Article,
+  ArticleDetailsSchema,
+} from './model/types/article';
 
 export {
   ArticleDetails,
@@ -15,6 +20,8 @@ export {
   getArticleDetailsIsLoading,
   getArticleDetailsError,
   articleDetailsReducer,
+  ArticleView,
+  ArticleList,
   Article,
   ArticleDetailsSchema,
 };
