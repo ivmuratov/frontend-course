@@ -9,6 +9,7 @@ import {
 import {
   fetchArticleCommentsById,
 } from './model/services/fetchArticleCommentsById/fetchArticleCommentsById';
+import { addCommentForArticle } from './model/services/addCommentForArticle/addCommentForArticle';
 import type { ArticleDetailsCommentsSchema } from './model/types/ArticleDetailsCommentsSchema';
 
 export {
@@ -17,5 +18,6 @@ export {
   getArticleDetailsCommentsIsLoading,
   getArticleDetailsCommentsError,
   fetchArticleCommentsById,
+  addCommentForArticle,
   ArticleDetailsCommentsSchema,
 };

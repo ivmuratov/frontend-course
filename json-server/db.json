@@ -117,17 +117,31 @@
       "username": "user",
       "password": "123",
       "role": "USER",
-      "avatar": "https://kartinkin.net/uploads/posts/2022-12/thumbs/1670590535_21-kartinkin-net-p-kartinki-dlya-profilya-stim-pinterest-25.jpg"
+      "avatar": "https://teknotower.com/wp-content/uploads/2020/11/js.png"
     }
   ],
-  "profile": {
-    "city": "Moscow",
-    "first": "Тимур",
-    "lastname": "Ульби",
-    "age": 22,
-    "username": "admin",
-    "currency": "RUB",
-    "country": "Russia",
-    "avatar": "https://kartinkin.net/uploads/posts/2022-12/thumbs/1670590535_21-kartinkin-net-p-kartinki-dlya-profilya-stim-pinterest-25.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "city": "Moscow",
+      "first": "Тимур",
+      "lastname": "Ульби",
+      "age": 22,
+      "username": "admin",
+      "currency": "RUB",
+      "country": "Russia",
+      "avatar": "https://kartinkin.net/uploads/posts/2022-12/thumbs/1670590535_21-kartinkin-net-p-kartinki-dlya-profilya-stim-pinterest-25.jpg"
+    },
+    {
+      "id": "2",
+      "city": "Novosibirsk",
+      "first": "Иван123",
+      "lastname": "Муратов123",
+      "age": 26,
+      "username": "boss",
+      "currency": "USD",
+      "country": "Russia",
+      "avatar": "https://teknotower.com/wp-content/uploads/2020/11/js.png"
+    }
+  ]
 }

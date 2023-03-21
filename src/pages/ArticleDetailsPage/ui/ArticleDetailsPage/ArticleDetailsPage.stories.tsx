@@ -12,6 +12,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  parameters: {
+    // TODO убрать
+    loki: {
+      skip: true,
+    },
+  },
   decorators: [StoreDecorator({
     articleDetails: {
       data: {
@@ -84,6 +90,27 @@ export default {
             ],
           },
         ],
+      },
+    },
+    articleDetailsComments: {
+      ids: ['1', '2'],
+      entities: {
+        1: {
+          id: '1',
+          user: {
+            id: '1',
+            username: 'vasya',
+          },
+          text: 'comment by user 1',
+        },
+        2: {
+          id: '2',
+          user: {
+            id: '2',
+            username: 'petya',
+          },
+          text: 'comment by user 2',
+        },
       },
     },
   })],

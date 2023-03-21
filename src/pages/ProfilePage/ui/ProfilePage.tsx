@@ -15,6 +15,7 @@ import {
 import { FC, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ReducersList, withDynamicModuleLoader } from 'shared/lib/hocs/withDynamicModuleLoader/withDynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -44,6 +45,8 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 
   const validateErrors = useSelector(getProfileValidateErrors);
 
+  const { id } = useParams<{ id: string }>();
+
   const validateErrorTranslates: Record<ValidateProfileError, string> = {
     [ValidateProfileError.INCORRECT_AGE]: t('incorrect age'),
     [ValidateProfileError.INCORRECT_COUNTRY]: t('incorrect region'),
@@ -53,10 +56,10 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   };
 
   useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
+    if (id && __PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData(id));
     }
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const onChangeFirstname = useCallback((value?: string) => {
     dispatch(profileActions.updateProfile({ first: value || '' }));

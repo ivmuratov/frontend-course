@@ -11,7 +11,7 @@ export type ReducersList = {
 export function withDynamicModuleLoader<T>(
   Child: ComponentType<T>,
   reducers: ReducersList,
-  removeAfterUnmount?: boolean,
+  removeAfterUnmount: boolean = true,
 ) {
   return (hocProps: T & JSX.IntrinsicAttributes) => {
     const store = useStore() as ReduxStoreWithManager;

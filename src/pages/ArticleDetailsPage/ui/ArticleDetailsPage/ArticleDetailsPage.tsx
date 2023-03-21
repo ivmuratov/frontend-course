@@ -1,4 +1,6 @@
-import { FC, memo, useEffect } from 'react';
+import {
+  FC, memo, useCallback, useEffect,
+} from 'react';
 import {
   ArticleDetails,
   articleDetailsReducer,
@@ -22,7 +24,9 @@ import {
   articleDetailsCommentsReducer,
   fetchArticleCommentsById,
   getArticleDetailsComments,
+  addCommentForArticle,
 } from 'features/ArticleDetailsComments';
+import { AddCommentForm } from 'features/AddCommentForm';
 import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
@@ -35,8 +39,6 @@ interface ArticlesDetailsPageProps {
 }
 
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
-  const mods: Mods = {};
-
   const { t } = useTranslation('article');
 
   const { id } = useParams<{ id: string }>();
@@ -53,6 +55,10 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
   const commentsIsLoading = useSelector(getArticleDetailsIsLoading);
 
+  const onSendComment = useCallback((text: string) => {
+    dispatch(addCommentForArticle(text));
+  }, [dispatch]);
+
   useEffect(() => {
     if (id && __PROJECT__ !== 'storybook') {
       dispatch(fetchArticleById(id));
@@ -60,10 +66,12 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
+    if (id && __PROJECT__ !== 'storybook') {
       dispatch(fetchArticleCommentsById(id));
     }
   }, [dispatch, id]);
+
+  const mods: Mods = {};
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -77,6 +85,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
           className={cls.commentTitle}
           title={t('comments')}
         />
+        <AddCommentForm onSendComment={onSendComment} />
         <CommentList
           isLoading={commentsIsLoading}
           comments={comments}

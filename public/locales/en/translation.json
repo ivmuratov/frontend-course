@@ -19,5 +19,7 @@
   "exit": "Exit",
   "currency": "Currency",
   "country": "Country",
-  "no comments": "No comments"
+  "no comments": "No comments",
+  "enter comment text": "Enter comment text",
+  "send": "Send"
 }
