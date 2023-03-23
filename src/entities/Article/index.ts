@@ -8,6 +8,7 @@ import {
 import { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 import { ArticleView } from './model/types/article';
 import { ArticleList } from './ui/ArticleList/ArticleList';
+import { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
 import type {
   Article,
   ArticleDetailsSchema,
@@ -22,6 +23,7 @@ export {
   articleDetailsReducer,
   ArticleView,
   ArticleList,
+  ArticleViewSelector,
   Article,
   ArticleDetailsSchema,
 };
