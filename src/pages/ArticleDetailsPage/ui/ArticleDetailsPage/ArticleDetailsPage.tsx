@@ -29,6 +29,7 @@ import {
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
@@ -83,7 +84,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
+      <Page className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
         <Button
           onClick={onBackToList}
           theme={ButtonTheme.OUTLINE}
@@ -104,7 +105,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
           isLoading={commentsIsLoading}
           comments={comments}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

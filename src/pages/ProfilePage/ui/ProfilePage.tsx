@@ -19,6 +19,7 @@ import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ReducersList, withDynamicModuleLoader } from 'shared/lib/hocs/withDynamicModuleLoader/withDynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Page } from 'shared/ui/Page/Page';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -94,7 +95,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames('', {}, [className])}>
+    <Page className={classNames('', {}, [className])}>
       <ProfilePageHeader />
       {validateErrors?.length && validateErrors.map((error) => (
         <Text
@@ -117,7 +118,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
         onChangeCurrency={onChangeCurrency}
         onChangeCountry={onChangeCountry}
       />
-    </div>
+    </Page>
   );
 };
 

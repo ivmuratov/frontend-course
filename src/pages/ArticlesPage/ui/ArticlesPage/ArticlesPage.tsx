@@ -16,10 +16,14 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
   getArticlesPageError,
+  getArticlesPageHasMore,
   getArticlesPageIsLoading,
+  getArticlesPageNumber,
   getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import {
@@ -52,18 +56,27 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
     dispatch(articlesPageActions.setView(view));
   }, [dispatch]);
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
+
   useEffect(() => {
     if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchArticlesList());
       dispatch(articlesPageActions.initState());
+      dispatch(fetchArticlesList({
+        page: 1,
+      }));
     }
-  }, [dispatch]);
+  }, [dispatch, view]);
 
   const mods: Mods = {};
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ArticlesPage, mods, [className])}>
+      <Page
+        className={classNames(cls.ArticlesPage, mods, [className])}
+        onScrollEnd={onLoadNextPart}
+      >
         <ArticleViewSelector
           view={view}
           onViewClick={onChangeView}
@@ -73,7 +86,7 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
           view={view}
           articles={articles}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

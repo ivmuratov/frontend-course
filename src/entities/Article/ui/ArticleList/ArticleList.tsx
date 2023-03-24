@@ -35,19 +35,12 @@ export const ArticleList = memo(({
 
   const mods: Mods = {};
 
-  if (isLoading) {
-    return (
-      <div className={classNames(cls.ArticleList, mods, [className, cls[view]])}>
-        {getSkeletons(view)}
-      </div>
-    );
-  }
-
   return (
     <div className={classNames(cls.ArticleList, mods, [className, cls[view]])}>
       {articles!.length > 0
         ? articles?.map(renderArticle)
         : null}
+      {isLoading && getSkeletons(view)}
     </div>
   );
 });
