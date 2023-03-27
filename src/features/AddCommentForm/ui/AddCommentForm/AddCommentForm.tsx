@@ -6,10 +6,9 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import {
+  DynamicModuleLoader,
   ReducersList,
-  withDynamicModuleLoader,
-} from 'shared/lib/hocs/withDynamicModuleLoader/withDynamicModuleLoader';
-import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   addCommentFormActions,
   addCommentFormReducer,

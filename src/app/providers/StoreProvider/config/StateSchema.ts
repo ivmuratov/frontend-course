@@ -13,11 +13,13 @@ import { UserSchema } from 'entities/User';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticleDetailsCommentsSchema } from 'features/ArticleDetailsComments';
 import { LoginSchema } from 'features/AuthByUsername';
+import { ScrollSaveSchema } from 'features/ScrollSave';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
+  scrollSave: ScrollSaveSchema;
 
   // Асинхронные редюсеры
   loginForm?: LoginSchema;
