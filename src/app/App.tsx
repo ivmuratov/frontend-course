@@ -1,6 +1,6 @@
 import { FC, Suspense, useEffect } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';

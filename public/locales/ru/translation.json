@@ -22,5 +22,18 @@
   "server error on save": "Серверная ошибка при сохранении",
   "no comments": "Комментарии отсутствуют",
   "enter comment text": "Введите текст комментария",
-  "send": "Отправить"
+  "send": "Отправить",
+  "sort by": "Сортировать по",
+  "search": "Поиск",
+  "ascending": "возрастанию",
+  "descending": "убыванию",
+  "creation date": "дате создания",
+  "title": "заголовку",
+  "views": "просмотрам",
+  "by": "по",
+  "it": "ИТ",
+  "all articles": "Все статьи",
+  "economics": "Экономика",
+  "science": "Наука",
+  "articles not found": "Статьи не найдены"
 }

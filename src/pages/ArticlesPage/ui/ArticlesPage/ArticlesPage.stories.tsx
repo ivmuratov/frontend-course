@@ -167,7 +167,7 @@ const articleTwo = {
 } as Article;
 
 export default {
-  title: 'pages/ArticlesPage',
+  title: 'pages/Article/ArticlesPage',
   component: ArticlesPage,
   argTypes: {
     backgroundColor: { control: 'color' },

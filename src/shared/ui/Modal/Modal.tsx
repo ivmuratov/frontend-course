@@ -2,7 +2,7 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import {
   FC, MutableRefObject, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/Portal';
 import cls from './Modal.module.scss';
 

@@ -6,9 +6,15 @@ import {
   getArticleDetailsError,
 } from './model/selectors/articleDetails';
 import { articleDetailsReducer } from './model/slice/articleDetailsSlice';
-import { ArticleView } from './model/types/article';
+import {
+  ArticleView,
+  ArticleSortField,
+  ArticleType,
+} from './model/types/article';
 import { ArticleList } from './ui/ArticleList/ArticleList';
 import { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+import { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
+import { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
 import type {
   Article,
   ArticleDetailsSchema,
@@ -24,6 +30,10 @@ export {
   ArticleView,
   ArticleList,
   ArticleViewSelector,
+  ArticleSortSelector,
+  ArticleSortField,
+  ArticleTypeTabs,
   Article,
+  ArticleType,
   ArticleDetailsSchema,
 };

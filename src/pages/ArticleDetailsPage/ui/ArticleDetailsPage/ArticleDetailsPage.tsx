@@ -11,7 +11,7 @@ import {
 } from 'entities/Article';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   DynamicModuleLoader,

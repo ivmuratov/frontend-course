@@ -1,5 +1,5 @@
 import { memo, SVGProps, VFC } from 'react';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import ListIcon from 'shared/assets/icons/list.svg';
 import TiledIcon from 'shared/assets/icons/tiled.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';

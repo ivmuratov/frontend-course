@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Text } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye.svg';

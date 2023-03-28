@@ -21,5 +21,18 @@
   "country": "Country",
   "no comments": "No comments",
   "enter comment text": "Enter comment text",
-  "send": "Send"
+  "send": "Send",
+  "sort by": "Sort by",
+  "search": "Search",
+  "ascending": "ascending",
+  "descending": "descending",
+  "creation date": "creation date",
+  "title": "title",
+  "views": "views",
+  "by": "by",
+  "it": "IT",
+  "all articles": "All articles",
+  "economics": "Economics",
+  "science": "Science",
+  "articles not found": "Articles not found"
 }

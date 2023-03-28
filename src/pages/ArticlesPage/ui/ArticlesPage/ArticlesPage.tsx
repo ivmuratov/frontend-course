@@ -10,13 +10,14 @@ import {
   ArticleViewSelector,
 } from 'entities/Article';
 import { useSelector } from 'react-redux';
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   DynamicModuleLoader,
   ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from 'widgets/Page/Page';
+import { useSearchParams } from 'react-router-dom';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
   getArticlesPageError,
@@ -30,6 +31,7 @@ import {
 } from '../../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 interface ArticlesPageProps {
   className?: string;
@@ -50,9 +52,7 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
 
   const view = useSelector(getArticlesPageView);
 
-  const onChangeView = useCallback((view: ArticleView) => {
-    dispatch(articlesPageActions.setView(view));
-  }, [dispatch]);
+  const [searchParams] = useSearchParams();
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage());
@@ -60,9 +60,9 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
 
   useEffect(() => {
     if (__PROJECT__ !== 'storybook') {
-      dispatch(initArticlesPage());
+      dispatch(initArticlesPage(searchParams));
     }
-  }, [dispatch, view]);
+  }, [dispatch, searchParams, view]);
 
   const mods: Mods = {};
 
@@ -72,11 +72,9 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
         className={classNames(cls.ArticlesPage, mods, [className])}
         onScrollEnd={onLoadNextPart}
       >
-        <ArticleViewSelector
-          view={view}
-          onViewClick={onChangeView}
-        />
+        <ArticlesPageFilters />
         <ArticleList
+          className={cls.list}
           isLoading={isLoading}
           view={view}
           articles={articles}
