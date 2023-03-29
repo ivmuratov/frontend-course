@@ -92,24 +92,26 @@ export default {
         ],
       },
     },
-    articleDetailsComments: {
-      ids: ['1', '2'],
-      entities: {
-        1: {
-          id: '1',
-          user: {
+    articleDetailsIndex: {
+      comments: {
+        ids: ['1', '2'],
+        entities: {
+          1: {
             id: '1',
-            username: 'vasya',
+            user: {
+              id: '1',
+              username: 'vasya',
+            },
+            text: 'comment by user 1',
           },
-          text: 'comment by user 1',
-        },
-        2: {
-          id: '2',
-          user: {
+          2: {
             id: '2',
-            username: 'petya',
+            user: {
+              id: '2',
+              username: 'petya',
+            },
+            text: 'comment by user 2',
           },
-          text: 'comment by user 2',
         },
       },
     },

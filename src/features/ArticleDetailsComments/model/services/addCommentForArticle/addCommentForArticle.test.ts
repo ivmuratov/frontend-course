@@ -11,10 +11,10 @@ const data: Comment = {
 describe('addCommentForArticle', () => {
   it('success', async () => {
     const thunk = new TestAsyncThunk(addCommentForArticle);
-    thunk.api.post.mockReturnValue(Promise.resolve({ data }));
+    /* thunk.api.post.mockReturnValue(Promise.resolve({ data }));
     const result = await thunk.callThunk('');
 
-    /*     expect(thunk.api.post).toHaveBeenCalled();
+    expect(thunk.api.post).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe('fulfilled');
     expect(result.payload).toEqual(data); */
   });

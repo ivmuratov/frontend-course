@@ -4,6 +4,7 @@ import {
 import {
   ArticleDetails,
   articleDetailsReducer,
+  ArticleList,
   fetchArticleById,
   getArticleDetailsData,
   getArticleDetailsError,
@@ -17,14 +18,18 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { CommentList } from 'entities/Comment';
 import {
-  articleDetailsCommentsReducer,
   fetchArticleCommentsById,
   getArticleDetailsComments,
+  getArticleDetailsRecommendations,
   addCommentForArticle,
+  getArticleDetailsCommentsIsLoading,
+  getArticleDetailsRecommendationsIsLoading,
+  fetchArticleRecommendations,
+  articleDetailsIndexReducer,
 } from 'features/ArticleDetailsComments';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -34,7 +39,7 @@ import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
-  articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsIndex: articleDetailsIndexReducer,
 };
 
 interface ArticlesDetailsPageProps {
@@ -58,7 +63,11 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
   const comments = useSelector(getArticleDetailsComments.selectAll);
 
-  const commentsIsLoading = useSelector(getArticleDetailsIsLoading);
+  const commentsIsLoading = useSelector(getArticleDetailsCommentsIsLoading);
+
+  const recommendations = useSelector(getArticleDetailsRecommendations.selectAll);
+
+  const recommendationsIsLoading = useSelector(getArticleDetailsRecommendationsIsLoading);
 
   const onBackToList = useCallback(() => {
     navigate(RoutePath.articles);
@@ -73,6 +82,12 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
       dispatch(fetchArticleById(id));
     }
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchArticleRecommendations());
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     if (id && __PROJECT__ !== 'storybook') {
@@ -98,6 +113,18 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
         />
         <Text
           className={cls.commentTitle}
+          size={TextSize.L}
+          title={t('recommended')}
+        />
+        <ArticleList
+          className={cls.recommendations}
+          articles={recommendations}
+          isLoading={recommendationsIsLoading}
+          target="_blank"
+        />
+        <Text
+          className={cls.commentTitle}
+          size={TextSize.L}
           title={t('comments')}
         />
         <AddCommentForm onSendComment={onSendComment} />

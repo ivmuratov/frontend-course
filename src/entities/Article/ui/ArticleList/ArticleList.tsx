@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
@@ -18,6 +18,7 @@ interface ArticleListProps {
   articles?: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleList = memo(({
@@ -25,6 +26,7 @@ export const ArticleList = memo(({
   articles,
   isLoading,
   view = ArticleView.SMALL,
+  target,
 }: ArticleListProps) => {
   const { t } = useTranslation();
 
@@ -34,6 +36,7 @@ export const ArticleList = memo(({
       className={cls.card}
       article={article}
       view={view}
+      target={target}
     />
   );
 

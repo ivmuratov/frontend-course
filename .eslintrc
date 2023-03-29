@@ -59,7 +59,8 @@
 				"ignoreAttribute": [
 					"to",
 					"data-testid",
-					"alt"
+					"alt",
+					"target"
 				]
 			}
 		],
