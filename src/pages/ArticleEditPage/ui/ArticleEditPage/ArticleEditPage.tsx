@@ -9,7 +9,7 @@ interface ArticleEditPageProps {
   className?: string;
 }
 
-export const ArticleEditPage: FC<ArticleEditPageProps> = ({ className }) => {
+const ArticleEditPage: FC<ArticleEditPageProps> = ({ className }) => {
   const { t } = useTranslation('article');
 
   const { id } = useParams<{ id: string }>();
