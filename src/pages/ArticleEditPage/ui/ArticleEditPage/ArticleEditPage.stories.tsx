@@ -5,7 +5,7 @@ import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorato
 import { ArticleEditPage } from './ArticleEditPage';
 
 export default {
-  title: 'shared/ArticleEditPage',
+  title: 'pages/Article/ArticleEditPage',
   component: ArticleEditPage,
   argTypes: {
     backgroundColor: { control: 'color' },
