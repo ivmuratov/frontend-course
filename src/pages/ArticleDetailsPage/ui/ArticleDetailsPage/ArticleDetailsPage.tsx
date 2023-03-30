@@ -36,6 +36,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
 import cls from './ArticleDetailsPage.module.scss';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
@@ -100,12 +101,7 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
-        <Button
-          onClick={onBackToList}
-          theme={ButtonTheme.OUTLINE}
-        >
-          {t('back to list')}
-        </Button>
+        <ArticleDetailsPageHeader />
         <ArticleDetails
           data={data}
           isLoading={isLoading}

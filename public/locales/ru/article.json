@@ -6,5 +6,8 @@
   "comments": "Комментарии",
   "read more": "Читать далее...",
   "back to list": "Назад к списку",
-  "recommended": "Рекомендуем"
+  "recommended": "Рекомендуем",
+  "edit": "Редактировать",
+  "edit article by id": "Редактирование статьи по id",
+  "create article": "Создание статьи"
 }
