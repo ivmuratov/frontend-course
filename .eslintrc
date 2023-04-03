@@ -14,7 +14,8 @@
 		"react",
 		"react-hooks",
 		"@typescript-eslint",
-		"i18next"
+		"i18next",
+		"fsd-imuratov"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -79,7 +80,8 @@
 		"no-underscore-dangle": "off",
 		"no-undef": "off",
 		"jsx-a11y/click-events-have-key-events": "off",
-		"jsx-a11y/no-static-element-interactions": "off"
+		"jsx-a11y/no-static-element-interactions": "off",
+		"fsd-imuratov/path-checker": "error"
 	},
 	"overrides": [
 		{
