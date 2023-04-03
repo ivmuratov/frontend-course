@@ -6,8 +6,6 @@ import {
 } from 'react';
 import {
   ArticleList,
-  ArticleView,
-  ArticleViewSelector,
 } from 'entities/Article';
 import { useSelector } from 'react-redux';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
@@ -25,7 +23,6 @@ import {
   getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import {
-  articlesPageActions,
   articlesPageReducer,
   getArticles,
 } from '../../model/slices/articlesPageSlice';
