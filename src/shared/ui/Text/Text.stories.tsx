@@ -23,6 +23,26 @@ Primary.args = {
         minus magni distinctio cupiditate amet et eius quisquam possimus porro.`,
 };
 
+export const SizeS = Template.bind({});
+SizeS.args = {
+  title: 'Title',
+  text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Repellendus laudantium, consequuntur, provident ut eum sint
+        doloribus autem voluptatem beatae magnam
+        minus magni distinctio cupiditate amet et eius quisquam possimus porro.`,
+  size: TextSize.S,
+};
+
+export const SizeM = Template.bind({});
+SizeM.args = {
+  title: 'Title',
+  text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Repellendus laudantium, consequuntur, provident ut eum sint
+        doloribus autem voluptatem beatae magnam
+        minus magni distinctio cupiditate amet et eius quisquam possimus porro.`,
+  size: TextSize.M,
+};
+
 export const SizeL = Template.bind({});
 SizeL.args = {
   title: 'Title',

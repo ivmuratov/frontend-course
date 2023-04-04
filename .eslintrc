@@ -63,7 +63,8 @@
 					"alt",
 					"target",
 					"direction",
-					"justify"
+					"justify",
+					"role"
 				]
 			}
 		],
