@@ -69,6 +69,7 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
       <VStack
         className={classNames(cls.ArticleDetails, mods, [className])}
         gap="16"
+        max
       >
         <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
         <Skeleton className={cls.title} width={300} height={32} />
@@ -84,6 +85,7 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
       <VStack
         className={classNames(cls.ArticleDetails, mods, [className])}
         gap="16"
+        max
       >
         <Text
           align={TextAlign.CENTER}
