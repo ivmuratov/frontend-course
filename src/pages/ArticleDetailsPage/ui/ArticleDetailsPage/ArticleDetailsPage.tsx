@@ -34,6 +34,7 @@ import {
 import { AddCommentForm } from 'features/AddCommentForm';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page';
+import { VStack } from 'shared/ui/Stack';
 import cls from './ArticleDetailsPage.module.scss';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
@@ -100,33 +101,34 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
-        <ArticleDetailsPageHeader />
-        <ArticleDetails
-          data={data}
-          isLoading={isLoading}
-          error={error}
-        />
-        <Text
-          className={cls.commentTitle}
-          size={TextSize.L}
-          title={t('recommended')}
-        />
-        <ArticleList
-          className={cls.recommendations}
-          articles={recommendations}
-          isLoading={recommendationsIsLoading}
-          target="_blank"
-        />
-        <Text
-          className={cls.commentTitle}
-          size={TextSize.L}
-          title={t('comments')}
-        />
-        <AddCommentForm onSendComment={onSendComment} />
-        <CommentList
-          isLoading={commentsIsLoading}
-          comments={comments}
-        />
+        <VStack gap="16" max>
+          <ArticleDetailsPageHeader />
+          <ArticleDetails
+            data={data}
+            isLoading={isLoading}
+            error={error}
+          />
+          <Text
+            size={TextSize.L}
+            title={t('recommended')}
+          />
+          <ArticleList
+            className={cls.recommendations}
+            articles={recommendations}
+            isLoading={recommendationsIsLoading}
+            target="_blank"
+          />
+          <Text
+            className={cls.commentTitle}
+            size={TextSize.L}
+            title={t('comments')}
+          />
+          <AddCommentForm onSendComment={onSendComment} />
+          <CommentList
+            isLoading={commentsIsLoading}
+            comments={comments}
+          />
+        </VStack>
       </Page>
     </DynamicModuleLoader>
   );
@@ -134,6 +136,6 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
 // некорректно работает HoC, сначала грузится thunk, потом инициализируется стейт.
 // в связи с этим теряется isLoading, и невозможно отобразить скелетоны
-/* export default withDynamicModuleLoader(ArticleDetailsPage, reducers, true); */
+// export default withDynamicModuleLoader(ArticleDetailsPage, reducers, true);
 
 export default memo(ArticleDetailsPage);

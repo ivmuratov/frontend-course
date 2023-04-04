@@ -61,7 +61,9 @@
 					"to",
 					"data-testid",
 					"alt",
-					"target"
+					"target",
+					"direction",
+					"justify"
 				]
 			}
 		],
