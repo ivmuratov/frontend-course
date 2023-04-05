@@ -37,16 +37,29 @@ export default {
       },
     ],
   },
+  decorators: [
+    (Story) => <div style={{ padding: 100 }}><Story /></div>,
+  ],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
 
-export const PrimaryBottom = Template.bind({});
-PrimaryBottom.args = {
-  direction: 'bottom',
+export const BottomRight = Template.bind({});
+BottomRight.args = {
+  direction: 'bottom right',
 };
 
-export const PrimaryTop = Template.bind({});
-PrimaryTop.args = {
-  direction: 'top',
+export const BottomLeft = Template.bind({});
+BottomLeft.args = {
+  direction: 'bottom left',
+};
+
+export const TopRight = Template.bind({});
+TopRight.args = {
+  direction: 'top right',
+};
+
+export const TopLeft = Template.bind({});
+TopLeft.args = {
+  direction: 'top left',
 };

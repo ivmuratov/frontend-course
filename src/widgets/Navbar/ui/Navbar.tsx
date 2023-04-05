@@ -11,6 +11,8 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -53,19 +55,32 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         >
           {t('create article')}
         </AppLink>
-        <Button
-          className={cls.links}
-          theme={ButtonTheme.CLEAR_INVERTED}
-          onClick={onLogout}
-        >
-          {t('exit')}
-        </Button>
+        <Dropdown
+          className={cls.dropdown}
+          direction="bottom left"
+          items={[
+            {
+              content: t('profile'),
+              href: RoutePath.profile + authData.id,
+            },
+            {
+              content: t('exit'),
+              onClick: onLogout,
+            },
+          ]}
+          trigger={<Avatar src={authData.avatar} size={30} />}
+        />
       </header>
     );
   }
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
+      <Text
+        className={cls.appName}
+        theme={TextTheme.INVERTED}
+        title="Ulbi TV"
+      />
       <Button
         className={cls.links}
         theme={ButtonTheme.CLEAR_INVERTED}
