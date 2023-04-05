@@ -64,7 +64,8 @@
 					"target",
 					"direction",
 					"justify",
-					"role"
+					"role",
+					"as"
 				]
 			}
 		],
