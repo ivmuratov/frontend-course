@@ -94,15 +94,12 @@ const article: Article = {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  data: article,
 };
 
 export const WithError = Template.bind({});
 WithError.args = {
-  error: 'error',
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  isLoading: true,
 };

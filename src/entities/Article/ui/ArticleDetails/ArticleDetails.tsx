@@ -1,5 +1,7 @@
 import {
-  FC, memo,
+  FC,
+  memo,
+  useEffect,
 } from 'react';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
@@ -10,11 +12,21 @@ import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { HStack, VStack } from 'shared/ui/Stack';
-import { Article, ArticleBlock, ArticleBlockType } from '../../model/types/article';
-import cls from './ArticleDetails.module.scss';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import {
+  getArticleDetailsData,
+  getArticleDetailsIsLoading,
+  getArticleDetailsError,
+} from '../../model/selectors/articleDetails';
+import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleDetails.module.scss';
 
 const renderBlock = (block: ArticleBlock): JSX.Element | null => {
   switch (block.type) {
@@ -47,84 +59,98 @@ const renderBlock = (block: ArticleBlock): JSX.Element | null => {
   }
 };
 
+const reducers: ReducersList = {
+  articleDetails: articleDetailsReducer,
+};
+
 interface ArticleDetailsProps {
   className?: string;
-  data?: Article;
-  isLoading?: boolean;
-  error?: string;
+  id: string;
 }
 
 const ArticleDetails: FC<ArticleDetailsProps> = ({
   className,
-  data,
-  isLoading,
-  error,
+  id,
 }) => {
-  const mods: Mods = {};
-
   const { t } = useTranslation('article');
 
+  const dispatch = useAppDispatch();
+
+  const data = useSelector(getArticleDetailsData);
+
+  const isLoading = useSelector(getArticleDetailsIsLoading);
+
+  const error = useSelector(getArticleDetailsError);
+
+  useEffect(() => {
+    if (id && __PROJECT__ !== 'storybook') {
+      dispatch(fetchArticleById(id));
+    }
+  }, [dispatch, id]);
+
+  const mods: Mods = {};
+
+  let content: JSX.Element;
+
   if (isLoading) {
-    return (
-      <VStack
-        className={classNames(cls.ArticleDetails, mods, [className])}
-        gap="16"
-        max
-      >
+    content = (
+      <>
         <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
         <Skeleton className={cls.title} width={300} height={32} />
         <Skeleton className={cls.skeleton} width={600} height={24} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
         <Skeleton className={cls.skeleton} width="100%" height={200} />
-      </VStack>
+      </>
+    );
+  } else if (error) {
+    content = (
+      <Text
+        align={TextAlign.CENTER}
+        title={t('an error occurred while loading the article')}
+      />
+    );
+  } else {
+    content = (
+      <>
+        <HStack justify="center" max>
+          <Avatar
+            size={200}
+            src={data?.img}
+            className={cls.avatar}
+          />
+        </HStack>
+        <VStack gap="4" max>
+          <Text
+            className={cls.title}
+            title={data?.title}
+            text={data?.subtitle}
+            size={TextSize.L}
+          />
+          <HStack gap="8">
+            <Icon Svg={EyeIcon} className={cls.icon} />
+            <Text text={`${data?.views}`} />
+          </HStack>
+          <HStack gap="8">
+            <Icon Svg={CalendarIcon} className={cls.icon} />
+            <Text text={data?.createdAt} />
+          </HStack>
+        </VStack>
+        {data?.blocks.map(renderBlock)}
+      </>
     );
   }
 
-  if (error) {
-    return (
+  return (
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <VStack
         className={classNames(cls.ArticleDetails, mods, [className])}
         gap="16"
         max
       >
-        <Text
-          align={TextAlign.CENTER}
-          title={t('an error occurred while loading the article')}
-        />
+        {content}
       </VStack>
-    );
-  }
+    </DynamicModuleLoader>
 
-  return (
-    <VStack
-      className={classNames(cls.ArticleDetails, mods, [className])}
-      gap="16"
-    >
-      <HStack justify="center" max>
-        <Avatar
-          size={200}
-          src={data?.img}
-          className={cls.avatar}
-        />
-      </HStack>
-      <VStack gap="4" max>
-        <Text
-          className={cls.title}
-          title={data?.title}
-          text={data?.subtitle}
-          size={TextSize.L}
-        />
-        <HStack gap="8">
-          <Icon Svg={EyeIcon} className={cls.icon} />
-          <Text text={`${data?.views}`} />
-        </HStack>
-        <HStack gap="8">
-          <Icon Svg={CalendarIcon} className={cls.icon} />
-          <Text text={data?.createdAt} />
-        </HStack>
-      </VStack>
-      {data?.blocks.map(renderBlock)}
-    </VStack>
   );
 };
 

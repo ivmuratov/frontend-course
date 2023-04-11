@@ -11,8 +11,7 @@ ${interfaceConst} ${componentName}Props {
     className?: string;
 }
 
-export const ${componentName} = memo((props: ${componentName}Props) => {
-    const { className } = props;
+export const ${componentName} = memo(({ className }: ${componentName}Props) => {
     const { t } = useTranslation();
     
     return (

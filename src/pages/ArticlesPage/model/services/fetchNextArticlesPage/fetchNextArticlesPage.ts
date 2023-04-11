@@ -3,7 +3,6 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import {
   getArticlesPageHasMore,
   getArticlesPageIsLoading,
-  getArticlesPageLimit,
   getArticlesPageNumber,
 } from '../../selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../slices/articlesPageSlice';
@@ -21,7 +20,6 @@ export const fetchNextArticlesPage = createAsyncThunk<
     } = thunkApi;
     const hasMore = getArticlesPageHasMore(getState());
     const page = getArticlesPageNumber(getState());
-    const limit = getArticlesPageLimit(getState());
     const isLoading = getArticlesPageIsLoading(getState());
 
     if (hasMore && !isLoading) {
