@@ -60,6 +60,7 @@ export const Dropdown: FC<DropdownProps> = ({
           if (item.href) {
             return (
               <Menu.Item
+                key={item.href}
                 as={AppLink}
                 to={item.href}
                 disabled={item.disabled}

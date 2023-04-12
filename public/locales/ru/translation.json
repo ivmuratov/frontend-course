@@ -37,5 +37,8 @@
   "science": "Наука",
   "articles not found": "Статьи не найдены",
   "create article": "Создать статью",
-  "user profile": "Профиль пользователя"
+  "user profile": "Профиль пользователя",
+  "admin panel": "Админка",
+  "you do not have access to this page": "У вас нет доступа к этой странице",
+  "admin page": "Страница админа"
 }
