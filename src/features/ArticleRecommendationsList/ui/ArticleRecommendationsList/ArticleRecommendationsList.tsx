@@ -15,7 +15,7 @@ export const ArticleRecommendationsList = memo(({ className }: ArticleRecommenda
 
   const { data: articles, isLoading, error } = useArticleRecommendationsList(4);
 
-  if (isLoading || error) {
+  if (isLoading || error || !articles) {
     return null;
   }
 
@@ -28,12 +28,11 @@ export const ArticleRecommendationsList = memo(({ className }: ArticleRecommenda
         size={TextSize.L}
         title={t('recommended')}
       />
-      {articles && (
       <ArticleList
         articles={articles}
         target="_blank"
+        virtualized={false}
       />
-      )}
     </VStack>
   );
 });
