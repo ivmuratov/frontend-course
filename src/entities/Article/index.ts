@@ -10,7 +10,8 @@ import {
   ArticleView,
   ArticleSortField,
   ArticleType,
-} from './model/types/article';
+  ArticleBlockType,
+} from './model/consts/consts';
 import { ArticleList } from './ui/ArticleList/ArticleList';
 import { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
 import { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
@@ -31,6 +32,7 @@ export {
   ArticleList,
   ArticleViewSelector,
   ArticleSortSelector,
+  ArticleBlockType,
   ArticleSortField,
   ArticleTypeTabs,
   Article,
