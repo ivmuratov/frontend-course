@@ -1,8 +1,8 @@
+import { Suspense } from 'react';
 import { Story } from '@storybook/react';
-import { BrowserRouter } from 'react-router-dom';
 
 export default (StoryComponent: Story) => (
-  <BrowserRouter>
+  <Suspense>
     <StoryComponent />
-  </BrowserRouter>
+  </Suspense>
 );

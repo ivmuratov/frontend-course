@@ -1,12 +1,12 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { Text, TextSize } from 'shared/ui/Text/Text';
 import {
   List,
   ListRowProps,
   WindowScroller,
 } from 'react-virtualized';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { PAGE_ID } from 'widgets/Page/ui/Page';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -76,16 +76,6 @@ export const ArticleList = memo(({
     );
   };
 
-  /*   const renderArticle = (article: Article) => (
-    <ArticleListItem
-      key={article.id}
-      className={cls.card}
-      article={article}
-      view={view}
-      target={target}
-    />
-  ); */
-
   const mods: Mods = {};
 
   if (!articles.length && !isLoading) {
@@ -97,6 +87,7 @@ export const ArticleList = memo(({
   }
 
   return (
+    // @ts-ignore
     <WindowScroller
       scrollElement={document.getElementById(PAGE_ID) as Element}
     >
@@ -110,10 +101,12 @@ export const ArticleList = memo(({
       }) => (
         <div
           className={classNames(cls.ArticleList, mods, [className, cls[view]])}
+          // @ts-ignore
           ref={registerChild}
         >
           {virtualized
             ? (
+              // @ts-ignore
               <List
                 height={height ?? 700}
                 rowCount={rowCount}

@@ -65,7 +65,7 @@ const reducers: ReducersList = {
 
 interface ArticleDetailsProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 const ArticleDetails: FC<ArticleDetailsProps> = ({

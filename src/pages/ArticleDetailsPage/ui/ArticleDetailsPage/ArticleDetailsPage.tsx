@@ -4,7 +4,6 @@ import {
 } from 'react';
 import {
   ArticleDetails,
-  articleDetailsReducer,
 } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
@@ -18,7 +17,6 @@ import {
 import { Page } from 'widgets/Page';
 import { VStack } from 'shared/ui/Stack';
 import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
-import { useTranslation } from 'react-i18next';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import cls from './ArticleDetailsPage.module.scss';
@@ -32,19 +30,9 @@ interface ArticlesDetailsPageProps {
 }
 
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
-  const { t } = useTranslation('article');
-
   const { id } = useParams<{ id: string }>();
 
   const mods: Mods = {};
-
-  if (!id) {
-    return (
-      <Page className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
-        {t('an error occurred while loading the article')}
-      </Page>
-    );
-  }
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>

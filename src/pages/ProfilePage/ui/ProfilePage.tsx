@@ -6,28 +6,15 @@ import {
   EditableProfileCard,
 } from 'features/EditableProfileCard';
 import { useParams } from 'react-router-dom';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
 
 interface ProfilePageProps {
   className?: string;
 }
 
 const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
-  const { t } = useTranslation('profile');
-
   const { id } = useParams<{ id: string }>();
 
   const mods: Mods = {};
-
-  if (!id) {
-    return (
-      <Text
-        theme={TextTheme.ERROR}
-        title={t('an error occurred while loading the profile')}
-      />
-    );
-  }
 
   return (
     <Page className={classNames('', mods, [className])}>
