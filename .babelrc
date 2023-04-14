@@ -19,6 +19,7 @@
         ],
         "keyAsDefaultValue": true
       }
-    ]
+    ],
+    "@babel/plugin-transform-runtime"    
   ]
 }

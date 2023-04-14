@@ -22,19 +22,15 @@ export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
 
   const cssLoader = buildCssLoader(isDev);
 
-  const babelLoader = buildBabelLoader(isDev);
+  const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false });
 
-  const typescriptLoader: RuleSetRule = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/,
-  };
+  const tsxBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
   return [
     svgLoader,
     fileLoader,
     cssLoader,
-    babelLoader,
-    typescriptLoader,
+    codeBabelLoader,
+    tsxBabelLoader,
   ];
 };
