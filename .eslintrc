@@ -65,7 +65,8 @@
 					"direction",
 					"justify",
 					"role",
-					"as"
+					"as",
+					"border"
 				]
 			}
 		],

@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import {
   memo,
   useCallback,
@@ -6,9 +5,6 @@ import {
 } from 'react';
 import {
   getUserAuthData,
-  isAdminRole,
-  isManagerRole,
-  userActions,
 } from 'entities/User';
 import { LoginModal } from 'features/AuthByUsername';
 import { useTranslation } from 'react-i18next';
@@ -18,9 +14,9 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { HStack } from 'shared/ui/Stack';
+import { NotificationButton } from 'features/NotificationButton';
+import { AvatarDropdown } from 'features/AvatarDropdown';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -30,15 +26,9 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
 
-  const dispatch = useAppDispatch();
-
   const [isAuthModal, setIsAuthModal] = useState(false);
 
   const authData = useSelector(getUserAuthData);
-
-  const isAdmin = useSelector(isAdminRole);
-
-  const isManager = useSelector(isManagerRole);
 
   const onOpenModal = useCallback(() => {
     setIsAuthModal(true);
@@ -48,18 +38,13 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     setIsAuthModal(false);
   }, []);
 
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout());
-  }, [dispatch]);
-
-  const isAdminPanelAvailable = isAdmin || isManager;
-
   if (authData) {
     return (
       <header className={classNames(cls.Navbar, {}, [className])}>
         <Text
           className={cls.appName}
           theme={TextTheme.INVERTED}
+          // eslint-disable-next-line i18next/no-literal-string
           title="Ulbi TV"
         />
         <AppLink
@@ -69,25 +54,13 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         >
           {t('create article')}
         </AppLink>
-        <Dropdown
-          className={cls.dropdown}
-          direction="bottom left"
-          items={[
-            ...(isAdminPanelAvailable ? [{
-              content: t('admin panel'),
-              href: RoutePath.admin_panel,
-            }] : []),
-            {
-              content: t('profile'),
-              href: RoutePath.profile + authData.id,
-            },
-            {
-              content: t('exit'),
-              onClick: onLogout,
-            },
-          ]}
-          trigger={<Avatar src={authData.avatar} size={30} />}
-        />
+        <HStack
+          className={cls.actions}
+          gap="16"
+        >
+          <NotificationButton />
+          <AvatarDropdown />
+        </HStack>
       </header>
     );
   }
@@ -97,6 +70,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
       <Text
         className={cls.appName}
         theme={TextTheme.INVERTED}
+        // eslint-disable-next-line i18next/no-literal-string
         title="Ulbi TV"
       />
       <Button
