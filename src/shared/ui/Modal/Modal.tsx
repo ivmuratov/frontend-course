@@ -4,6 +4,7 @@ import {
 } from 'react';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Portal } from '../Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -71,13 +72,11 @@ export const Modal: FC<ModalProps> = ({
   return (
     <Portal>
       <div className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}>
-        <div className={cls.overlay} onClick={closeHandler}>
-          <div
-            className={cls.content}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {children}
-          </div>
+        <Overlay onClick={closeHandler} />
+        <div
+          className={cls.content}
+        >
+          {children}
         </div>
       </div>
     </Portal>
