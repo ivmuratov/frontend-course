@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const getArticleDetailsRecommendationsIsLoading = (state: StateSchema) => state.articleDetailsIndex?.recommendations?.isLoading;
 

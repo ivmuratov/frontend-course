@@ -3,20 +3,20 @@ import {
   useCallback,
   useEffect,
 } from 'react';
-import { CommentList } from 'entities/Comment';
-import { AddCommentForm } from 'features/AddCommentForm';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { CommentList } from '@/entities/Comment';
+import { AddCommentForm } from '@/features/AddCommentForm';
 import {
   addCommentForArticle,
   fetchArticleCommentsById,
   getArticleDetailsComments,
   getArticleDetailsCommentsIsLoading,
-} from 'features/ArticleDetailsComments';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { TextSize, Text } from 'shared/ui/Text/Text';
-import { VStack } from 'shared/ui/Stack';
+} from '@/features/ArticleDetailsComments';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { TextSize, Text } from '@/shared/ui/Text/Text';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsCommentsProps {
   className?: string;

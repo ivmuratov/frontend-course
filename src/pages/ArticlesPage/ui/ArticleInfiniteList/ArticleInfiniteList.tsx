@@ -1,11 +1,11 @@
 import {
   memo,
 } from 'react';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { useSelector } from 'react-redux';
-import { ArticleList } from 'entities/Article';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { ArticleList } from '@/entities/Article';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
 import {
   getArticlesPageIsLoading,
   getArticlesPageError,

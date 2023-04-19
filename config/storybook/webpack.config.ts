@@ -20,6 +20,9 @@ export default ({ config }: { config: Configuration }) => {
 
   const rules = config.module!.rules as RuleSetRule[];
 
+  config!.resolve!.alias = {
+    '@': path.resolve(__dirname, '..', '..', 'src'),
+  };
   config.module!.rules = rules.map((rule: RuleSetRule) => {
     if (/svg/.test(rule.test as string)) {
       return { ...rule, exclude: /\.svg$/i };

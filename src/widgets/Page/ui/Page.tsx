@@ -1,8 +1,3 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import {
-  getScrollByPath,
-  scrollSaveActions,
-} from 'features/ScrollSave';
 import {
   memo,
   MutableRefObject,
@@ -13,10 +8,15 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
+import {
+  getScrollByPath,
+  scrollSaveActions,
+} from '@/features/ScrollSave';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 
 interface PageProps {

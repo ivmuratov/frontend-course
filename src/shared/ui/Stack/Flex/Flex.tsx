@@ -4,7 +4,7 @@ import {
   HTMLAttributes,
   ReactNode,
 } from 'react';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './Flex.module.scss';
 
 type FlexJustify = 'start' | 'center' | 'end' | 'between';

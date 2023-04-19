@@ -1,8 +1,8 @@
 import { DeepPartial } from '@reduxjs/toolkit';
 import { screen } from '@testing-library/react';
 import { userEvent } from '@storybook/testing-library';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import { Counter } from './Counter';
 
 const mockState: DeepPartial<StateSchema> = {

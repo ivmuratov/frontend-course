@@ -16,7 +16,7 @@
 		//для абсолютного импорта
 		"baseUrl": ".",
 		"paths": {
-			"*": [
+			"@/*": [
 				"./src/*"
 			],
 		},
@@ -44,6 +44,7 @@
 	},
 	"include": [
 		"./config/jest/setupTests.ts",
+		"./scripts/updateImport.ts",
 		"src",
 		"config",
 		"webpack.config.ts"
