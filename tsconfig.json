@@ -47,6 +47,7 @@
 		"./scripts/updateImport.ts",
 		"src",
 		"config",
-		"webpack.config.ts"
+		"webpack.config.ts",
+		"vite.config.ts"
 	]
 }
