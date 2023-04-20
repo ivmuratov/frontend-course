@@ -1,9 +1,10 @@
 import {
+  FC,
   memo, ReactNode, useCallback, useEffect,
 } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider';
-import { useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import { Portal } from '../Portal/Portal';
 import { Overlay } from '../Overlay/Overlay';
 import cls from './Drawer.module.scss';
@@ -97,7 +98,7 @@ const DrawerContent = memo(({
   );
 });
 
-export const Drawer = memo((props: DrawerProps) => {
+const DrawerAsync: FC<DrawerProps> = (props) => {
   const { isLoaded } = useAnimationLibs();
 
   if (!isLoaded) {
@@ -105,4 +106,10 @@ export const Drawer = memo((props: DrawerProps) => {
   }
 
   return <DrawerContent {...props} />;
-});
+};
+
+export const Drawer: FC<DrawerProps> = (props) => (
+  <AnimationProvider>
+    <DrawerAsync {...props} />
+  </AnimationProvider>
+);
