@@ -23,11 +23,10 @@ export const Popover: FC<PopoverProps> = ({
     mapDirectionClasses[direction],
   ];
 
-  const mods: Mods = {};
-
   return (
     <HPopover className={classNames(cls.Popover, {}, [className, popusCls.popup])}>
       <HPopover.Button
+        as="div"
         className={popusCls.trigger}
       >
         {trigger}
