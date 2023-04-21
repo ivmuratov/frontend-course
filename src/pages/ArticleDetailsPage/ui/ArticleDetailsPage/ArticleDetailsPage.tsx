@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import {
   ArticleDetails,
 } from '@/entities/Article';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -20,6 +20,7 @@ import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsLis
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import cls from './ArticleDetailsPage.module.scss';
+import { ArticleRating } from '@/features/ArticleRating';
 
 const reducers: ReducersList = {
   articleDetailsIndex: articleDetailsIndexReducer,
@@ -32,14 +33,17 @@ interface ArticlesDetailsPageProps {
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
   const { id } = useParams<{ id: string }>();
 
-  const mods: Mods = {};
+  if (!id) {
+    return null;
+  }
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page className={classNames(cls.ArticlesDetailsPage, mods, [className])}>
+      <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
         <VStack gap="16" max>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
+          <ArticleRating articleId={id} />
           <ArticleRecommendationsList />
           <ArticleDetailsComments id={id} />
         </VStack>

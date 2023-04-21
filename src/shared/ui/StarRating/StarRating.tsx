@@ -19,7 +19,7 @@ export const StarRating = memo(({
   selectedStars = 0,
   onSelect,
 }: StarRatingProps) => {
-  const [currentStarsCount, setCurrentStarsCount] = useState(0);
+  const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
 
   const [isSelected, setIsSelected] = useState<boolean>(!!selectedStars);
 
