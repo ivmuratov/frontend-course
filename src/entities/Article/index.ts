@@ -5,7 +5,6 @@ import {
   getArticleDetailsIsLoading,
   getArticleDetailsError,
 } from './model/selectors/articleDetails';
-import { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 import {
   ArticleView,
   ArticleSortField,
@@ -27,7 +26,6 @@ export {
   getArticleDetailsData,
   getArticleDetailsIsLoading,
   getArticleDetailsError,
-  articleDetailsReducer,
   ArticleView,
   ArticleList,
   ArticleViewSelector,
