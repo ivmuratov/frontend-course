@@ -6,7 +6,11 @@ import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { BuildPaths } from '../build/types/config';
 
-export default ({ config }: { config: Configuration }) => {
+interface ConfigArgs {
+  config: Configuration;
+}
+
+export default ({ config }: ConfigArgs) => {
   const paths: BuildPaths = {
     entry: '',
     build: '',
@@ -15,15 +19,16 @@ export default ({ config }: { config: Configuration }) => {
     locales: '',
     buildLocales: '',
   };
-  config.resolve!.modules!.push(paths.src);
-  config.resolve!.extensions!.push('.ts', '.tsx');
+  config!.resolve!.modules!.push(paths.src);
+  config!.resolve!.extensions!.push('.ts', '.tsx');
 
   const rules = config.module!.rules as RuleSetRule[];
 
   config!.resolve!.alias = {
-    '@': path.resolve(__dirname, '..', '..', 'src'),
+    ...config!.resolve!.alias,
+    '@': paths.src,
   };
-  config.module!.rules = rules.map((rule: RuleSetRule) => {
+  config!.module!.rules = rules.map((rule: RuleSetRule) => {
     if (/svg/.test(rule.test as string)) {
       return { ...rule, exclude: /\.svg$/i };
     }
