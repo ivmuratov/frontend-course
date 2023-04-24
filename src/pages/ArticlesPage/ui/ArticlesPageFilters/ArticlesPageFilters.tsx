@@ -1,13 +1,13 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ArticleType } from '@/entities/Article/model/consts/consts';
 import {
   ArticleView,
   ArticleViewSelector,
   ArticleSortSelector,
   ArticleSortField,
   ArticleTypeTabs,
+  ArticleType,
 } from '@/entities/Article';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
