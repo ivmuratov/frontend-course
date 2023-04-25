@@ -1,6 +1,5 @@
-import { HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';

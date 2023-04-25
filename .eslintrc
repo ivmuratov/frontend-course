@@ -15,7 +15,8 @@
 		"react-hooks",
 		"@typescript-eslint",
 		"i18next",
-		"fsd-imuratov"
+		"fsd-imuratov",
+		"unused-imports"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -72,6 +73,7 @@
 			}
 		],
 		"max-len": ["error", { "code": 120 }],
+		"unused-imports/no-unused-imports": "error",
 		"no-unused-vars": "warn",
 		"react/jsx-props-no-spreading": "warn",
 		"import/no-unresolved": "off",
