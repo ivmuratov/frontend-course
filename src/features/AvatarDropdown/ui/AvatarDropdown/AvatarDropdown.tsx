@@ -8,7 +8,7 @@ import {
   getUserAuthData, isAdminRole, isManagerRole, userActions,
 } from '@/entities/User';
 import { RoutePath } from '@/shared/const/router';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Avatar } from '@/shared/ui/Avatar';
 
 interface AvatarDropdownProps {
     className?: string;

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { ArticleList } from '@/entities/Article';
-import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { Text, TextTheme } from '@/shared/ui/Text';
 import {
   getArticlesPageIsLoading,
   getArticlesPageError,

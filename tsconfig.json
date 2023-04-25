@@ -44,7 +44,8 @@
 	},
 	"include": [
 		"./config/jest/setupTests.ts",
-		"./scripts/updateImport.ts",
+		"./scripts/refactor/updateImport.ts",
+		"./scripts/refactor/createPublicApiForSharedUI.ts",
 		"src",
 		"config",
 		"webpack.config.ts",

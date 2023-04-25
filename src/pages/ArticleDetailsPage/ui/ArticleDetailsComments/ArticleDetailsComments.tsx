@@ -15,7 +15,7 @@ import {
 } from '@/features/ArticleDetailsComments';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { TextSize, Text } from '@/shared/ui/Text/Text';
+import { TextSize, Text } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsCommentsProps {
