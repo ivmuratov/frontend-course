@@ -94,6 +94,13 @@
 				"alias": "@" ,
 				"testFilesPatterns": ["**/*.test.*", "**/*.stories.*", "**/StoreDecorator.tsx"]
 			}
+		],
+		"fsd-imuratov/layer-imports": [
+			"error", 
+			{ 
+				"alias": "@" ,
+				"ignoreImportPatterns": ["**/StoreProvider", "**/testing"]
+			}
 		]
 	},
 	"overrides": [
