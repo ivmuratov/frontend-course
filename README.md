@@ -91,8 +91,6 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 Запустить сторибук можно командой:
 - `npm run storybook`
 
-Подробнее о [Storybook](/docs/storybook.md)
-
 Пример:
 
 ```typescript jsx
