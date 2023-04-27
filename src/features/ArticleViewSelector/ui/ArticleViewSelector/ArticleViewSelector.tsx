@@ -1,10 +1,10 @@
 import { memo, SVGProps, VFC } from 'react';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import ListIcon from '@/shared/assets/icons/list.svg';
 import TiledIcon from '@/shared/assets/icons/tiled.svg';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
-import { ArticleView } from '../../model/consts/consts';
+import { ArticleView } from '@/entities/Article';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ViewType {
@@ -38,10 +38,8 @@ export const ArticleViewSelector = memo(({
     onViewClick?.(newView);
   };
 
-  const mods: Mods = {};
-
   return (
-    <div className={classNames(cls.ArticleViewSelector, mods, [className])}>
+    <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
       {viewTypes.map((value) => (
         <Button
           key={value.view}

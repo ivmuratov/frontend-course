@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import {
   ArticleView,
-  ArticleViewSelector,
-  ArticleSortSelector,
   ArticleSortField,
-  ArticleTypeTabs,
   ArticleType,
 } from '@/entities/Article';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
@@ -24,6 +21,9 @@ import {
   getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector';
+import { ArticleViewSelector } from '@/features/ArticleViewSelector';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFilterProps {
