@@ -16,15 +16,13 @@ export const buildPlugins = ({
   apiUrl,
   project,
 }: BuildOptions) => {
+  const isProd = !isDev;
+
   const plugins: WebpackPluginInstance[] = [
     new HTMLWebpackPlugin({
       template: paths.html,
     }),
     new ProgressPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css',
-      chunkFilename: 'css/[name].[contenthash].css',
-    }),
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiUrl),
@@ -33,11 +31,6 @@ export const buildPlugins = ({
     new BundleAnalyzerPlugin({
       analyzerMode: analyze ? 'server' : 'disabled',
       analyzerPort: analyzePort,
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: paths.locales, to: paths.buildLocales },
-      ],
     }),
     new CircularPlugin({
       exclude: /node_modules/,
@@ -56,6 +49,20 @@ export const buildPlugins = ({
 
   if (isDev) {
     plugins.push(new ReactRefreshWebpackPlugin());
+  }
+
+  if (isProd) {
+    plugins.push(
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash].css',
+        chunkFilename: 'css/[name].[contenthash].css',
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: paths.locales, to: paths.buildLocales },
+        ],
+      }),
+    );
   }
 
   return plugins;

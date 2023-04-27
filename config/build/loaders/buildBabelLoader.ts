@@ -11,9 +11,11 @@ export const buildBabelLoader = ({
   isTsx,
 }: BuildBabelLoaderProps): RuleSetRule => ({
   test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
+  exclude: /node_modules/,
   use: {
     loader: 'babel-loader',
     options: {
+      cacheDirectory: true,
       plugins: [
         isDev && require.resolve('react-refresh/babel'),
         [
@@ -22,7 +24,7 @@ export const buildBabelLoader = ({
             isTsx,
           },
         ],
-        isTsx && [
+        isTsx && !isDev && [
           babelRemovePropsPlugin,
           {
             props: ['data-testid'],
@@ -31,5 +33,4 @@ export const buildBabelLoader = ({
       ].filter(Boolean),
     },
   },
-  exclude: /node_modules/,
 });
