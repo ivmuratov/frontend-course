@@ -9,7 +9,7 @@ import {
   getUserAuthData,
 } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
@@ -50,7 +50,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         <AppLink
           className={cls.createBtn}
           theme={AppLinkTheme.SECONDARY}
-          to={RoutePath.article_create}
+          to={getRouteArticleCreate()}
         >
           {t('create article')}
         </AppLink>
