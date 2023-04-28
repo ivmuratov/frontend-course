@@ -13,6 +13,6 @@ export default {
 
 const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Normal = Template.bind({});
+Normal.args = {
 };

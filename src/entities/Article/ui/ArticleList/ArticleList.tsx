@@ -1,6 +1,6 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text';
 import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
@@ -16,7 +16,7 @@ const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL
 
 interface ArticleListProps {
   className?: string;
-  articles: Article[];
+  articles?: Article[];
   isLoading?: boolean;
   view?: ArticleView;
   target?: HTMLAttributeAnchorTarget;
@@ -31,22 +31,19 @@ export const ArticleList = memo(({
 }: ArticleListProps) => {
   const { t } = useTranslation();
 
-  const mods: Mods = {};
-
-  if (!articles.length && !isLoading) {
+  if (articles && !articles.length && !isLoading) {
     return (
-      <div className={classNames(cls.ArticleList, mods, [className, cls[view]])}>
+      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
         <Text size={TextSize.L} title={t('articles not found')} />
       </div>
     );
   }
 
   return (
-
     <div
-      className={classNames(cls.ArticleList, mods, [className, cls[view]])}
+      className={classNames(cls.ArticleList, {}, [className, cls[view]])}
     >
-      {articles.map((item) => (
+      {articles && articles.map((item) => (
         <ArticleListItem
           className={cls.card}
           key={item.id}

@@ -5,7 +5,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -89,8 +89,6 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
     }
   }, [dispatch, id]);
 
-  const mods: Mods = {};
-
   let content: JSX.Element;
 
   if (isLoading) {
@@ -144,7 +142,7 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <VStack
-        className={classNames(cls.ArticleDetails, mods, [className])}
+        className={classNames(cls.ArticleDetails, {}, [className])}
         gap="16"
         max
       >

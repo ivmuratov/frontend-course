@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Card } from '@/shared/ui/Card';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { ArticleView } from '../../model/consts/consts';
@@ -14,11 +14,9 @@ export const ArticleListItemSkeleton = memo(({
   className,
   view,
 }: ArticleListItemSkeletonProps) => {
-  const mods: Mods = {};
-
   if (view === ArticleView.BIG) {
     return (
-      <div className={classNames(cls.ArticleListItem, mods, [className, cls[view]])}>
+      <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
         <Card>
           <div className={cls.header}>
             <Skeleton border="50%" height={30} width={30} />
@@ -36,7 +34,7 @@ export const ArticleListItemSkeleton = memo(({
   }
 
   return (
-    <div className={classNames(cls.ArticleListItem, mods, [className, cls[view]])}>
+    <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
       <Card className={cls.card}>
         <div className={cls.imageWrapper}>
           <Skeleton className={cls.img} width={200} height={200} />
