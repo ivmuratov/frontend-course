@@ -108,12 +108,11 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  /* parameters: {
-    // TODO убрать
+  parameters: {
     loki: {
       skip: true,
     },
-  }, */
+  },
   decorators: [
     StoreDecorator({
       articleDetails: {
