@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from '../Text/Text';
 
-import { Card } from './Card';
+import { Card, CardTheme } from './Card';
 
 export default {
   title: 'shared/Card',
@@ -9,11 +9,18 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  args: {
+    children: <Text title="Title" text="text" />,
+  },
 } as ComponentMeta<typeof Card>;
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: <Text title="Title" text="text" />,
+};
+
+export const Outlined = Template.bind({});
+Outlined.args = {
+  theme: CardTheme.OUTLINED,
 };

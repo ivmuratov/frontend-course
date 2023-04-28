@@ -1,5 +1,24 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Select } from './Select';
+import { Select, SelectOption } from './Select';
+
+const options: SelectOption<string>[] = [
+  {
+    value: '1',
+    content: 'Первый пункт',
+  },
+  {
+    value: '2',
+    content: 'Второй пункт',
+  },
+  {
+    value: '3',
+    content: 'Третий пункт',
+  },
+  {
+    value: '4',
+    content: 'Четвертый пункт',
+  },
+];
 
 export default {
   title: 'shared/Select',
@@ -9,30 +28,10 @@ export default {
   },
   args: {
     label: 'Label',
-    options: [
-      {
-        value: '1',
-        content: 'Первый пункт',
-      },
-      {
-        value: '2',
-        content: 'Второй пункт',
-      },
-      {
-        value: '3',
-        content: 'Третий пункт',
-      },
-      {
-        value: '4',
-        content: 'Четвертый пункт',
-      },
-    ],
+    options,
   },
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  label: 'Label',
-};
