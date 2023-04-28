@@ -37,12 +37,12 @@ Normal.parameters = {
   },
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
-  error: 'error',
-};
-
 export const Loading = Template.bind({});
 Loading.args = {
   isLoading: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  error: 'error',
 };

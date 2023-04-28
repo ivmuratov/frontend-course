@@ -100,16 +100,16 @@ Normal.decorators = [StoreDecorator({
   },
 })];
 
-export const WithError = Template.bind({});
-WithError.decorators = [StoreDecorator({
-  articleDetails: {
-    error: 'error',
-  },
-})];
-
 export const Loading = Template.bind({});
 Loading.decorators = [StoreDecorator({
   articleDetails: {
     isLoading: true,
+  },
+})];
+
+export const Error = Template.bind({});
+Error.decorators = [StoreDecorator({
+  articleDetails: {
+    error: 'error',
   },
 })];

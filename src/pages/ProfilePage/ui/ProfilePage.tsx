@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { VStack } from '@/shared/ui/Stack';
 import {
@@ -12,12 +12,10 @@ interface ProfilePageProps {
 }
 
 const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
-  const { id } = useParams<{ id: string }>();
-
-  const mods: Mods = {};
+  const { id = '1' } = useParams<{ id: string }>();
 
   return (
-    <Page className={classNames('', mods, [className])}>
+    <Page className={classNames('', {}, [className])}>
       <VStack max gap="16">
         <EditableProfileCard id={id} />
       </VStack>

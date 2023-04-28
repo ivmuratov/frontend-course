@@ -2,10 +2,18 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import ThemeDecorator from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-
+import { Profile } from '@/entities/Profile';
 import ProfilePage from './ProfilePage';
-import { Theme } from '@/shared/const/theme';
+
+const profileData: Profile = {
+  username: 'admin',
+  age: 26,
+  first: 'Ivan',
+  lastname: 'Muratov',
+  currency: Currency.RUB,
+  country: Country.Russia,
+  city: 'Novosibirsk',
+};
 
 export default {
   title: 'pages/ProfilePage',
@@ -15,24 +23,29 @@ export default {
   },
   decorators: [StoreDecorator({
     profile: {
-      form: {
-        username: 'admin',
-        age: 26,
-        first: 'Ivan',
-        lastname: 'Muratov',
-        currency: Currency.RUB,
-        country: Country.Russia,
-        city: 'Novosibirsk',
-      },
+      form: profileData,
     },
   })],
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
 
-export const Light = Template.bind({});
-Light.args = {};
+export const Normal = Template.bind({});
 
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const Loading = Template.bind({});
+Loading.decorators = [
+  StoreDecorator({
+    profile: {
+      isLoading: true,
+    },
+  }),
+];
+
+export const Error = Template.bind({});
+Error.decorators = [
+  StoreDecorator({
+    profile: {
+      error: 'error',
+    },
+  }),
+];

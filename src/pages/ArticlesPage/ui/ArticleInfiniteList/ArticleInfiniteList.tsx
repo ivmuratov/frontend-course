@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { ArticleList } from '@/entities/Article';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import {
@@ -28,8 +28,6 @@ export const ArticleInfiniteList = memo(({ className }: ArticleInfiniteListProps
 
   const view = useSelector(getArticlesPageView);
 
-  const mods: Mods = {};
-
   if (error) {
     return (
       <Text
@@ -41,7 +39,7 @@ export const ArticleInfiniteList = memo(({ className }: ArticleInfiniteListProps
 
   return (
     <ArticleList
-      className={classNames('', mods, [className])}
+      className={classNames('', {}, [className])}
       isLoading={isLoading}
       view={view}
       articles={articles}

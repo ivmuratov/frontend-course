@@ -13,3 +13,8 @@ export default {
 const Template: ComponentStory<typeof LangSwitcher> = (args) => <LangSwitcher {...args} />;
 
 export const Normal = Template.bind({});
+
+export const Short = Template.bind({});
+Short.args = {
+  short: true,
+};

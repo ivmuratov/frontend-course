@@ -5,7 +5,7 @@ import {
   useEffect,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   DynamicModuleLoader,
@@ -44,12 +44,10 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
     }
   }, [dispatch, searchParams]);
 
-  const mods: Mods = {};
-
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
-        className={classNames(cls.ArticlesPage, mods, [className])}
+        className={classNames(cls.ArticlesPage, {}, [className])}
         onScrollEnd={onLoadNextPart}
       >
         <ArticlesPageFilters />

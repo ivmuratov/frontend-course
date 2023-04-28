@@ -31,7 +31,7 @@ interface ArticlesDetailsPageProps {
 }
 
 const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
-  const { id } = useParams<{ id: string }>();
+  const { id = '1' } = useParams<{ id: string }>();
 
   if (!id) {
     return null;
