@@ -4,7 +4,7 @@ import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecora
 import LoginForm from './LoginForm';
 
 export default {
-  title: 'features/LoginForm',
+  title: 'features/AuthByUsername/LoginForm',
   component: LoginForm,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -13,20 +13,17 @@ export default {
 
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
-Primary.decorators = [StoreDecorator({
+export const Normal = Template.bind({});
+Normal.decorators = [StoreDecorator({
   loginForm: { username: 'admin', password: '123' },
 })];
 
 export const WithError = Template.bind({});
-WithError.args = {};
 WithError.decorators = [StoreDecorator({
   loginForm: { username: 'admin', password: '123', error: 'ERROR' },
 })];
 
 export const WithLoading = Template.bind({});
-WithLoading.args = {};
 WithLoading.decorators = [StoreDecorator({
   loginForm: { username: 'admin', password: '123', isLoading: true },
 })];

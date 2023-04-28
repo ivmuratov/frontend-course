@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
@@ -50,12 +50,10 @@ const AddCommentForm = memo(({
     onCommentTextChange('');
   }, [onCommentTextChange, onSendComment, text]);
 
-  const mods: Mods = {};
-
   return (
     <DynamicModuleLoader reducers={reducers}>
       <HStack
-        className={classNames(cls.AddCommentForm, mods, [className])}
+        className={classNames(cls.AddCommentForm, {}, [className])}
         justify="between"
         max
       >

@@ -5,7 +5,7 @@ import ArticleRating from './ArticleRating';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  title: 'features/ArticleRating',
+  title: 'features/Article/ArticleRating',
   component: ArticleRating,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -7,17 +7,17 @@ import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
 const article: Omit<Article, 'id'> = {
   user: { id: '1', username: '123' },
-  title: '',
+  title: 'TS news',
+  img: 'https://w7.pngwing.com/pngs/915/519/png-transparent-typescript-hd-logo.png',
   subtitle: '',
-  img: '',
-  views: 123,
-  createdAt: '',
+  views: 12345,
+  createdAt: '01.01.2023',
   type: [],
   blocks: [],
 };
 
 export default {
-  title: 'features/ArticleRecommendationsList',
+  title: 'features/Article/ArticleRecommendationsList',
   component: ArticleRecommendationsList,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -33,6 +33,7 @@ export default {
           { id: '1', ...article },
           { id: '2', ...article },
           { id: '3', ...article },
+          { id: '4', ...article },
         ],
       },
     ],
