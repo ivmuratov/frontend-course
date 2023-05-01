@@ -4,4 +4,4 @@
 /extractedTranslations
 /.vscode
 .env
-/reports
+/reports/unit
