@@ -1,6 +1,6 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Icon } from '@/shared/ui/Icon';
 import { Text } from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
@@ -14,7 +14,9 @@ import {
   Article, ArticleTextBlock,
 } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { AppImage } from '@/shared/ui/AppImage';
 import cls from './ArticleListItem.module.scss';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
   className?: string;
@@ -40,14 +42,12 @@ export const ArticleListItem = memo(({
     </>
   );
 
-  const mods: Mods = {};
-
   if (view === ArticleView.BIG) {
     const textBlock = article.blocks
       .find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
     return (
-      <div className={classNames(cls.ArticleListItem, mods, [className, cls[view]])}>
+      <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
         <Card>
           <div className={cls.header}>
             <Avatar size={30} src={article.user.avatar} />
@@ -56,7 +56,12 @@ export const ArticleListItem = memo(({
           </div>
           <Text className={cls.title} title={article.title} />
           {types}
-          <img className={cls.img} src={article.img} alt={article.title} />
+          <AppImage
+            className={cls.img}
+            src={article.img}
+            alt={article.title}
+            fallback={<Skeleton width="100%" height={250} />}
+          />
           {textBlock && (
             <ArticleTextBlockComponent className={cls.textBlock} block={textBlock} />
           )}
@@ -81,13 +86,18 @@ export const ArticleListItem = memo(({
 
   return (
     <AppLink
-      className={classNames(cls.ArticleListItem, mods, [className, cls[view]])}
+      className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
       to={getRouteArticleDetails(article.id)}
       target={target}
     >
       <Card className={cls.card}>
         <div className={cls.imageWrapper}>
-          <img className={cls.img} src={article.img} alt={article.title} />
+          <AppImage
+            className={cls.img}
+            src={article.img}
+            alt={article.title}
+            fallback={<Skeleton width={200} height={200} />}
+          />
           <Text className={cls.date} text={article.createdAt} />
         </div>
         <div className={cls.infoWrapper}>
