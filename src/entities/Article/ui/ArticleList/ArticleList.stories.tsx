@@ -90,7 +90,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    articles: new Array(16)
+    articles: new Array(5)
       .fill(0)
       .map((_, index) => ({
         ...article,
