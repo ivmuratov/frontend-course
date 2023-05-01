@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import avatar from '@/shared/assets/tests/avatar.png';
 import { ProfileCard } from './ProfileCard';
 import { Profile } from '../../model/types/profile';
 
@@ -13,7 +12,7 @@ const profile: Profile = {
   currency: Currency.RUB,
   country: Country.Russia,
   city: 'Novosibirsk',
-  avatar,
+  avatar: 'https://sun6-23.userapi.com/s/v1/if1/X0uTfZikqaAno3o4QMMElC8bvl50LZhZOJrpkw1x7pNQAul4DJwFx7O8IIHW5utRYjcx-w.jpg?size=900x900&quality=96&crop=0,0,900,900&ava=1',
 };
 
 export default {
@@ -30,12 +29,6 @@ export default {
 const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
 
 export const Normal = Template.bind({});
-// крашится на github actions из-за аватара
-Normal.parameters = {
-  loki: {
-    skip: true,
-  },
-};
 
 export const Loading = Template.bind({});
 Loading.args = {
