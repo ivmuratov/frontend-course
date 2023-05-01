@@ -11,7 +11,7 @@ const AdminPanelPage: FC<AdminPanelPageProps> = ({ className }) => {
   const { t } = useTranslation();
 
   return (
-    <Page className={classNames('', {}, [className])}>
+    <Page data-testid="AdminPanelPage" className={classNames('', {}, [className])}>
       {t('admin page')}
     </Page>
   );

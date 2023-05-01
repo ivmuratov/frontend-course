@@ -17,9 +17,10 @@ import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { TestProps } from '@/shared/types/tests';
 import cls from './Page.module.scss';
 
-interface PageProps {
+interface PageProps extends TestProps {
   className?: string;
   children: ReactNode;
   onScrollEnd?: () => void;
@@ -31,6 +32,7 @@ export const Page = memo(({
   className,
   children,
   onScrollEnd,
+  ...props
 }: PageProps) => {
   const mods: Mods = {};
 
@@ -66,6 +68,7 @@ export const Page = memo(({
   return (
     <main
       className={classNames(cls.Page, mods, [className])}
+      data-testid={props['data-testid'] ?? 'Page'}
       ref={wrapperRef}
       onScroll={onScrollHandler}
       id={PAGE_ID}

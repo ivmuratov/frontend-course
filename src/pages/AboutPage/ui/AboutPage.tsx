@@ -6,7 +6,7 @@ const AboutPage: FC = () => {
   const { t } = useTranslation('about');
 
   return (
-    <Page>{t('about page')}</Page>
+    <Page data-testid="AboutPage">{t('about page')}</Page>
   );
 };
 
