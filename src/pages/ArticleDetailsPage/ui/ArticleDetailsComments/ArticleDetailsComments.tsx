@@ -13,7 +13,7 @@ import {
   getArticleDetailsComments,
   getArticleDetailsCommentsIsLoading,
 } from '@/features/ArticleDetailsComments';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { TextSize, Text } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
@@ -45,11 +45,9 @@ export const ArticleDetailsComments = memo(({
     }
   }, [dispatch, id]);
 
-  const mods: Mods = {};
-
   return (
     <VStack
-      className={classNames('', mods, [className])}
+      className={classNames('', {}, [className])}
       gap="16"
       max
     >
