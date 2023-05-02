@@ -48,7 +48,9 @@
 		"./scripts/refactor/createPublicApiForSharedUI.ts",
 		"src",
 		"config",
+		"cypress",
 		"webpack.config.ts",
-		"vite.config.ts"
+		"vite.config.ts",
+		"cypress.config.ts"
 	]
 }

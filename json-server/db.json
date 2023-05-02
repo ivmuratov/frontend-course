@@ -664,6 +664,15 @@
         "MANAGER"
       ],
       "avatar": "https://lacareer.ru/images/news/889/1.jpg"
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "123",
+      "roles": [
+        "ADMIN"
+      ],
+      "avatar": "unknown"
     }
   ],
   "profile": [
@@ -671,23 +680,45 @@
       "id": "1",
       "first": "Admin",
       "lastname": "Qwerty123",
-      "age": 100,
+      "age": 1,
       "currency": "USD",
       "country": "Russia",
       "city": "Moscow",
-      "username": "admin213",
+      "username": "admin",
       "avatar": "https://sun6-23.userapi.com/s/v1/if1/X0uTfZikqaAno3o4QMMElC8bvl50LZhZOJrpkw1x7pNQAul4DJwFx7O8IIHW5utRYjcx-w.jpg?size=900x900&quality=96&crop=0,0,900,900&ava=1"
     },
     {
       "id": "2",
-      "first": "ulbi tv",
-      "lastname": "asf",
-      "age": 465,
+      "first": "Main",
+      "lastname": "User",
+      "age": 10,
       "currency": "RUB",
       "country": "Russia",
       "city": "Moscow",
-      "username": "ulbi tv",
+      "username": "user",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    },
+    {
+      "id": "3",
+      "first": "Main",
+      "lastname": "Manager",
+      "age": 100,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "manager",
+      "avatar": "https://lacareer.ru/images/news/889/1.jpg"
+    },
+    {
+      "id": "4",
+      "first": "Test",
+      "lastname": "User",
+      "age": 1000,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "testuser",
+      "avatar": "unknown"
     }
   ],
   "article-ratings": [

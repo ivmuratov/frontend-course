@@ -47,6 +47,7 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
+        data-testid="ArticlesPage"
         className={classNames(cls.ArticlesPage, {}, [className])}
         onScrollEnd={onLoadNextPart}
       >
