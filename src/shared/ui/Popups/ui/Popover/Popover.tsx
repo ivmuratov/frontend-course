@@ -3,8 +3,8 @@ import { FC, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
 import { mapDirectionClasses } from '../../styles/consts';
-import cls from './Popover.module.scss';
 import popusCls from '../../styles/popup.module.scss';
+import cls from './Popover.module.scss';
 
 interface PopoverProps {
   className?: string;

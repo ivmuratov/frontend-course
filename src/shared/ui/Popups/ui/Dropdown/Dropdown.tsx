@@ -2,10 +2,10 @@ import { Menu } from '@headlessui/react';
 import { FC, Fragment, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
-import { AppLink } from '../../../AppLink/AppLink';
+import { AppLink } from '../../../AppLink';
 import { mapDirectionClasses } from '../../styles/consts';
-import cls from './Dropdown.module.scss';
 import popupCls from '../../styles/popup.module.scss';
+import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
   href?: string;

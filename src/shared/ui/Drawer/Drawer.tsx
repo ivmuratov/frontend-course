@@ -4,10 +4,10 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
-import { Portal } from '../Portal/Portal';
-import { Overlay } from '../Overlay/Overlay';
-import cls from './Drawer.module.scss';
+import { Portal } from '../Portal';
+import { Overlay } from '../Overlay';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import cls from './Drawer.module.scss';
 
 interface DrawerProps {
   className?: string;
