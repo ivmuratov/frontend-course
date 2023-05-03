@@ -118,7 +118,11 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
             className={cls.avatar}
           />
         </HStack>
-        <VStack gap="4" max>
+        <VStack
+          data-testid="ArticleDetails.Info"
+          gap="4"
+          max
+        >
           <Text
             className={cls.title}
             title={data?.title}

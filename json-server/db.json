@@ -529,7 +529,7 @@
     {
       "id": "19",
       "title": "Научная статья - Биология",
-      "subtitle": "БиологиЯ",
+      "subtitle": "Биология",
       "img": "https://cdn.i-scmp.com/sites/default/files/styles/landscape/public/d8/yp/images/biology.jpg?itok=kvBgR9VY",
       "views": 1022,
       "createdAt": "26.02.2022",
@@ -549,6 +549,19 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Статья для теста",
+      "subtitle": "Тест",
+      "img": "https://cdn.i-scmp.com/sites/default/files/styles/landscape/public/d8/yp/images/biology.jpg?itok=kvBgR9VY",
+      "views": 1022,
+      "createdAt": "26.02.2022",
+      "userId": "1",
+      "type": [
+        "SCIENCE"
+      ],
+      "blocks": [],
+      "id": "vCH8576"
     }
   ],
   "comments": [
