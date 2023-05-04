@@ -5,9 +5,9 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems.ts/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import cls from './Sidebar.module.scss';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
   className?: string;
@@ -19,21 +19,18 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   const sidebarItemsList = useSelector(getSidebarItems);
 
   const onToggle = () => {
-    setCollapsed((prev) => !prev);
+    setCollapsed(prev => !prev);
   };
 
-  const itemsList = useMemo(() => sidebarItemsList.map((item) => (
-    <SidebarItem
-      key={item.path}
-      item={item}
-      collapsed={collapsed}
-    />
-  )), [collapsed, sidebarItemsList]);
+  const itemsList = useMemo(
+    () => sidebarItemsList.map(item => <SidebarItem key={item.path} item={item} collapsed={collapsed} />),
+    [collapsed, sidebarItemsList],
+  );
 
   return (
-    <aside data-testid="sidebar" className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
+    <aside data-testid='sidebar' className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
       <Button
-        data-testid="sidebar-toggle"
+        data-testid='sidebar-toggle'
         onClick={onToggle}
         className={cls.collapseBtn}
         theme={ButtonTheme.BACKGROUND_INVERTED}
@@ -42,11 +39,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
       >
         {collapsed ? '>' : '<'}
       </Button>
-      <VStack
-        role="navigation"
-        className={cls.items}
-        gap="8"
-      >
+      <VStack role='navigation' className={cls.items} gap='8'>
         {itemsList}
       </VStack>
       <div className={cls.switchers}>

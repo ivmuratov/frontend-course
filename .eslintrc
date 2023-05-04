@@ -8,7 +8,8 @@
 	"extends": [
 		"plugin:react/recommended",
 		"plugin:i18next/recommended",
-		"airbnb"
+		"airbnb",
+		"prettier"
 	],
 	"plugins": [
 		"react",
@@ -16,7 +17,8 @@
 		"@typescript-eslint",
 		"i18next",
 		"fsd-imuratov",
-		"unused-imports"
+		"unused-imports",
+		"prettier"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -42,6 +44,7 @@
 		"__PROJECT__": true
 	},
 	"rules": {
+		"prettier/prettier": "error",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "error",
 		"react/jsx-filename-extension": [
@@ -72,7 +75,6 @@
 				]
 			}
 		],
-		"max-len": ["error", { "code": 120 }],
 		"unused-imports/no-unused-imports": "error",
 		"no-unused-vars": "warn",
 		"react/jsx-props-no-spreading": "warn",
