@@ -30,7 +30,7 @@
     "postinstall": "node ./scripts/clear-cache.js"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": ["prettier", "eslint"],
+    "**/*.{ts,tsx}": ["prettier --list-different", "eslint"],
     "**/*.scss": "stylelint"
   },
   "keywords": [],
