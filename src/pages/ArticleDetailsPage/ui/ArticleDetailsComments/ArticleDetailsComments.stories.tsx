@@ -34,23 +34,27 @@ export default {
   args: {
     id: '1',
   },
-  decorators: [StoreDecorator({
-    articleDetailsIndex: {
-      comments,
-    },
-  })],
+  decorators: [
+    StoreDecorator({
+      articleDetailsIndex: {
+        comments,
+      },
+    }),
+  ],
 } as ComponentMeta<typeof ArticleDetailsComments>;
 
-const Template: ComponentStory<typeof ArticleDetailsComments> = (args) => <ArticleDetailsComments {...args} />;
+const Template: ComponentStory<typeof ArticleDetailsComments> = args => <ArticleDetailsComments {...args} />;
 
 export const Normal = Template.bind({});
 
 export const Loading = Template.bind({});
-Loading.decorators = [StoreDecorator({
-  articleDetailsIndex: {
-    comments: {
-      ...comments,
-      isLoading: true,
+Loading.decorators = [
+  StoreDecorator({
+    articleDetailsIndex: {
+      comments: {
+        ...comments,
+        isLoading: true,
+      },
     },
-  },
-})];
+  }),
+];

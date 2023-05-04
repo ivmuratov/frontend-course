@@ -5,24 +5,25 @@ export const updateProfile = (firstname = 'new firstname', lastname = 'new lastn
   cy.getByTestId('EditableProfileCardHeader.SaveButton').click();
 };
 
-export const resetProfile = (profileId: string) => cy.request({
-  method: 'PUT',
-  url: `http://localhost:8080/profile/${profileId}`,
-  headers: {
-    Authorization: '12345',
-  },
-  body: {
-    id: '4',
-    first: 'Test',
-    lastname: 'User',
-    age: 1000,
-    currency: 'RUB',
-    country: 'Russia',
-    city: 'Moscow',
-    username: 'testuser',
-    avatar: 'unknown',
-  },
-});
+export const resetProfile = (profileId: string) =>
+  cy.request({
+    method: 'PUT',
+    url: `http://localhost:8080/profile/${profileId}`,
+    headers: {
+      Authorization: '12345',
+    },
+    body: {
+      id: '4',
+      first: 'Test',
+      lastname: 'User',
+      age: 1000,
+      currency: 'RUB',
+      country: 'Russia',
+      city: 'Moscow',
+      username: 'testuser',
+      avatar: 'unknown',
+    },
+  });
 
 declare global {
   namespace Cypress {

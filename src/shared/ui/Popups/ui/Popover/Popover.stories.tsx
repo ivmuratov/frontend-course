@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Popover } from './Popover';
 import { Button } from '../../../Button';
 
-const panel: { id: string, content: string }[] = [
+const panel: { id: string; content: string }[] = [
   {
     id: '1',
     content: 'item 1',
@@ -25,14 +25,10 @@ export default {
   },
   args: {
     trigger: <Button>Trigger</Button>,
-    children: panel.map(({ id, content }) => (
-      <div key={id}>
-        {content}
-      </div>
-    )),
+    children: panel.map(({ id, content }) => <div key={id}>{content}</div>),
   },
 } as ComponentMeta<typeof Popover>;
 
-const Template: ComponentStory<typeof Popover> = (args) => <Popover {...args} />;
+const Template: ComponentStory<typeof Popover> = args => <Popover {...args} />;
 
 export const Primary = Template.bind({});

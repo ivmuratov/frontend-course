@@ -11,9 +11,7 @@ const article: Article = {
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
   createdAt: '26.02.2022',
-  type: [
-    ArticleType.IT,
-  ],
+  type: [ArticleType.IT],
   blocks: [
     {
       id: '1',
@@ -125,7 +123,7 @@ export default {
   ],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
+const Template: ComponentStory<typeof ArticleDetailsPage> = args => <ArticleDetailsPage {...args} />;
 
 export const Normal = Template.bind({});
 

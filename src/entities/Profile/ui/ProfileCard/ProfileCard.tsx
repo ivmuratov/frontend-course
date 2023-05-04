@@ -46,11 +46,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   if (isLoading) {
     return (
-      <HStack
-        className={classNames(cls.ProfileCard, {}, [className, cls.loading])}
-        justify="center"
-        max
-      >
+      <HStack className={classNames(cls.ProfileCard, {}, [className, cls.loading])} justify='center' max>
         <Loader />
       </HStack>
     );
@@ -58,11 +54,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   if (error) {
     return (
-      <HStack
-        className={classNames(cls.ProfileCard, {}, [className, cls.error])}
-        justify="center"
-        max
-      >
+      <HStack className={classNames(cls.ProfileCard, {}, [className, cls.error])} justify='center' max>
         <Text
           theme={TextTheme.ERROR}
           align={TextAlign.CENTER}
@@ -78,21 +70,10 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   };
 
   return (
-    <VStack
-      className={classNames(cls.ProfileCard, mods, [className])}
-      gap="16"
-      max
-    >
+    <VStack className={classNames(cls.ProfileCard, mods, [className])} gap='16' max>
       {data?.avatar && (
-        <HStack
-          justify="center"
-          max
-        >
-          <Avatar
-            size={150}
-            src={data?.avatar}
-            alt="avatar"
-          />
+        <HStack justify='center' max>
+          <Avatar size={150} src={data?.avatar} alt='avatar' />
         </HStack>
       )}
       <Input
@@ -100,49 +81,21 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         placeholder={t('your firstname')}
         onChange={onChangeFirstname}
         readonly={readonly}
-        data-testid="ProfileCard.firstname"
+        data-testid='ProfileCard.firstname'
       />
       <Input
         value={data?.lastname}
         placeholder={t('your lastname')}
         onChange={onChangeLastname}
         readonly={readonly}
-        data-testid="ProfileCard.lastname"
+        data-testid='ProfileCard.lastname'
       />
-      <Input
-        value={data?.age}
-        placeholder={t('your age')}
-        onChange={onChangeAge}
-        readonly={readonly}
-      />
-      <Input
-        value={data?.city}
-        placeholder={t('your city')}
-        onChange={onChangeCity}
-        readonly={readonly}
-      />
-      <Input
-        value={data?.username}
-        placeholder={t('your username')}
-        onChange={onChangeUsername}
-        readonly={readonly}
-      />
-      <Input
-        value={data?.avatar}
-        placeholder={t('your avatar')}
-        onChange={onChangeAvatar}
-        readonly={readonly}
-      />
-      <CurrencySelect
-        value={data?.currency}
-        onChange={onChangeCurrency}
-        readonly={readonly}
-      />
-      <CountrySelect
-        value={data?.country}
-        onChange={onChangeCountry}
-        readonly={readonly}
-      />
+      <Input value={data?.age} placeholder={t('your age')} onChange={onChangeAge} readonly={readonly} />
+      <Input value={data?.city} placeholder={t('your city')} onChange={onChangeCity} readonly={readonly} />
+      <Input value={data?.username} placeholder={t('your username')} onChange={onChangeUsername} readonly={readonly} />
+      <Input value={data?.avatar} placeholder={t('your avatar')} onChange={onChangeAvatar} readonly={readonly} />
+      <CurrencySelect value={data?.currency} onChange={onChangeCurrency} readonly={readonly} />
+      <CountrySelect value={data?.country} onChange={onChangeCountry} readonly={readonly} />
     </VStack>
   );
 };

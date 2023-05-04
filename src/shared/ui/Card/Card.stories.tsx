@@ -10,15 +10,14 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    children: <Text title="Title" text="text" />,
+    children: <Text title='Title' text='text' />,
   },
 } as ComponentMeta<typeof Card>;
 
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+const Template: ComponentStory<typeof Card> = args => <Card {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-};
+Primary.args = {};
 
 export const Outlined = Template.bind({});
 Outlined.args = {

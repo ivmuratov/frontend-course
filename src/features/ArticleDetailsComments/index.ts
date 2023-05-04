@@ -1,17 +1,8 @@
-import {
-  getArticleDetailsComments,
-} from './model/slice/articleDetailsCommentsSlice';
-import {
-  getArticleDetailsCommentsIsLoading,
-  getArticleDetailsCommentsError,
-} from './model/selectors/articleDetailsComments';
-import {
-  fetchArticleCommentsById,
-} from './model/services/fetchArticleCommentsById/fetchArticleCommentsById';
+import { getArticleDetailsComments } from './model/slice/articleDetailsCommentsSlice';
+import { getArticleDetailsCommentsIsLoading, getArticleDetailsCommentsError } from './model/selectors/articleDetailsComments';
+import { fetchArticleCommentsById } from './model/services/fetchArticleCommentsById/fetchArticleCommentsById';
 import { addCommentForArticle } from './model/services/addCommentForArticle/addCommentForArticle';
-import {
-  getArticleDetailsRecommendations,
-} from './model/slice/articleDetailsRecommendationsSlice';
+import { getArticleDetailsRecommendations } from './model/slice/articleDetailsRecommendationsSlice';
 import { getArticleDetailsRecommendationsIsLoading } from './model/selectors/articleDetailsRecommendations';
 import { fetchArticleRecommendations } from './model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsIndexReducer } from './model/slice';

@@ -21,14 +21,16 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({
-    profile: {
-      form: profileData,
-    },
-  })],
+  decorators: [
+    StoreDecorator({
+      profile: {
+        form: profileData,
+      },
+    }),
+  ],
 } as ComponentMeta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
+const Template: ComponentStory<typeof ProfilePage> = args => <ProfilePage {...args} />;
 
 export const Normal = Template.bind({});
 

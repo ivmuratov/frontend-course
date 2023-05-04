@@ -3,6 +3,4 @@ export interface Rating {
   feedback?: string;
 }
 
-export interface RatingSchema {
-
-}
+export interface RatingSchema {}

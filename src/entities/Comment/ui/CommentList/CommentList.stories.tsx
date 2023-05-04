@@ -19,16 +19,14 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    comments: new Array(5)
-      .fill(0)
-      .map((_, index) => ({
-        ...comment,
-        id: `${index}`,
-      })),
+    comments: new Array(5).fill(0).map((_, index) => ({
+      ...comment,
+      id: `${index}`,
+    })),
   },
 } as ComponentMeta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
+const Template: ComponentStory<typeof CommentList> = args => <CommentList {...args} />;
 
 export const Normal = Template.bind({});
 

@@ -17,11 +17,9 @@ const defaultAsyncReducers: ReducersList = {
   articlesPage: articlesPageReducer,
 };
 
-export default (
-  state: DeepPartial<StateSchema>,
-  asyncReducers?: ReducersList,
-) => (StoryComponent: Story) => (
-  <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
-    <StoryComponent />
-  </StoreProvider>
-);
+export default (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) => (StoryComponent: Story) =>
+  (
+    <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
+      <StoryComponent />
+    </StoreProvider>
+  );

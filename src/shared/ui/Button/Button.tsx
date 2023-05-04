@@ -27,30 +27,32 @@ interface ButtonProps {
   fullWidth?: boolean;
 }
 
-export const Button = memo(({
-  className,
-  children,
-  theme = ButtonTheme.OUTLINE,
-  square,
-  size = ButtonSize.M,
-  disabled,
-  fullWidth,
-  ...props
-}: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const mods: Mods = {
-    [cls.square]: square,
-    [cls.disabled]: disabled,
-    [cls.fullWidth]: fullWidth,
-  };
+export const Button = memo(
+  ({
+    className,
+    children,
+    theme = ButtonTheme.OUTLINE,
+    square,
+    size = ButtonSize.M,
+    disabled,
+    fullWidth,
+    ...props
+  }: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) => {
+    const mods: Mods = {
+      [cls.square]: square,
+      [cls.disabled]: disabled,
+      [cls.fullWidth]: fullWidth,
+    };
 
-  return (
-    <button
-      type="button"
-      className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-});
+    return (
+      <button
+        type='button'
+        className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  },
+);

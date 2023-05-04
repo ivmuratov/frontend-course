@@ -13,12 +13,7 @@ interface StarRatingProps {
   onSelect?: (starsCount: number) => void;
 }
 
-export const StarRating = memo(({
-  className,
-  size = 30,
-  selectedStars = 0,
-  onSelect,
-}: StarRatingProps) => {
+export const StarRating = memo(({ className, size = 30, selectedStars = 0, onSelect }: StarRatingProps) => {
   const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
 
   const [isSelected, setIsSelected] = useState<boolean>(!!selectedStars);
@@ -45,7 +40,7 @@ export const StarRating = memo(({
 
   return (
     <div className={classNames('', {}, [className])}>
-      {stars.map((starNumber) => (
+      {stars.map(starNumber => (
         <Icon
           data-testid={`StarRating.${starNumber}`}
           data-selected={currentStarsCount >= starNumber}

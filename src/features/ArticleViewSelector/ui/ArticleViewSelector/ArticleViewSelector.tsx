@@ -8,8 +8,8 @@ import { ArticleView } from '@/entities/Article';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ViewType {
-  view: ArticleView,
-  icon: VFC<SVGProps<SVGSVGElement>>
+  view: ArticleView;
+  icon: VFC<SVGProps<SVGSVGElement>>;
 }
 
 const viewTypes: ViewType[] = [
@@ -29,27 +29,16 @@ interface ArticleViewSelectorProps {
   onViewClick?: (view: ArticleView) => void;
 }
 
-export const ArticleViewSelector = memo(({
-  className,
-  view,
-  onViewClick,
-}: ArticleViewSelectorProps) => {
+export const ArticleViewSelector = memo(({ className, view, onViewClick }: ArticleViewSelectorProps) => {
   const onClick = (newView: ArticleView) => () => {
     onViewClick?.(newView);
   };
 
   return (
     <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
-      {viewTypes.map((value) => (
-        <Button
-          key={value.view}
-          onClick={onClick(value.view)}
-          theme={ButtonTheme.CLEAR}
-        >
-          <Icon
-            className={classNames('', { [cls.notSelected]: value.view !== view })}
-            Svg={value.icon}
-          />
+      {viewTypes.map(value => (
+        <Button key={value.view} onClick={onClick(value.view)} theme={ButtonTheme.CLEAR}>
+          <Icon className={classNames('', { [cls.notSelected]: value.view !== view })} Svg={value.icon} />
         </Button>
       ))}
     </div>

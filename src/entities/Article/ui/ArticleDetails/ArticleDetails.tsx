@@ -1,8 +1,4 @@
-import {
-  FC,
-  memo,
-  useEffect,
-} from 'react';
+import { FC, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
@@ -18,11 +14,7 @@ import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/Dynam
 import { ArticleBlockType } from '../../model/consts/consts';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import {
-  getArticleDetailsData,
-  getArticleDetailsIsLoading,
-  getArticleDetailsError,
-} from '../../model/selectors/articleDetails';
+import { getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError } from '../../model/selectors/articleDetails';
 import { ArticleBlock } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
@@ -32,29 +24,11 @@ import cls from './ArticleDetails.module.scss';
 const renderBlock = (block: ArticleBlock): JSX.Element | null => {
   switch (block.type) {
     case ArticleBlockType.CODE:
-      return (
-        <ArticleCodeBlockComponent
-          key={block.id}
-          className={cls.block}
-          block={block}
-        />
-      );
+      return <ArticleCodeBlockComponent key={block.id} className={cls.block} block={block} />;
     case ArticleBlockType.IMAGE:
-      return (
-        <ArticleImageBlockComponent
-          key={block.id}
-          className={cls.block}
-          block={block}
-        />
-      );
+      return <ArticleImageBlockComponent key={block.id} className={cls.block} block={block} />;
     case ArticleBlockType.TEXT:
-      return (
-        <ArticleTextBlockComponent
-          key={block.id}
-          className={cls.block}
-          block={block}
-        />
-      );
+      return <ArticleTextBlockComponent key={block.id} className={cls.block} block={block} />;
     default:
       return null;
   }
@@ -69,10 +43,7 @@ interface ArticleDetailsProps {
   id?: string;
 }
 
-const ArticleDetails: FC<ArticleDetailsProps> = ({
-  className,
-  id,
-}) => {
+const ArticleDetails: FC<ArticleDetailsProps> = ({ className, id }) => {
   const { t } = useTranslation('article');
 
   const dispatch = useAppDispatch();
@@ -94,46 +65,28 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
   if (isLoading) {
     content = (
       <>
-        <Skeleton className={cls.avatar} width={200} height={200} border="50%" />
+        <Skeleton className={cls.avatar} width={200} height={200} border='50%' />
         <Skeleton className={cls.title} width={300} height={32} />
         <Skeleton className={cls.skeleton} width={600} height={24} />
-        <Skeleton className={cls.skeleton} width="100%" height={200} />
-        <Skeleton className={cls.skeleton} width="100%" height={200} />
+        <Skeleton className={cls.skeleton} width='100%' height={200} />
+        <Skeleton className={cls.skeleton} width='100%' height={200} />
       </>
     );
   } else if (error) {
-    content = (
-      <Text
-        align={TextAlign.CENTER}
-        title={t('an error occurred while loading the article')}
-      />
-    );
+    content = <Text align={TextAlign.CENTER} title={t('an error occurred while loading the article')} />;
   } else {
     content = (
       <>
-        <HStack justify="center" max>
-          <Avatar
-            size={200}
-            src={data?.img}
-            className={cls.avatar}
-          />
+        <HStack justify='center' max>
+          <Avatar size={200} src={data?.img} className={cls.avatar} />
         </HStack>
-        <VStack
-          data-testid="ArticleDetails.Info"
-          gap="4"
-          max
-        >
-          <Text
-            className={cls.title}
-            title={data?.title}
-            text={data?.subtitle}
-            size={TextSize.L}
-          />
-          <HStack gap="8">
+        <VStack data-testid='ArticleDetails.Info' gap='4' max>
+          <Text className={cls.title} title={data?.title} text={data?.subtitle} size={TextSize.L} />
+          <HStack gap='8'>
             <Icon Svg={EyeIcon} className={cls.icon} />
             <Text text={`${data?.views}`} />
           </HStack>
-          <HStack gap="8">
+          <HStack gap='8'>
             <Icon Svg={CalendarIcon} className={cls.icon} />
             <Text text={data?.createdAt} />
           </HStack>
@@ -145,15 +98,10 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <VStack
-        className={classNames(cls.ArticleDetails, {}, [className])}
-        gap="16"
-        max
-      >
+      <VStack className={classNames(cls.ArticleDetails, {}, [className])} gap='16' max>
         {content}
       </VStack>
     </DynamicModuleLoader>
-
   );
 };
 

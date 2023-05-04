@@ -11,9 +11,7 @@ const article: Article = {
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
   createdAt: '26.02.2022',
-  type: [
-    ArticleType.IT,
-  ],
+  type: [ArticleType.IT],
   blocks: [
     {
       id: '1',
@@ -91,25 +89,31 @@ export default {
   },
 } as ComponentMeta<typeof ArticleDetails>;
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+const Template: ComponentStory<typeof ArticleDetails> = args => <ArticleDetails {...args} />;
 
 export const Normal = Template.bind({});
-Normal.decorators = [StoreDecorator({
-  articleDetails: {
-    data: article,
-  },
-})];
+Normal.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      data: article,
+    },
+  }),
+];
 
 export const Loading = Template.bind({});
-Loading.decorators = [StoreDecorator({
-  articleDetails: {
-    isLoading: true,
-  },
-})];
+Loading.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      isLoading: true,
+    },
+  }),
+];
 
 export const Error = Template.bind({});
-Error.decorators = [StoreDecorator({
-  articleDetails: {
-    error: 'error',
-  },
-})];
+Error.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      error: 'error',
+    },
+  }),
+];

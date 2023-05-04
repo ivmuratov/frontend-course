@@ -12,10 +12,7 @@ export interface ArticleRatingProps {
   articleId: string;
 }
 
-const ArticleRating = memo(({
-  className,
-  articleId,
-}: ArticleRatingProps) => {
+const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
   const { t } = useTranslation();
 
   const userData = useSelector(getUserAuthData);
@@ -27,34 +24,38 @@ const ArticleRating = memo(({
 
   const [createArticleRate] = useCreateArticleRate();
 
-  const createArticleRateHandler = useCallback((starsCount: number, feedback?: string) => {
-    try {
-      createArticleRate({
-        userId: userData?.id ?? '',
-        articleId,
-        rate: starsCount,
-        feedback,
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }, [articleId, createArticleRate, userData?.id]);
+  const createArticleRateHandler = useCallback(
+    (starsCount: number, feedback?: string) => {
+      try {
+        createArticleRate({
+          userId: userData?.id ?? '',
+          articleId,
+          rate: starsCount,
+          feedback,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [articleId, createArticleRate, userData?.id],
+  );
 
-  const onAcceptHandler = useCallback((starsCount: number, feedback?: string) => {
-    createArticleRateHandler(starsCount, feedback);
-  }, [createArticleRateHandler]);
+  const onAcceptHandler = useCallback(
+    (starsCount: number, feedback?: string) => {
+      createArticleRateHandler(starsCount, feedback);
+    },
+    [createArticleRateHandler],
+  );
 
-  const onCancelHandler = useCallback((starsCount: number) => {
-    createArticleRateHandler(starsCount);
-  }, [createArticleRateHandler]);
+  const onCancelHandler = useCallback(
+    (starsCount: number) => {
+      createArticleRateHandler(starsCount);
+    },
+    [createArticleRateHandler],
+  );
 
   if (isLoading) {
-    return (
-      <Skeleton
-        width="100%"
-        height={120}
-      />
-    );
+    return <Skeleton width='100%' height={120} />;
   }
 
   const rating = data?.[0];

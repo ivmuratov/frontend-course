@@ -13,30 +13,16 @@ interface PopoverProps {
   children: ReactNode;
 }
 
-export const Popover: FC<PopoverProps> = ({
-  className,
-  trigger,
-  direction = 'bottom right',
-  children,
-}) => {
-  const panelClasses: (string | undefined)[] = [
-    mapDirectionClasses[direction],
-  ];
+export const Popover: FC<PopoverProps> = ({ className, trigger, direction = 'bottom right', children }) => {
+  const panelClasses: (string | undefined)[] = [mapDirectionClasses[direction]];
 
   return (
     <HPopover className={classNames(cls.Popover, {}, [className, popusCls.popup])}>
-      <HPopover.Button
-        as="div"
-        className={popusCls.trigger}
-      >
+      <HPopover.Button as='div' className={popusCls.trigger}>
         {trigger}
       </HPopover.Button>
 
-      <HPopover.Panel
-        className={classNames(cls.panel, {}, panelClasses)}
-      >
-        {children}
-      </HPopover.Panel>
+      <HPopover.Panel className={classNames(cls.panel, {}, panelClasses)}>{children}</HPopover.Panel>
     </HPopover>
   );
 };

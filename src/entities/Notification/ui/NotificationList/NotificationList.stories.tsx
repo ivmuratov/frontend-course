@@ -18,7 +18,7 @@ export default {
   decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof NotificationList>;
 
-const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />;
+const Template: ComponentStory<typeof NotificationList> = args => <NotificationList {...args} />;
 
 export const Normal = Template.bind({});
 Normal.parameters = {
@@ -27,13 +27,10 @@ Normal.parameters = {
       url: `${__API__}/notifications`,
       method: 'GET',
       status: 200,
-      response:
-        new Array(3)
-          .fill(0)
-          .map((_, index) => ({
-            ...notification,
-            id: `${index}`,
-          })),
+      response: new Array(3).fill(0).map((_, index) => ({
+        ...notification,
+        id: `${index}`,
+      })),
     },
   ],
 };
@@ -46,13 +43,10 @@ NormalWithDelay.parameters = {
       method: 'GET',
       status: 200,
       delay: 10000,
-      response:
-        new Array(3)
-          .fill(0)
-          .map((_, index) => ({
-            ...notification,
-            id: `${index}`,
-          })),
+      response: new Array(3).fill(0).map((_, index) => ({
+        ...notification,
+        id: `${index}`,
+      })),
     },
   ],
 };

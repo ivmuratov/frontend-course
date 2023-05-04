@@ -1,9 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import {
-  ArticleBlockType,
-  ArticleType,
-  ArticleView,
-} from '../../model/consts/consts';
+import { ArticleBlockType, ArticleType, ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 import { ArticleList } from './ArticleList';
 
@@ -14,9 +10,7 @@ const article: Article = {
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
   createdAt: '26.02.2022',
-  type: [
-    ArticleType.IT,
-  ],
+  type: [ArticleType.IT],
   blocks: [
     {
       id: '1',
@@ -90,16 +84,14 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    articles: new Array(5)
-      .fill(0)
-      .map((_, index) => ({
-        ...article,
-        id: `${index}`,
-      })),
+    articles: new Array(5).fill(0).map((_, index) => ({
+      ...article,
+      id: `${index}`,
+    })),
   },
 } as ComponentMeta<typeof ArticleList>;
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = args => <ArticleList {...args} />;
 
 export const NormalBig = Template.bind({});
 NormalBig.args = {

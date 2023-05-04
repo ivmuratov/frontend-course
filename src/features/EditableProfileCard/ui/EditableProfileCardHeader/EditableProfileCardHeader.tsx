@@ -42,42 +42,24 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = ({ 
   }, [dispatch]);
 
   return (
-    <HStack
-      className={classNames('', {}, [className])}
-      justify="between"
-      max
-    >
+    <HStack className={classNames('', {}, [className])} justify='between' max>
       <Text title={t('my profile')} />
       {canEdit && (
         <div>
-          {readonly
-            ? (
-              <Button
-                theme={ButtonTheme.OUTLINE}
-                onClick={onEdit}
-                data-testid="EditableProfileCardHeader.EditButton"
-              >
-                {t('edit')}
+          {readonly ? (
+            <Button theme={ButtonTheme.OUTLINE} onClick={onEdit} data-testid='EditableProfileCardHeader.EditButton'>
+              {t('edit')}
+            </Button>
+          ) : (
+            <HStack gap='8'>
+              <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancelEdit} data-testid='EditableProfileCardHeader.CancelButton'>
+                {t('cancel')}
               </Button>
-            )
-            : (
-              <HStack gap="8">
-                <Button
-                  theme={ButtonTheme.OUTLINE_RED}
-                  onClick={onCancelEdit}
-                  data-testid="EditableProfileCardHeader.CancelButton"
-                >
-                  {t('cancel')}
-                </Button>
-                <Button
-                  theme={ButtonTheme.OUTLINE}
-                  onClick={onSave}
-                  data-testid="EditableProfileCardHeader.SaveButton"
-                >
-                  {t('save')}
-                </Button>
-              </HStack>
-            )}
+              <Button theme={ButtonTheme.OUTLINE} onClick={onSave} data-testid='EditableProfileCardHeader.SaveButton'>
+                {t('save')}
+              </Button>
+            </HStack>
+          )}
         </div>
       )}
     </HStack>

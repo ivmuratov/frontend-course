@@ -5,16 +5,12 @@ import { StateSchema } from '../config/StateSchema';
 import { createReduxStore } from '../config/store';
 
 interface StoreProviderProps {
-  initialState?: DeepPartial<StateSchema>,
+  initialState?: DeepPartial<StateSchema>;
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
   children: ReactNode;
 }
 
-export const StoreProvider: FC<StoreProviderProps> = ({
-  children,
-  initialState,
-  asyncReducers,
-}) => {
+export const StoreProvider: FC<StoreProviderProps> = ({ children, initialState, asyncReducers }) => {
   // const navigate = useNavigate();
 
   const store = createReduxStore(
@@ -23,9 +19,5 @@ export const StoreProvider: FC<StoreProviderProps> = ({
     // navigate,
   );
 
-  return (
-    <Provider store={store}>
-      {children}
-    </Provider>
-  );
+  return <Provider store={store}>{children}</Provider>;
 };

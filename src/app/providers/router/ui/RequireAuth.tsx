@@ -20,7 +20,7 @@ const RequireAuth: FC<RequireAuthProps> = ({ children, roles }) => {
     if (!roles) {
       return true;
     }
-    return roles.some((requiredRole) => userRoles?.includes(requiredRole));
+    return roles.some(requiredRole => userRoles?.includes(requiredRole));
   }, [roles, userRoles]);
 
   if (!auth) {

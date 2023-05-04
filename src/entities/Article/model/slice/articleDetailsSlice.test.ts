@@ -23,10 +23,9 @@ describe('articleDetailsSlice', () => {
       isLoading: true,
     };
 
-    expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.pending))
-      .toEqual({
-        isLoading: true,
-      });
+    expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.pending)).toEqual({
+      isLoading: true,
+    });
   });
 
   it('service fulfilled', () => {
@@ -35,10 +34,9 @@ describe('articleDetailsSlice', () => {
       isLoading: true,
     };
 
-    expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.fulfilled(data, '1', '')))
-      .toEqual({
-        data,
-        isLoading: false,
-      });
+    expect(articleDetailsReducer(state as ArticleDetailsSchema, fetchArticleById.fulfilled(data, '1', ''))).toEqual({
+      data,
+      isLoading: false,
+    });
   });
 });

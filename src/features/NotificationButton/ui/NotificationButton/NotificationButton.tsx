@@ -10,7 +10,7 @@ import { Drawer } from '@/shared/ui/Drawer';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
-    className?: string;
+  className?: string;
 }
 
 export const NotificationButton = memo(({ className }: NotificationButtonProps) => {
@@ -33,20 +33,13 @@ export const NotificationButton = memo(({ className }: NotificationButtonProps) 
   return (
     <>
       <BrowserView>
-        <Popover
-          className={classNames(cls.NotificationButton, {}, [className])}
-          direction="bottom left"
-          trigger={trigger}
-        >
+        <Popover className={classNames(cls.NotificationButton, {}, [className])} direction='bottom left' trigger={trigger}>
           <NotificationList className={cls.notifications} />
         </Popover>
       </BrowserView>
       <MobileView>
         {trigger}
-        <Drawer
-          isOpen={isOpen}
-          onClose={onCloseDrawer}
-        >
+        <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
           <NotificationList />
         </Drawer>
       </MobileView>

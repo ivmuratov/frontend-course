@@ -1,6 +1,6 @@
 describe('User visits the article list page', () => {
   beforeEach(() => {
-    cy.login().then((data) => {
+    cy.login().then(data => {
       cy.visit('articles');
     });
   });

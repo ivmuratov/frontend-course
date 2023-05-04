@@ -1,20 +1,8 @@
 /* eslint-disable no-param-reassign */
-import {
-  AnyAction,
-  combineReducers,
-  Reducer,
-  ReducersMapObject,
-} from '@reduxjs/toolkit';
-import {
-  MountedReducers,
-  ReducerManager,
-  StateSchema,
-  StateSchemaKey,
-} from './StateSchema';
+import { AnyAction, combineReducers, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { MountedReducers, ReducerManager, StateSchema, StateSchemaKey } from './StateSchema';
 
-export function createReducerManager(
-  initialReducers: ReducersMapObject<StateSchema>,
-): ReducerManager {
+export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
   const reducers = { ...initialReducers };
 
   let combinedReducer = combineReducers(reducers);
@@ -29,7 +17,7 @@ export function createReducerManager(
     reduce: (state: StateSchema, action: AnyAction) => {
       if (keysToRemove.length > 0) {
         state = { ...state };
-        keysToRemove.forEach((key) => delete state[key]);
+        keysToRemove.forEach(key => delete state[key]);
         keysToRemove = [];
       }
       return combinedReducer(state, action);

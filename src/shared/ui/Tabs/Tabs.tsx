@@ -15,21 +15,19 @@ interface TabsProps {
   onTabClick: (tab: TabItem) => void;
 }
 
-export const Tabs = memo(({
-  className,
-  tabs,
-  value,
-  onTabClick,
-}: TabsProps) => {
-  const clickHandler = useCallback((tab: TabItem) => () => {
-    onTabClick(tab);
-  }, [onTabClick]);
+export const Tabs = memo(({ className, tabs, value, onTabClick }: TabsProps) => {
+  const clickHandler = useCallback(
+    (tab: TabItem) => () => {
+      onTabClick(tab);
+    },
+    [onTabClick],
+  );
 
   const mods: Mods = {};
 
   return (
     <div className={classNames(cls.Tabs, mods, [className])}>
-      {tabs.map((tab) => (
+      {tabs.map(tab => (
         <Card
           key={tab.value}
           className={cls.tab}

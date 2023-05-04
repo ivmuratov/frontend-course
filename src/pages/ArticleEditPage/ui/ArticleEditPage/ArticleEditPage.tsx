@@ -19,18 +19,12 @@ const ArticleEditPage: FC<ArticleEditPageProps> = ({ className }) => {
   if (isEdit) {
     return (
       <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-        {t('edit article by id')}
-        {' '}
-        {id}
+        {t('edit article by id')} {id}
       </Page>
     );
   }
 
-  return (
-    <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-      {t('create article')}
-    </Page>
-  );
+  return <Page className={classNames(cls.ArticleEditPage, {}, [className])}>{t('create article')}</Page>;
 };
 
 export default memo(ArticleEditPage);

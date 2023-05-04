@@ -1,8 +1,4 @@
-import {
-  memo,
-  useCallback,
-  useEffect,
-} from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { CommentList } from '@/entities/Comment';
@@ -23,10 +19,7 @@ interface ArticleDetailsCommentsProps {
   id?: string;
 }
 
-export const ArticleDetailsComments = memo(({
-  className,
-  id,
-}: ArticleDetailsCommentsProps) => {
+export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCommentsProps) => {
   const { t } = useTranslation('article');
 
   const dispatch = useAppDispatch();
@@ -35,9 +28,12 @@ export const ArticleDetailsComments = memo(({
 
   const commentsIsLoading = useSelector(getArticleDetailsCommentsIsLoading);
 
-  const onSendComment = useCallback((text: string) => {
-    dispatch(addCommentForArticle(text));
-  }, [dispatch]);
+  const onSendComment = useCallback(
+    (text: string) => {
+      dispatch(addCommentForArticle(text));
+    },
+    [dispatch],
+  );
 
   useEffect(() => {
     if (id && __PROJECT__ !== 'storybook') {
@@ -46,20 +42,10 @@ export const ArticleDetailsComments = memo(({
   }, [dispatch, id]);
 
   return (
-    <VStack
-      className={classNames('', {}, [className])}
-      gap="16"
-      max
-    >
-      <Text
-        size={TextSize.L}
-        title={t('comments')}
-      />
+    <VStack className={classNames('', {}, [className])} gap='16' max>
+      <Text size={TextSize.L} title={t('comments')} />
       <AddCommentForm onSendComment={onSendComment} />
-      <CommentList
-        isLoading={commentsIsLoading}
-        comments={comments}
-      />
+      <CommentList isLoading={commentsIsLoading} comments={comments} />
     </VStack>
   );
 });

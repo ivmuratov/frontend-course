@@ -10,16 +10,13 @@ interface ArticleListItemSkeletonProps {
   view: ArticleView;
 }
 
-export const ArticleListItemSkeleton = memo(({
-  className,
-  view,
-}: ArticleListItemSkeletonProps) => {
+export const ArticleListItemSkeleton = memo(({ className, view }: ArticleListItemSkeletonProps) => {
   if (view === ArticleView.BIG) {
     return (
       <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
         <Card>
           <div className={cls.header}>
-            <Skeleton border="50%" height={30} width={30} />
+            <Skeleton border='50%' height={30} width={30} />
             <Skeleton className={cls.username} height={16} width={150} />
             <Skeleton className={cls.date} height={16} width={150} />
           </div>

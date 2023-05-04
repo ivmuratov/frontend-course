@@ -43,7 +43,7 @@ const options: ComponentRenderOptions = {
 
 describe('EditableProfileCard', () => {
   it('edit button click -> toggle readonly', async () => {
-    componentRender(<EditableProfileCard id="1" />, options);
+    componentRender(<EditableProfileCard id='1' />, options);
 
     await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
@@ -51,7 +51,7 @@ describe('EditableProfileCard', () => {
   });
 
   it('cancel button -> cancel edit form', async () => {
-    componentRender(<EditableProfileCard id="1" />, options);
+    componentRender(<EditableProfileCard id='1' />, options);
 
     await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
@@ -72,7 +72,7 @@ describe('EditableProfileCard', () => {
 
   it('data send on server', async () => {
     const mockPutReq = jest.spyOn($api, 'put');
-    componentRender(<EditableProfileCard id="1" />, options);
+    componentRender(<EditableProfileCard id='1' />, options);
 
     await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 
@@ -84,7 +84,7 @@ describe('EditableProfileCard', () => {
   });
 
   it('error', async () => {
-    componentRender(<EditableProfileCard id="1" />, options);
+    componentRender(<EditableProfileCard id='1' />, options);
 
     await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
 

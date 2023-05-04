@@ -1,9 +1,4 @@
-import {
-  DetailedHTMLProps,
-  FC,
-  HTMLAttributes,
-  ReactNode,
-} from 'react';
+import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './Flex.module.scss';
 

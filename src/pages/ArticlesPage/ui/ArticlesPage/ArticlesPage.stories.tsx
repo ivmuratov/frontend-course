@@ -10,9 +10,7 @@ const article: Omit<Article, 'id'> = {
   img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
   views: 1022,
   createdAt: '26.02.2022',
-  type: [
-    ArticleType.IT,
-  ],
+  type: [ArticleType.IT],
   blocks: [
     {
       id: '1',
@@ -97,12 +95,14 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  decorators: [StoreDecorator({
-    articlesPage: articlesPageData,
-  })],
+  decorators: [
+    StoreDecorator({
+      articlesPage: articlesPageData,
+    }),
+  ],
 } as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
+const Template: ComponentStory<typeof ArticlesPage> = args => <ArticlesPage {...args} />;
 
 export const Normal = Template.bind({});
 

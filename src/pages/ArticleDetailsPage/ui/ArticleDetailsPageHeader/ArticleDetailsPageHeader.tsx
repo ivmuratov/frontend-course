@@ -35,24 +35,14 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
   const mods: Mods = {};
 
   return (
-    <HStack
-      className={classNames('', mods, [className])}
-      justify="between"
-      max
-    >
-      <Button
-        theme={ButtonTheme.OUTLINE}
-        onClick={onBackToList}
-      >
+    <HStack className={classNames('', mods, [className])} justify='between' max>
+      <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
         {t('back to list')}
       </Button>
       {canEdit && (
-      <Button
-        theme={ButtonTheme.OUTLINE}
-        onClick={onEditArticle}
-      >
-        {t('edit')}
-      </Button>
+        <Button theme={ButtonTheme.OUTLINE} onClick={onEditArticle}>
+          {t('edit')}
+        </Button>
       )}
     </HStack>
   );

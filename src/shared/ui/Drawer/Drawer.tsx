@@ -1,7 +1,4 @@
-import {
-  FC,
-  memo, ReactNode, useCallback, useEffect,
-} from 'react';
+import { FC, memo, ReactNode, useCallback, useEffect } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import { Portal } from '../Portal';
@@ -19,13 +16,7 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-const DrawerContent = memo(({
-  className,
-  isOpen,
-  lazy,
-  onClose,
-  children,
-}: DrawerProps) => {
+const DrawerContent = memo(({ className, isOpen, lazy, onClose, children }: DrawerProps) => {
   const { theme } = useTheme();
 
   const { Spring, Gesture } = useAnimationLibs();
@@ -46,13 +37,7 @@ const DrawerContent = memo(({
   };
 
   const bind = Gesture.useDrag(
-    ({
-      last,
-      velocity: [, vy],
-      direction: [, dy],
-      movement: [, my],
-      cancel,
-    }) => {
+    ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
       if (my < -70) cancel();
 
       if (last) {
@@ -66,7 +51,10 @@ const DrawerContent = memo(({
       }
     },
     {
-      from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
+      from: () => [0, y.get()],
+      filterTaps: true,
+      bounds: { top: 0 },
+      rubberband: true,
     },
   );
 
@@ -76,7 +64,7 @@ const DrawerContent = memo(({
     }
   }, [api, isOpen, openDrawer]);
 
-  const display = y.to((py) => (py < height ? 'block' : 'none'));
+  const display = y.to(py => (py < height ? 'block' : 'none'));
 
   if (!isOpen) {
     return null;
@@ -86,11 +74,7 @@ const DrawerContent = memo(({
     <Portal>
       <div className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}>
         <Overlay onClick={close} />
-        <Spring.a.div
-          className={cls.sheet}
-          style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
-          {...bind()}
-        >
+        <Spring.a.div className={cls.sheet} style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }} {...bind()}>
           {children}
         </Spring.a.div>
       </div>
@@ -98,7 +82,7 @@ const DrawerContent = memo(({
   );
 });
 
-const DrawerAsync: FC<DrawerProps> = (props) => {
+const DrawerAsync: FC<DrawerProps> = props => {
   const { isLoaded } = useAnimationLibs();
 
   if (!isLoaded) {
@@ -108,7 +92,7 @@ const DrawerAsync: FC<DrawerProps> = (props) => {
   return <DrawerContent {...props} />;
 };
 
-export const Drawer: FC<DrawerProps> = (props) => (
+export const Drawer: FC<DrawerProps> = props => (
   <AnimationProvider>
     <DrawerAsync {...props} />
   </AnimationProvider>

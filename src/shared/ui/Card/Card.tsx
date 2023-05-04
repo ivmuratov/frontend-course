@@ -14,13 +14,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   max?: boolean;
 }
 
-export const Card = memo(({
-  className,
-  children,
-  theme = CardTheme.NORMAL,
-  max = false,
-  ...props
-}: CardProps) => {
+export const Card = memo(({ className, children, theme = CardTheme.NORMAL, max = false, ...props }: CardProps) => {
   const mods: Mods = {
     [cls.max]: max,
   };

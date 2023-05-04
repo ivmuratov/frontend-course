@@ -10,29 +10,18 @@ interface NotificationItemProps {
   item: Notification;
 }
 
-export const NotificationItem = memo(({
-  className,
-  item,
-}: NotificationItemProps) => {
+export const NotificationItem = memo(({ className, item }: NotificationItemProps) => {
   const mods: Mods = {};
 
   const content: JSX.Element = (
-    <Card
-      className={classNames(cls.NotificationItem, mods, [className])}
-      theme={CardTheme.OUTLINED}
-    >
+    <Card className={classNames(cls.NotificationItem, mods, [className])} theme={CardTheme.OUTLINED}>
       <Text title={item.title} text={item.description} />
     </Card>
   );
 
   if (item.href) {
     return (
-      <a
-        className={cls.link}
-        href={item.href}
-        rel="noreferrer"
-        target="_blank"
-      >
+      <a className={cls.link} href={item.href} rel='noreferrer' target='_blank'>
         {content}
       </a>
     );

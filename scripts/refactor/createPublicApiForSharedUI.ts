@@ -3,7 +3,7 @@ import { Project } from 'ts-morph';
 
 function isAbsolute(value: string) {
   const layers = ['app', 'shared', 'entities', 'features', 'widgets', 'pages'];
-  return layers.some((layer) => value.startsWith(layer));
+  return layers.some(layer => value.startsWith(layer));
 }
 
 const project = new Project({});
@@ -16,7 +16,7 @@ const UIPath = path.resolve(__dirname, '..', '..', 'src', 'shared', 'ui');
 const sharedUIDirectory = project.getDirectory(UIPath);
 const componentsDirs = sharedUIDirectory?.getDirectories();
 
-componentsDirs?.forEach((directory) => {
+componentsDirs?.forEach(directory => {
   const indexFilePath = `${directory.getPath()}/index.ts`;
   const indexFile = directory.getSourceFile(indexFilePath);
 
@@ -28,9 +28,9 @@ componentsDirs?.forEach((directory) => {
   }
 });
 
-files.forEach((sourceFile) => {
+files.forEach(sourceFile => {
   const importDeclarations = sourceFile.getImportDeclarations();
-  importDeclarations.forEach((importDeclaration) => {
+  importDeclarations.forEach(importDeclaration => {
     const value = importDeclaration.getModuleSpecifierValue();
     const valueWithoutAlias = value.replace('@/', '');
     const segments = valueWithoutAlias.split('/');

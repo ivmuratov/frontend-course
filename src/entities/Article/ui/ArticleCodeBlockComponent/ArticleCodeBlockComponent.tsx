@@ -9,9 +9,7 @@ interface ArticleCodeBlockComponentProps {
   block: ArticleCodeBlock;
 }
 
-export const ArticleCodeBlockComponent = memo((
-  { className, block }: ArticleCodeBlockComponentProps,
-) => {
+export const ArticleCodeBlockComponent = memo(({ className, block }: ArticleCodeBlockComponentProps) => {
   const mods: Mods = {};
 
   return (

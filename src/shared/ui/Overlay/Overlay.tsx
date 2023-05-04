@@ -7,16 +7,8 @@ interface OverlayProps {
   onClick?: () => void;
 }
 
-export const Overlay = memo(({
-  className,
-  onClick,
-}: OverlayProps) => {
+export const Overlay = memo(({ className, onClick }: OverlayProps) => {
   const mods: Mods = {};
 
-  return (
-    <div
-      className={classNames(cls.Overlay, mods, [className])}
-      onClick={onClick}
-    />
-  );
+  return <div className={classNames(cls.Overlay, mods, [className])} onClick={onClick} />;
 });

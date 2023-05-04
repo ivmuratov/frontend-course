@@ -26,15 +26,16 @@ export default {
   args: {
     id: '1',
   },
-  decorators: [StoreDecorator({
-    profile: {
-      form: profile,
-    },
-  })],
+  decorators: [
+    StoreDecorator({
+      profile: {
+        form: profile,
+      },
+    }),
+  ],
 } as ComponentMeta<typeof EditableProfileCard>;
 
-const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
+const Template: ComponentStory<typeof EditableProfileCard> = args => <EditableProfileCard {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {
-};
+Normal.args = {};

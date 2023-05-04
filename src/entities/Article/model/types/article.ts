@@ -34,7 +34,7 @@ export interface Article {
   views: number;
   createdAt: string;
   type: ArticleType[];
-  blocks: ArticleBlock[]
+  blocks: ArticleBlock[];
 }
 
 export interface ArticleDetailsSchema {

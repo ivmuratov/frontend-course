@@ -7,7 +7,7 @@ import { VStack } from '@/shared/ui/Stack';
 import { useArticleRecommendationsList } from '../../api/articleRecommendationsApi';
 
 interface ArticleRecommendationsListProps {
-    className?: string;
+  className?: string;
 }
 
 export const ArticleRecommendationsList = memo(({ className }: ArticleRecommendationsListProps) => {
@@ -20,19 +20,9 @@ export const ArticleRecommendationsList = memo(({ className }: ArticleRecommenda
   }
 
   return (
-    <VStack
-      data-testid="ArticleRecommendationsList"
-      className={classNames('', {}, [className])}
-      gap="8"
-    >
-      <Text
-        size={TextSize.L}
-        title={t('recommended')}
-      />
-      <ArticleList
-        articles={articles}
-        target="_blank"
-      />
+    <VStack data-testid='ArticleRecommendationsList' className={classNames('', {}, [className])} gap='8'>
+      <Text size={TextSize.L} title={t('recommended')} />
+      <ArticleList articles={articles} target='_blank' />
     </VStack>
   );
 });
