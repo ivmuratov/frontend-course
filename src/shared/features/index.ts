@@ -1,3 +1,4 @@
 import { setFeaturesFlags, getFeatureFlag } from './setGetFeatures';
+import { toggleFeatures } from './toggleFeatures';
 
-export { setFeaturesFlags, getFeatureFlag };
+export { setFeaturesFlags, getFeatureFlag, toggleFeatures };

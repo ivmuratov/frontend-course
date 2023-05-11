@@ -46,6 +46,7 @@
 		"./config/jest/setupTests.ts",
 		"./scripts/refactor/updateImport.ts",
 		"./scripts/refactor/createPublicApiForSharedUI.ts",
+		"./scripts/remove-feature.ts",
 		"src",
 		"config",
 		"cypress",
