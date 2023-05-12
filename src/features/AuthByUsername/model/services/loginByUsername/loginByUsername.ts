@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { User, userActions } from '@/entities/User';
-import { USER_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage';
 
 enum LoginErrors {
   INCORRECT_DATA,
@@ -22,7 +21,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
       if (!response.data) {
         throw new Error();
       } else {
-        localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(response.data));
         dispatch(userActions.setAuthData(response.data));
         return response.data;
       }

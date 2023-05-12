@@ -5,6 +5,7 @@ import { getUserRoles, isAdminRole, isManagerRole } from './model/selectors/role
 import { UserRole } from './model/consts/consts';
 import { useJsonSettings } from './model/selectors/jsonSettings';
 import { saveJsonSettings } from './model/services/saveJsonSettings';
+import { initAuthData } from './model/services/initAuthData';
 import type { User, UserSchema } from './model/types/user';
 
 export {
@@ -20,4 +21,5 @@ export {
   isManagerRole,
   useJsonSettings,
   saveJsonSettings,
+  initAuthData,
 };
