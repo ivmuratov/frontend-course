@@ -27,6 +27,7 @@
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
     "generate:slice": "node ./scripts/createSlice/index.js",
+    "remove:feature": "ts-node ./scripts/remove-feature.ts",
     "postinstall": "node ./scripts/clear-cache.js"
   },
   "lint-staged": {

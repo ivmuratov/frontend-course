@@ -12,7 +12,7 @@ import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsLis
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { toggleFeatures } from '@/shared/features';
+import { ToggleFeatures } from '@/shared/features';
 import { Card } from '@/shared/ui/Card';
 import cls from './ArticleDetailsPage.module.scss';
 
@@ -33,19 +33,17 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
     return null;
   }
 
-  const articleRating = toggleFeatures({
-    name: 'isArticleRatingEnabled',
-    on: () => <ArticleRating articleId={id} />,
-    off: () => <Card>{t('article rating coming soon')}</Card>,
-  });
-
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
         <VStack gap='16' max>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
-          {articleRating}
+          <ToggleFeatures
+            feature='isArticleRatingEnabled'
+            on={<ArticleRating articleId={id} />}
+            off={<Card>{t('article rating coming soon')}</Card>}
+          />
           <ArticleRecommendationsList />
           <ArticleDetailsComments id={id} />
         </VStack>
