@@ -31,7 +31,9 @@
     "postinstall": "node ./scripts/clear-cache.js"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": ["eslint"],
+    "**/*.{ts,tsx}": [
+      "eslint"
+    ],
     "**/*.scss": "stylelint"
   },
   "keywords": [],
@@ -110,6 +112,7 @@
     "style-loader": "3.3.1",
     "stylelint": "14.5.3",
     "stylelint-config-standard-scss": "3.0.0",
+    "svgo": "^3.0.2",
     "ts-loader": "9.2.6",
     "ts-morph": "18.0.0",
     "ts-node": "10.5.0",
