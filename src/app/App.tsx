@@ -8,6 +8,8 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { AppRouter } from './providers/router';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatures } from '@/shared/features';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 const App: FC = () => {
   const { theme } = useTheme();
@@ -25,15 +27,27 @@ const App: FC = () => {
   }
 
   return (
-    <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback=''>
-        <Navbar />
-        <div className='content-page'>
-          <Sidebar />
-          {inited && <AppRouter />}
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <div className={classNames('app_redesigned', {}, [theme])}>
+          <Suspense fallback=''>
+            <MainLayout header={<Navbar />} content={<AppRouter />} sidebar={<Sidebar />} toolbar={<div />} />
+          </Suspense>
         </div>
-      </Suspense>
-    </div>
+      }
+      off={
+        <div className={classNames('app', {}, [theme])}>
+          <Suspense fallback=''>
+            <Navbar />
+            <div className='content-page'>
+              <Sidebar />
+              <AppRouter />
+            </div>
+          </Suspense>
+        </div>
+      }
+    />
   );
 };
 

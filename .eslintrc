@@ -72,7 +72,8 @@
 					"as",
 					"border",
 					"align",
-					"feature"
+					"feature",
+					"title"
 				]
 			}
 		],
