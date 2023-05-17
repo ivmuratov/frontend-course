@@ -1,11 +1,17 @@
 import { memo, SVGProps, VFC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import ListIcon from '@/shared/assets/icons/list.svg';
-import TiledIcon from '@/shared/assets/icons/tiled.svg';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { ArticleView } from '@/entities/Article';
+import { ToggleFeatures, toggleFeatures } from '@/shared/features';
+import ListIconDeprecated from '@/shared/assets/icons/list.svg';
+import TiledIconDeprecated from '@/shared/assets/icons/tiled.svg';
+import ListIcon from '@/shared/assets/icons/redesigned/burger.svg';
+import TiledIcon from '@/shared/assets/icons/redesigned/tile.svg';
 import cls from './ArticleViewSelector.module.scss';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ViewType {
   view: ArticleView;
@@ -15,11 +21,19 @@ interface ViewType {
 const viewTypes: ViewType[] = [
   {
     view: ArticleView.SMALL,
-    icon: TiledIcon,
+    icon: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => TiledIcon,
+      off: () => TiledIconDeprecated,
+    }),
   },
   {
     view: ArticleView.BIG,
-    icon: ListIcon,
+    icon: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => ListIcon,
+      off: () => ListIconDeprecated,
+    }),
   },
 ];
 
@@ -35,12 +49,36 @@ export const ArticleViewSelector = memo(({ className, view, onViewClick }: Artic
   };
 
   return (
-    <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
-      {viewTypes.map(value => (
-        <Button key={value.view} onClick={onClick(value.view)} theme={ButtonTheme.CLEAR}>
-          <Icon className={classNames('', { [cls.notSelected]: value.view !== view })} Svg={value.icon} height={24} width={24} />
-        </Button>
-      ))}
-    </div>
+    <ToggleFeatures
+      feature='isArticleRatingEnabled'
+      on={
+        <Card className={classNames(cls.ArticleViewSelectorRedesigned, {}, [className])} border='round'>
+          <HStack gap='8'>
+            {viewTypes.map(value => (
+              <Icon
+                className={classNames('', { [cls.notSelected]: value.view !== view })}
+                Svg={value.icon}
+                clickable
+                onClick={onClick(value.view)}
+              />
+            ))}
+          </HStack>
+        </Card>
+      }
+      off={
+        <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
+          {viewTypes.map(value => (
+            <ButtonDeprecated key={value.view} onClick={onClick(value.view)} theme={ButtonTheme.CLEAR}>
+              <IconDeprecated
+                className={classNames('', { [cls.notSelected]: value.view !== view })}
+                Svg={value.icon}
+                height={24}
+                width={24}
+              />
+            </ButtonDeprecated>
+          ))}
+        </div>
+      }
+    />
   );
 });

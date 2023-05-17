@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getScrollByPath, scrollSaveActions } from '@/features/ScrollSave';
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
@@ -20,8 +20,6 @@ interface PageProps extends TestProps {
 export const PAGE_ID = 'PAGE_ID';
 
 export const Page = memo(({ className, children, onScrollEnd, ...props }: PageProps) => {
-  const mods: Mods = {};
-
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -34,7 +32,11 @@ export const Page = memo(({ className, children, onScrollEnd, ...props }: PagePr
 
   useInfiniteScroll({
     triggerRef,
-    wrapperRef,
+    wrapperRef: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => undefined,
+      off: () => wrapperRef,
+    }),
     callback: onScrollEnd,
   });
 
@@ -61,7 +63,7 @@ export const Page = memo(({ className, children, onScrollEnd, ...props }: PagePr
           on: () => cls.PageRedesigned,
           off: () => cls.Page,
         }),
-        mods,
+        {},
         [className],
       )}
       data-testid={props['data-testid'] ?? 'Page'}
