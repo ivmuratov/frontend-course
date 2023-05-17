@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { HStack } from '../../deprecated/Stack';
+import { HStack } from '../../redesigned/Stack';
 import AppLogoIcon from '@/shared/assets/icons/app-image.svg';
 import cls from './AppLogo.module.scss';
 

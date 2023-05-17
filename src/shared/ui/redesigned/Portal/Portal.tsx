@@ -6,8 +6,4 @@ interface PortalProps {
   children: ReactNode;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 export const Portal: FC<PortalProps> = ({ children, element = document.body }) => createPortal(children, element);
