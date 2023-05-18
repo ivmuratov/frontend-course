@@ -14,6 +14,8 @@ interface ButtonProps {
   size?: ButtonSize;
   disabled?: boolean;
   fullWidth?: boolean;
+  addonLeft?: ReactNode;
+  addonRight?: ReactNode;
 }
 
 export const Button = memo(
@@ -25,12 +27,15 @@ export const Button = memo(
     size = 'm',
     disabled,
     fullWidth,
+    addonLeft,
+    addonRight,
     ...props
   }: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) => {
     const mods: Mods = {
       [cls.square]: square,
       [cls.disabled]: disabled,
       [cls.fullWidth]: fullWidth,
+      [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
     };
 
     return (
@@ -40,7 +45,9 @@ export const Button = memo(
         disabled={disabled}
         {...props}
       >
+        <div className={cls.addonLeft}>{addonLeft}</div>
         {children}
+        <div className={cls.addonRight}>{addonRight}</div>
       </button>
     );
   },

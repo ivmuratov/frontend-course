@@ -5,6 +5,8 @@ import { DropdownDirection } from '@/shared/types/ui';
 import { HStack } from '../../../../redesigned/Stack';
 import { Button } from '../../../Button/Button';
 import { mapDirectionClass } from '../../styles/consts';
+import { Icon } from '../../../Icon';
+import ArrowIcon from '@/shared/assets/icons/redesigned/arrow-bottom.svg';
 import popupCls from '../../styles/popup.module.scss';
 import cls from './ListBox.module.scss';
 
@@ -43,7 +45,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
         onChange={onChange}
       >
         <HListBox.Button disabled={readonly} className={cls.trigger}>
-          <Button variant='filled' disabled={readonly}>
+          <Button variant='filled' disabled={readonly} addonRight={<Icon Svg={ArrowIcon} />}>
             {selectedItem?.content ?? defaultValue}
           </Button>
         </HListBox.Button>
