@@ -31,7 +31,13 @@ export const ArticlesFilters = memo(
     return (
       <Card className={classNames(cls.ArticlesFilters, {}, [className])} padding='24'>
         <VStack gap='32'>
-          <Input addonLeft={<Icon Svg={SearchIcon} />} onChange={onChangeSearch} value={search} placeholder={t('search')} />
+          <Input
+            addonLeft={<Icon Svg={SearchIcon} />}
+            onChange={onChangeSearch}
+            value={search}
+            placeholder={t('search')}
+            size='s'
+          />
           <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
           <ArticleSortSelector order={order} sort={sort} onChangeOrder={onChangeOrder} onChangeSort={onChangeSort} />
         </VStack>

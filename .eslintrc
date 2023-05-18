@@ -75,7 +75,8 @@
 					"feature",
 					"title",
 					"color",
-					"variant"
+					"variant",
+					"size"
 				]
 			}
 		],
