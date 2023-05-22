@@ -14,6 +14,12 @@ interface ArticleListItemSkeletonProps {
 }
 
 export const ArticleListItemSkeleton = memo(({ className, view }: ArticleListItemSkeletonProps) => {
+  const mainClass = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => cls.ArticleListItemRedesigned,
+    off: () => cls.ArticleListItem,
+  });
+
   const Skeleton = toggleFeatures({
     name: 'isAppRedesigned',
     on: () => SkeletonRedesigned,
@@ -28,17 +34,17 @@ export const ArticleListItemSkeleton = memo(({ className, view }: ArticleListIte
 
   if (view === ArticleView.BIG) {
     return (
-      <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-        <Card>
+      <div className={classNames(mainClass, {}, [className, cls[view]])}>
+        <Card className={cls.card}>
           <div className={cls.header}>
             <Skeleton border='50%' height={30} width={30} />
-            <Skeleton className={cls.username} height={16} width={150} />
-            <Skeleton className={cls.date} height={16} width={150} />
+            <Skeleton className={cls.username} width={150} height={16} />
+            <Skeleton className={cls.date} width={150} height={16} />
           </div>
           <Skeleton className={cls.title} width={250} height={24} />
           <Skeleton className={cls.img} height={200} />
           <div className={cls.footer}>
-            <Skeleton width={200} height={36} />
+            <Skeleton height={36} width={200} />
           </div>
         </Card>
       </div>
@@ -46,7 +52,7 @@ export const ArticleListItemSkeleton = memo(({ className, view }: ArticleListIte
   }
 
   return (
-    <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+    <div className={classNames(mainClass, {}, [className, cls[view]])}>
       <Card className={cls.card}>
         <div className={cls.imageWrapper}>
           <Skeleton className={cls.img} width={200} height={200} />

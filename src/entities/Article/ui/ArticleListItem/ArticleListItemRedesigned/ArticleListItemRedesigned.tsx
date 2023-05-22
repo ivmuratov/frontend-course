@@ -20,7 +20,12 @@ import cls from './ArticleListItemRedesigned.module.scss';
 export const ArticleListItemRedesigned = memo(({ className, article, view, target }: ArticleListItemProps) => {
   const { t } = useTranslation('article');
 
-  const types = <Text className={cls.types} text={article.type.join(', ')} />;
+  const userInfo = (
+    <>
+      <Avatar size={32} src={article.user.avatar} />
+      <Text bold text={article.user.username} />
+    </>
+  );
 
   const views = (
     <HStack gap='8'>
@@ -67,16 +72,18 @@ export const ArticleListItemRedesigned = memo(({ className, article, view, targe
       to={getRouteArticleDetails(article.id)}
       target={target}
     >
-      <Card className={cls.card}>
-        <div className={cls.imageWrapper}>
-          <AppImage className={cls.img} src={article.img} alt={article.title} fallback={<Skeleton width={200} height={200} />} />
-          <Text className={cls.date} text={article.createdAt} />
-        </div>
-        <div className={cls.infoWrapper}>
-          {types}
-          {views}
-        </div>
-        <Text className={cls.title} text={article.title} />
+      <Card className={cls.card} border='round'>
+        <AppImage className={cls.img} fallback={<Skeleton width={200} height={200} />} alt={article.title} src={article.img} />
+        <VStack className={cls.info} gap='4'>
+          <Text className={cls.title} title={article.title} />
+          <VStack className={cls.footer} gap='4' max>
+            <HStack justify='between' max>
+              <Text className={cls.date} text={article.createdAt} />
+              {views}
+            </HStack>
+            <HStack gap='4'>{userInfo}</HStack>
+          </VStack>
+        </VStack>
       </Card>
     </AppLink>
   );

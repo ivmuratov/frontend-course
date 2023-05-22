@@ -7,6 +7,8 @@ import { Article } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import cls from './ArticleList.module.scss';
+import { ToggleFeatures } from '@/shared/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 const getSkeletons = (view: ArticleView) =>
   new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -33,10 +35,26 @@ export const ArticleList = memo(({ className, articles, isLoading, view = Articl
   }
 
   return (
-    <div data-testid='ArticleList' className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-      {articles &&
-        articles.map(item => <ArticleListItem className={cls.card} key={item.id} article={item} view={view} target={target} />)}
-      {isLoading && getSkeletons(view)}
-    </div>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <HStack data-testid='ArticleList' className={classNames(cls.ArticleListRedesigned, {}, [])} wrap='wrap' gap='16'>
+          {articles &&
+            articles.map(item => (
+              <ArticleListItem className={cls.card} key={item.id} article={item} view={view} target={target} />
+            ))}
+          {isLoading && getSkeletons(view)}
+        </HStack>
+      }
+      off={
+        <div data-testid='ArticleList' className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+          {articles &&
+            articles.map(item => (
+              <ArticleListItem className={cls.card} key={item.id} article={item} view={view} target={target} />
+            ))}
+          {isLoading && getSkeletons(view)}
+        </div>
+      }
+    />
   );
 });
