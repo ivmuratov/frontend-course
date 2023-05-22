@@ -29,18 +29,27 @@ interface TextProps {
   variant?: TextVariant;
   align?: TextAlign;
   size?: TextSize;
-
+  bold?: boolean;
   'data-testid'?: string;
 }
 
 export const Text = memo(
-  ({ className, title, text, variant = 'primary', align = 'left', size = 'm', 'data-testid': dataTestId = '' }: TextProps) => {
+  ({
+    className,
+    title,
+    text,
+    variant = 'primary',
+    align = 'left',
+    size = 'm',
+    bold,
+    'data-testid': dataTestId = '',
+  }: TextProps) => {
     const HeaderTag = mapSizeToHeaderTag[size];
 
     const sizeClass = mapSizeToClass[size];
 
     return (
-      <div className={classNames(cls.Text, {}, [className, cls[variant], cls[align], sizeClass])}>
+      <div className={classNames(cls.Text, { [cls.bold]: bold }, [className, cls[variant], cls[align], sizeClass])}>
         {title && (
           <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
             {title}
