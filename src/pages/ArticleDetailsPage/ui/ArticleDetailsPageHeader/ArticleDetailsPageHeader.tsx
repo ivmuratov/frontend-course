@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getArticleDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
-import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { getCanEditArticle } from '../../model/selectors/article';
@@ -32,10 +32,8 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
     }
   }, [article, navigate]);
 
-  const mods: Mods = {};
-
   return (
-    <HStack className={classNames('', mods, [className])} justify='between' max>
+    <HStack className={classNames('', {}, [className])} justify='between' max>
       <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
         {t('back to list')}
       </Button>

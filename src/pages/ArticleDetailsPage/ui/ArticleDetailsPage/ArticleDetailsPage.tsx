@@ -14,6 +14,9 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetails
 import { ArticleRating } from '@/features/ArticleRating';
 import { ToggleFeatures } from '@/shared/features';
 import { Card } from '@/shared/ui/deprecated/Card';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { ArticleDetailsContainer } from '../ArticleDetailsContainer/ArticleDetailsContainer';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 import cls from './ArticleDetailsPage.module.scss';
 
 const reducers: ReducersList = {
@@ -35,25 +38,41 @@ const ArticleDetailsPage: FC<ArticlesDetailsPageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
-        <VStack gap='16' max>
-          <ArticleDetailsPageHeader />
-          <ArticleDetails id={id} />
-          <ToggleFeatures
-            feature='isArticleRatingEnabled'
-            on={<ArticleRating articleId={id} />}
-            off={<Card>{t('article rating coming soon')}</Card>}
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <StickyContentLayout
+            content={
+              <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+                <VStack gap='16' max>
+                  <ArticleDetailsContainer />
+                  <ArticleRating articleId={id} />
+                  <ArticleRecommendationsList />
+                  <ArticleDetailsComments id={id} />
+                </VStack>
+              </Page>
+            }
+            right={<AdditionalInfoContainer />}
           />
-          <ArticleRecommendationsList />
-          <ArticleDetailsComments id={id} />
-        </VStack>
-      </Page>
+        }
+        off={
+          <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+            <VStack gap='16' max>
+              <ArticleDetailsPageHeader />
+              <ArticleDetails id={id} />
+              <ToggleFeatures
+                feature='isArticleRatingEnabled'
+                on={<ArticleRating articleId={id} />}
+                off={<Card>{t('article rating coming soon')}</Card>}
+              />
+              <ArticleRecommendationsList />
+              <ArticleDetailsComments id={id} />
+            </VStack>
+          </Page>
+        }
+      />
     </DynamicModuleLoader>
   );
 };
-
-// некорректно работает HoC, сначала грузится thunk, потом инициализируется стейт.
-// в связи с этим теряется isLoading, и невозможно отобразить скелетоны
-// export default withDynamicModuleLoader(ArticleDetailsPage, reducers, true);
 
 export default memo(ArticleDetailsPage);

@@ -50,5 +50,8 @@
   "new": "New",
   "old": "Old",
   "interface option": "Interface option",
-  "settings": "Settings"
+  "settings": "Settings",
+  "{{count}} views_zero": "{{count}} views",
+  "{{count}} views_one": "{{count}} view",
+  "{{count}} views_other": "{{count}} views"
 }
