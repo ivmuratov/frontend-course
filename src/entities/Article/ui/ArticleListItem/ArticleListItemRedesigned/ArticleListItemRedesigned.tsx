@@ -22,7 +22,7 @@ export const ArticleListItemRedesigned = memo(({ className, article, view, targe
 
   const userInfo = (
     <>
-      <Avatar size={32} src={article.user.avatar} />
+      <Avatar className={cls.avatar} src={article.user.avatar} size={32} />
       <Text bold text={article.user.username} />
     </>
   );
@@ -72,8 +72,8 @@ export const ArticleListItemRedesigned = memo(({ className, article, view, targe
       to={getRouteArticleDetails(article.id)}
       target={target}
     >
-      <Card className={cls.card} border='round'>
-        <AppImage className={cls.img} fallback={<Skeleton width={200} height={200} />} alt={article.title} src={article.img} />
+      <Card className={cls.card} border='round' padding='0'>
+        <AppImage className={cls.img} fallback={<Skeleton width='100%' height={200} />} alt={article.title} src={article.img} />
         <VStack className={cls.info} gap='4'>
           <Text className={cls.title} title={article.title} />
           <VStack className={cls.footer} gap='4' max>

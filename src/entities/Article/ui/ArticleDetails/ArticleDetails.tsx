@@ -2,37 +2,24 @@ import { FC, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Text, TextAlign, TextSize } from '@/shared/ui/deprecated/Text';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import CalendarIcon from '@/shared/assets/icons/calendar.svg';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Text as TextDeprecated, TextAlign, TextSize } from '@/shared/ui/deprecated/Text';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ArticleBlockType } from '../../model/consts/consts';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError } from '../../model/selectors/articleDetails';
-import { ArticleBlock } from '../../model/types/article';
-import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ToggleFeatures } from '@/shared/features';
+import { AppImage } from '@/shared/ui/redesigned/AppImage';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { renderArticleBlock } from './renderArticleBlock';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import cls from './ArticleDetails.module.scss';
-
-const renderBlock = (block: ArticleBlock): JSX.Element | null => {
-  switch (block.type) {
-    case ArticleBlockType.CODE:
-      return <ArticleCodeBlockComponent key={block.id} className={cls.block} block={block} />;
-    case ArticleBlockType.IMAGE:
-      return <ArticleImageBlockComponent key={block.id} className={cls.block} block={block} />;
-    case ArticleBlockType.TEXT:
-      return <ArticleTextBlockComponent key={block.id} className={cls.block} block={block} />;
-    default:
-      return null;
-  }
-};
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
@@ -43,12 +30,47 @@ interface ArticleDetailsProps {
   id?: string;
 }
 
+const Deprecated = () => {
+  const article = useSelector(getArticleDetailsData);
+
+  return (
+    <>
+      <HStack className={cls.avatarWrapper} justify='center' max>
+        <AvatarDeprecated className={cls.avatar} size={200} src={article?.img} />
+      </HStack>
+      <VStack gap='4' max data-testid='ArticleDetails.Info'>
+        <TextDeprecated className={cls.title} title={article?.title} text={article?.subtitle} size={TextSize.L} />
+        <HStack gap='8' className={cls.articleInfo}>
+          <IconDeprecated className={cls.icon} Svg={EyeIcon} />
+          <TextDeprecated text={String(article?.views)} />
+        </HStack>
+        <HStack gap='8' className={cls.articleInfo}>
+          <IconDeprecated className={cls.icon} Svg={CalendarIcon} />
+          <TextDeprecated text={article?.createdAt} />
+        </HStack>
+      </VStack>
+      {article?.blocks.map(renderArticleBlock)}
+    </>
+  );
+};
+
+const Redesigned = () => {
+  const article = useSelector(getArticleDetailsData);
+
+  return (
+    <>
+      <Text title={article?.title} size='l' bold />
+      <Text title={article?.subtitle} />
+      <AppImage className={cls.img} src={article?.img} fallback={<Skeleton width='100%' height={420} border='16px' />} />
+      {article?.blocks.map(renderArticleBlock)}
+    </>
+  );
+};
+
 const ArticleDetails: FC<ArticleDetailsProps> = ({ className, id }) => {
   const { t } = useTranslation('article');
 
   const dispatch = useAppDispatch();
-
-  const data = useSelector(getArticleDetailsData);
 
   const isLoading = useSelector(getArticleDetailsIsLoading);
 
@@ -65,35 +87,17 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({ className, id }) => {
   if (isLoading) {
     content = (
       <>
-        <Skeleton className={cls.avatar} width={200} height={200} border='50%' />
-        <Skeleton className={cls.title} width={300} height={32} />
-        <Skeleton className={cls.skeleton} width={600} height={24} />
-        <Skeleton className={cls.skeleton} width='100%' height={200} />
-        <Skeleton className={cls.skeleton} width='100%' height={200} />
+        <SkeletonDeprecated className={cls.avatar} width={200} height={200} border='50%' />
+        <SkeletonDeprecated className={cls.title} width={300} height={32} />
+        <SkeletonDeprecated className={cls.skeleton} width={600} height={24} />
+        <SkeletonDeprecated className={cls.skeleton} width='100%' height={200} />
+        <SkeletonDeprecated className={cls.skeleton} width='100%' height={200} />
       </>
     );
   } else if (error) {
-    content = <Text align={TextAlign.CENTER} title={t('an error occurred while loading the article')} />;
+    content = <TextDeprecated align={TextAlign.CENTER} title={t('an error occurred while loading the article')} />;
   } else {
-    content = (
-      <>
-        <HStack justify='center' max>
-          <Avatar size={200} src={data?.img} className={cls.avatar} />
-        </HStack>
-        <VStack data-testid='ArticleDetails.Info' gap='4' max>
-          <Text className={cls.title} title={data?.title} text={data?.subtitle} size={TextSize.L} />
-          <HStack gap='8'>
-            <Icon Svg={EyeIcon} className={cls.icon} />
-            <Text text={`${data?.views}`} />
-          </HStack>
-          <HStack gap='8'>
-            <Icon Svg={CalendarIcon} className={cls.icon} />
-            <Text text={data?.createdAt} />
-          </HStack>
-        </VStack>
-        {data?.blocks.map(renderBlock)}
-      </>
-    );
+    content = <ToggleFeatures feature='isAppRedesigned' on={<Redesigned />} off={<Deprecated />} />;
   }
 
   return (
