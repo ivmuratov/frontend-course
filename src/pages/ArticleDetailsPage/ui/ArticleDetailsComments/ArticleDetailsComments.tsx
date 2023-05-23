@@ -11,8 +11,10 @@ import {
 } from '@/features/ArticleDetailsComments';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { TextSize, Text } from '@/shared/ui/deprecated/Text';
+import { TextSize, Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { ToggleFeatures } from '@/shared/features';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
@@ -43,7 +45,11 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
 
   return (
     <VStack className={classNames('', {}, [className])} gap='16' max>
-      <Text size={TextSize.L} title={t('comments')} />
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={<Text size='l' title={t('comments')} />}
+        off={<TextDeprecated size={TextSize.L} title={t('comments')} />}
+      />
       <AddCommentForm onSendComment={onSendComment} />
       <CommentList isLoading={commentsIsLoading} comments={comments} />
     </VStack>

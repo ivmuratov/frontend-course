@@ -1,15 +1,19 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Card } from '@/shared/ui/deprecated/Card';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
 import { Modal } from '@/shared/ui/redesigned/Modal';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
+import { Button as ButtonDeprecated, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Drawer } from '@/shared/ui/redesigned/Drawer';
+import { ToggleFeatures } from '@/shared/features';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface RatingCardProps {
   className?: string;
@@ -54,44 +58,105 @@ export const RatingCard = memo(
     }, [onCancel, starsCount]);
 
     const modalContent: JSX.Element = (
-      <>
-        <Text title={feedbackTitle} />
-        <Input data-testid='RatingCard.Input' value={feedback} placeholder={t('your feedback')} onChange={setFeedback} />
-      </>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <>
+            <Text title={feedbackTitle} />
+            <Input data-testid='RatingCard.Input' value={feedback} placeholder={t('your feedback')} onChange={setFeedback} />
+          </>
+        }
+        off={
+          <>
+            <TextDeprecated title={feedbackTitle} />
+            <InputDeprecated
+              data-testid='RatingCard.Input'
+              value={feedback}
+              placeholder={t('your feedback')}
+              onChange={setFeedback}
+            />
+          </>
+        }
+      />
     );
 
-    return (
-      <Card data-testid='RatingCard' className={classNames('', {}, [className])} max>
+    const content = (
+      <>
         <VStack align='center' gap='8' max>
-          <Text title={starsCount ? t('thank you for rating') : title} />
+          <ToggleFeatures
+            feature='isAppRedesigned'
+            on={<Text title={starsCount ? t('thank you for rating') : title} />}
+            off={<TextDeprecated title={starsCount ? t('thank you for rating') : title} />}
+          />
           <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
         </VStack>
         <BrowserView>
           <Modal isOpen={isModalOpen} lazy>
-            <VStack gap='32' max>
+            <VStack max gap='32'>
               {modalContent}
-              <HStack gap='16' justify='end' max>
-                <Button data-testid='RatingCard.Close' theme={ButtonTheme.OUTLINE_RED} onClick={cancelHandler}>
-                  {t('close')}
-                </Button>
-                <Button data-testid='RatingCard.Send' onClick={acceptHandler}>
-                  {t('send')}
-                </Button>
-              </HStack>
+              <ToggleFeatures
+                feature='isAppRedesigned'
+                on={
+                  <HStack max gap='16' justify='end'>
+                    <Button data-testid='RatingCard.Close' onClick={cancelHandler}>
+                      {t('close')}
+                    </Button>
+                    <Button data-testid='RatingCard.Send' onClick={acceptHandler}>
+                      {t('send')}
+                    </Button>
+                  </HStack>
+                }
+                off={
+                  <HStack max gap='16' justify='end'>
+                    <ButtonDeprecated data-testid='RatingCard.Close' onClick={cancelHandler} theme={ButtonTheme.OUTLINE_RED}>
+                      {t('close')}
+                    </ButtonDeprecated>
+                    <ButtonDeprecated data-testid='RatingCard.Send' onClick={acceptHandler}>
+                      {t('send')}
+                    </ButtonDeprecated>
+                  </HStack>
+                }
+              />
             </VStack>
           </Modal>
         </BrowserView>
         <MobileView>
-          <Drawer isOpen={isModalOpen} onClose={cancelHandler} lazy>
+          <Drawer isOpen={isModalOpen} lazy onClose={cancelHandler}>
             <VStack gap='32'>
               {modalContent}
-              <Button size={ButtonSize.L} fullWidth onClick={acceptHandler}>
-                {t('send')}
-              </Button>
+              <ToggleFeatures
+                feature='isAppRedesigned'
+                on={
+                  <Button fullWidth onClick={acceptHandler} size='l'>
+                    {t('send')}
+                  </Button>
+                }
+                off={
+                  <ButtonDeprecated fullWidth onClick={acceptHandler} size={ButtonSize.L}>
+                    {t('send')}
+                  </ButtonDeprecated>
+                }
+              />
             </VStack>
           </Drawer>
         </MobileView>
-      </Card>
+      </>
+    );
+
+    return (
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <Card max border='round' padding='24'>
+            {content}
+          </Card>
+        }
+        off={
+          <CardDeprecated data-testid='RatingCard' className={className} max>
+            {content}
+          </CardDeprecated>
+        }
+      />
     );
   },
 );
