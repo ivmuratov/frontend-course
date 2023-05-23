@@ -5,7 +5,7 @@ import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popups';
 import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { NotificationList } from '@/entities/Notification';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer';
 import { ToggleFeatures } from '@/shared/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import NotificationIconDeprecated from '@/shared/assets/icons/notification.svg';

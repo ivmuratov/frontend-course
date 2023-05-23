@@ -1,6 +1,6 @@
 import { FeatureFlags } from '../../../types/featureFlags';
 
-let featureFlags: FeatureFlags;
+let featureFlags: FeatureFlags = {};
 
 export const setFeaturesFlags = (newFeatureFlags?: FeatureFlags) => {
   if (newFeatureFlags) {
@@ -8,6 +8,6 @@ export const setFeaturesFlags = (newFeatureFlags?: FeatureFlags) => {
   }
 };
 
-export const getFeatureFlag = (flag: keyof FeatureFlags) => (featureFlags ? featureFlags[flag] : false);
+export const getFeatureFlag = (flag: keyof FeatureFlags) => featureFlags[flag] ?? false;
 
 export const getAllFeatureFlags = () => featureFlags;
