@@ -18,11 +18,12 @@ import { ToggleFeatures } from '@/shared/features';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { Button } from '@/shared/ui/redesigned/Button';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
   className?: string;
-  onSuccess?: () => void;
+  onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -42,6 +43,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
   const error = useSelector(getLoginError);
 
+  const forceUpdate = useForceUpdate();
+
   const onChangeUsername = useCallback(
     (value: string) => {
       dispatch(loginActions.setUsername(value));
@@ -59,9 +62,10 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const onLoginClick = useCallback(async () => {
     const result = await dispatch(loginByUsername({ username, password }));
     if (result.meta.requestStatus === 'fulfilled') {
-      onSuccess?.();
+      onSuccess();
+      forceUpdate();
     }
-  }, [dispatch, onSuccess, password, username]);
+  }, [dispatch, forceUpdate, onSuccess, password, username]);
 
   return (
     <ToggleFeatures
