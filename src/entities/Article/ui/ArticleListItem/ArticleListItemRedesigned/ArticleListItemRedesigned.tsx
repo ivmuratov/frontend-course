@@ -42,6 +42,7 @@ export const ArticleListItemRedesigned = memo(({ className, article, view, targe
         data-testid='ArticleListItem'
         className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
         padding='24'
+        border='partial'
         max
       >
         <VStack gap='16' max>
@@ -72,7 +73,7 @@ export const ArticleListItemRedesigned = memo(({ className, article, view, targe
       to={getRouteArticleDetails(article.id)}
       target={target}
     >
-      <Card className={cls.card} border='round' padding='0'>
+      <Card className={cls.card} border='partial' padding='0'>
         <AppImage className={cls.img} fallback={<Skeleton width='100%' height={200} />} alt={article.title} src={article.img} />
         <VStack className={cls.info} gap='4'>
           <Text className={cls.title} title={article.title} />

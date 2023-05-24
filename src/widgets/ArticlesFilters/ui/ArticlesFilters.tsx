@@ -9,8 +9,8 @@ import { ArticleSortField, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/sort';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import SearchIcon from '@/shared/assets/icons/redesigned/search.svg';
-import cls from './ArticlesFilters.module.scss';
 import { Icon } from '@/shared/ui/redesigned/Icon';
+import cls from './ArticlesFilters.module.scss';
 
 interface ArticlesFiltersProps {
   className?: string;
@@ -29,7 +29,7 @@ export const ArticlesFilters = memo(
     const { t } = useTranslation();
 
     return (
-      <Card className={classNames(cls.ArticlesFilters, {}, [className])} padding='24'>
+      <Card className={classNames(cls.ArticlesFilters, {}, [className])} border='partial' padding='24'>
         <VStack gap='32'>
           <Input
             addonLeft={<Icon Svg={SearchIcon} />}

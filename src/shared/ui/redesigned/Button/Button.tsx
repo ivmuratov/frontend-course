@@ -4,6 +4,8 @@ import cls from './Button.module.scss';
 
 export type ButtonTheme = 'clear' | 'outline' | 'filled';
 
+export type ButtonColor = 'normal' | 'success' | 'error';
+
 export type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps {
@@ -14,6 +16,7 @@ interface ButtonProps {
   size?: ButtonSize;
   disabled?: boolean;
   fullWidth?: boolean;
+  color?: ButtonColor;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
 }
@@ -27,6 +30,7 @@ export const Button = memo(
     size = 'm',
     disabled,
     fullWidth,
+    color = 'normal',
     addonLeft,
     addonRight,
     ...props
@@ -41,7 +45,7 @@ export const Button = memo(
     return (
       <button
         type='button'
-        className={classNames(cls.Button, mods, [className, cls[variant], cls[size]])}
+        className={classNames(cls.Button, mods, [className, cls[variant], cls[size], cls[color]])}
         disabled={disabled}
         {...props}
       >

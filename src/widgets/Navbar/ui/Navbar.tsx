@@ -6,13 +6,14 @@ import { LoginModal } from '@/features/AuthByUsername';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
-import { ToggleFeatures } from '@/shared/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/features';
+import { Button } from '@/shared/ui/redesigned/Button';
 
 interface NavbarProps {
   className?: string;
@@ -33,12 +34,18 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     setIsAuthModal(false);
   }, []);
 
+  const mainClass = toggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => cls.NavbarRedesigned,
+    off: () => cls.Navbar,
+  });
+
   if (authData) {
     return (
       <ToggleFeatures
         feature='isAppRedesigned'
         on={
-          <header className={classNames(cls.NavbarRedesigned, {}, [className])}>
+          <header className={classNames(mainClass, {}, [className])}>
             <HStack className={cls.actions} gap='16'>
               <NotificationButton />
               <AvatarDropdown />
@@ -46,7 +53,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           </header>
         }
         off={
-          <header className={classNames(cls.Navbar, {}, [className])}>
+          <header className={classNames(mainClass, {}, [className])}>
             <Text className={cls.appName} theme={TextTheme.INVERTED} title='Ulbi TV' />
             <AppLink className={cls.createBtn} theme={AppLinkTheme.SECONDARY} to={getRouteArticleCreate()}>
               {t('create article')}
@@ -62,16 +69,20 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   }
 
   return (
-    <header className={classNames(cls.Navbar, {}, [className])}>
-      <Text
-        className={cls.appName}
-        theme={TextTheme.INVERTED}
-        // eslint-disable-next-line i18next/no-literal-string
-        title='Ulbi TV'
+    <header className={classNames(mainClass, {}, [className])}>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <Button className={cls.links} variant='clear' onClick={onOpenModal}>
+            {t('enter')}
+          </Button>
+        }
+        off={
+          <ButtonDeprecated className={cls.links} theme={ButtonTheme.CLEAR_INVERTED} onClick={onOpenModal}>
+            {t('enter')}
+          </ButtonDeprecated>
+        }
       />
-      <Button className={cls.links} theme={ButtonTheme.CLEAR_INVERTED} onClick={onOpenModal}>
-        {t('enter')}
-      </Button>
       {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
     </header>
   );
