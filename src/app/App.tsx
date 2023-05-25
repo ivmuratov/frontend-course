@@ -11,6 +11,7 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { useAppToolbar } from './lib/hooks/useAppToolbar/useAppToolbar';
 
 const App: FC = () => {
   const { theme } = useTheme();
@@ -18,6 +19,8 @@ const App: FC = () => {
   const dispatch = useAppDispatch();
 
   const inited = useSelector(getUserInited);
+
+  const toolbar = useAppToolbar();
 
   useEffect(() => {
     if (!inited) {
@@ -45,7 +48,7 @@ const App: FC = () => {
       on={
         <div id='app' className={classNames('app_redesigned', {}, [theme])}>
           <Suspense fallback=''>
-            <MainLayout header={<Navbar />} content={<AppRouter />} sidebar={<Sidebar />} toolbar={<div />} />
+            <MainLayout header={<Navbar />} content={<AppRouter />} sidebar={<Sidebar />} toolbar={toolbar} />
           </Suspense>
         </div>
       }
