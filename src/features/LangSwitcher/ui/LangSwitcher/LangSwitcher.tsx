@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button as ButtonDeprecated, ButtonTheme } from '../../../shared/ui/deprecated/Button/Button';
+import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button/Button';
 import { ToggleFeatures } from '@/shared/features';
 import { Button } from '@/shared/ui/redesigned/Button';
 

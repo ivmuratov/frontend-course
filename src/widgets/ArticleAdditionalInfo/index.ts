@@ -1,3 +1,3 @@
-import { ArticleAdditionalInfo } from './ui/ArticleAdditionalInfo';
+import { ArticleAdditionalInfo } from './ui/ArticleAdditionalInfo/ArticleAdditionalInfo';
 
 export { ArticleAdditionalInfo };
