@@ -4,14 +4,14 @@ import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { ArticleView } from '@/entities/Article';
 import { ToggleFeatures, toggleFeatures } from '@/shared/features';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import ListIconDeprecated from '@/shared/assets/icons/list.svg';
 import TiledIconDeprecated from '@/shared/assets/icons/tiled.svg';
 import ListIcon from '@/shared/assets/icons/redesigned/burger.svg';
 import TiledIcon from '@/shared/assets/icons/redesigned/tile.svg';
 import cls from './ArticleViewSelector.module.scss';
-import { Icon } from '@/shared/ui/redesigned/Icon';
-import { Card } from '@/shared/ui/redesigned/Card';
-import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ViewType {
   view: ArticleView;
@@ -56,6 +56,7 @@ export const ArticleViewSelector = memo(({ className, view, onViewClick }: Artic
           <HStack gap='8'>
             {viewTypes.map(value => (
               <Icon
+                key={value.view}
                 className={classNames('', { [cls.notSelected]: value.view !== view })}
                 Svg={value.icon}
                 clickable
