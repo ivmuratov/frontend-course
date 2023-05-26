@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { CommentCard } from './CommentCard';
 import { Comment } from '../../model/types/comment';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const comment: Comment = {
   id: '1',
@@ -26,6 +27,9 @@ export default {
 const Template: ComponentStory<typeof CommentCard> = args => <CommentCard {...args} />;
 
 export const Normal = Template.bind({});
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
 
 export const Loading = Template.bind({});
 Loading.args = {

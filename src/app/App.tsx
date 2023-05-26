@@ -12,6 +12,7 @@ import { ToggleFeatures } from '@/shared/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { useAppToolbar } from './lib/hooks/useAppToolbar/useAppToolbar';
+import { withTheme } from './lib/hocs/withTheme/withTheme';
 
 const App: FC = () => {
   const { theme } = useTheme();
@@ -67,4 +68,4 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default withTheme(App);
