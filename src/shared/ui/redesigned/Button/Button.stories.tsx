@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from './Button';
 
 export default {
-  title: 'shared/Button',
+  title: 'shared/redesigned/Button',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },

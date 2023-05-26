@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Text } from './Text';
 
 export default {
-  title: 'shared/Text',
+  title: 'shared/redesigned/Text',
   component: Text,
   argTypes: {
     backgroundColor: { control: 'color' },

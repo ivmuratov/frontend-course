@@ -21,7 +21,7 @@ const options: SelectOption<string>[] = [
 ];
 
 export default {
-  title: 'shared/Select',
+  title: 'shared/deprecated/Select',
   component: Select,
   argTypes: {
     backgroundColor: { control: 'color' },

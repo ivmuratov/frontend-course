@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Skeleton } from './Skeleton';
 
 export default {
-  title: 'shared/Skeleton',
+  title: 'shared/redesigned/Skeleton',
   component: Skeleton,
   argTypes: {
     backgroundColor: { control: 'color' },

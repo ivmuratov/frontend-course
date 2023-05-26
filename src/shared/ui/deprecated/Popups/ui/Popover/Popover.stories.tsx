@@ -18,7 +18,7 @@ const panel: { id: string; content: string }[] = [
 ];
 
 export default {
-  title: 'shared/Popups/Popover',
+  title: 'shared/deprecated/Popups/Popover',
   component: Popover,
   argTypes: {
     backgroundColor: { control: 'color' },

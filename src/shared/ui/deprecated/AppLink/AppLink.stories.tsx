@@ -4,7 +4,7 @@ import { Theme } from '@/shared/const/theme';
 import ThemeDecorator from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/AppLink',
+  title: 'shared/deprecated/AppLink',
   component: AppLink,
   argTypes: {
     backgroundColor: { control: 'color' },

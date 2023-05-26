@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ViewSelectorContainer } from './ViewSelectorContainer';
 
 export default {
-  title: 'shared/ViewSelectorContainer',
+  title: 'pages/Article/ViewSelectorContainer',
   component: ViewSelectorContainer,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticlesFilters } from './ArticlesFilters';
 
 export default {
-  title: 'shared/ArticlesFilters',
+  title: 'widgets/Article/ArticlesFilters',
   component: ArticlesFilters,
   argTypes: {
     backgroundColor: { control: 'color' },
