@@ -35,3 +35,9 @@ export const Loading = Template.bind({});
 Loading.args = {
   isLoading: true,
 };
+
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.args = {
+  isLoading: true,
+};
+LoadingRedesigned.decorators = [RedesignDecorator];

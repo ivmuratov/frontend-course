@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { CountrySelect } from './CountrySelect';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'entities/CountrySelect',
@@ -13,4 +14,6 @@ export default {
 const Template: ComponentStory<typeof CountrySelect> = args => <CountrySelect {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];

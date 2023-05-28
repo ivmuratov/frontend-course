@@ -3,6 +3,7 @@ import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import ArticlesPage from './ArticlesPage';
 import { ArticlesPageSchema } from '../../model/types/articlesPageSchema';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const article: Omit<Article, 'id'> = {
   title: 'Javascript news',
@@ -106,6 +107,9 @@ const Template: ComponentStory<typeof ArticlesPage> = args => <ArticlesPage {...
 
 export const Normal = Template.bind({});
 
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
+
 export const Loading = Template.bind({});
 Loading.decorators = [
   StoreDecorator({
@@ -115,4 +119,16 @@ Loading.decorators = [
       isLoading: true,
     },
   }),
+];
+
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.decorators = [
+  StoreDecorator({
+    articlesPage: {
+      ids: [],
+      entities: {},
+      isLoading: true,
+    },
+  }),
+  RedesignDecorator,
 ];

@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from './Button';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/redesigned/Button',
@@ -8,69 +9,101 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  args: {
+    children: 'button',
+  },
+  decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
-export const Clear = Template.bind({});
-Clear.args = {
-  children: 'Text',
+export const NormalClear = Template.bind({});
+NormalClear.args = {
   variant: 'clear',
 };
 
-export const ClearSizeL = Template.bind({});
-ClearSizeL.args = {
-  children: 'Text',
+export const NormalClearSizeL = Template.bind({});
+NormalClearSizeL.args = {
   variant: 'clear',
   size: 'l',
 };
 
-export const ClearSizeXL = Template.bind({});
-ClearSizeXL.args = {
-  children: 'Text',
+export const NormalClearSizeXL = Template.bind({});
+NormalClearSizeXL.args = {
   variant: 'clear',
   size: 'xl',
 };
 
-export const Outline = Template.bind({});
-Outline.args = {
-  children: 'Text',
+export const NormalOutline = Template.bind({});
+NormalOutline.args = {
   variant: 'outline',
 };
 
-export const OutlineSizeL = Template.bind({});
-OutlineSizeL.args = {
-  children: 'Text',
+export const NormalOutlineSizeL = Template.bind({});
+NormalOutlineSizeL.args = {
   variant: 'outline',
   size: 'l',
 };
 
-export const OutlineSizeXL = Template.bind({});
-OutlineSizeXL.args = {
-  children: 'Text',
+export const NormalOutlineSizeXL = Template.bind({});
+NormalOutlineSizeXL.args = {
   variant: 'outline',
   size: 'xl',
 };
 
-export const OutlineSquare = Template.bind({});
-OutlineSquare.args = {
-  children: 'Text',
-  square: true,
+export const NormalFilled = Template.bind({});
+NormalFilled.args = {
+  variant: 'filled',
+};
+
+export const NormalFilledSizeL = Template.bind({});
+NormalFilledSizeL.args = {
+  variant: 'filled',
+  size: 'l',
+};
+
+export const NormalFilledSizeXL = Template.bind({});
+NormalFilledSizeXL.args = {
+  variant: 'filled',
+  size: 'xl',
+};
+
+export const SuccessOutline = Template.bind({});
+SuccessOutline.args = {
+  color: 'success',
   variant: 'outline',
 };
 
-export const OutlineSquareSizeL = Template.bind({});
-OutlineSquareSizeL.args = {
-  children: 'Text',
-  square: true,
+export const SuccessOutlineSizeL = Template.bind({});
+SuccessOutlineSizeL.args = {
+  color: 'success',
   variant: 'outline',
   size: 'l',
 };
 
-export const OutlineSquareSizeXL = Template.bind({});
-OutlineSquareSizeXL.args = {
-  children: 'Text',
-  square: true,
+export const SuccessOutlineSizeXL = Template.bind({});
+SuccessOutlineSizeXL.args = {
+  color: 'success',
+  variant: 'outline',
+  size: 'xl',
+};
+
+export const ErrorOutline = Template.bind({});
+ErrorOutline.args = {
+  color: 'error',
+  variant: 'outline',
+};
+
+export const ErrorOutlineSizeL = Template.bind({});
+ErrorOutlineSizeL.args = {
+  color: 'error',
+  variant: 'outline',
+  size: 'l',
+};
+
+export const ErrorOutlineSizeXL = Template.bind({});
+ErrorOutlineSizeXL.args = {
+  color: 'error',
   variant: 'outline',
   size: 'xl',
 };

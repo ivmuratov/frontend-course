@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleDetailsCommentsSchema } from '@/features/ArticleDetailsComments';
 import { ArticleDetailsComments } from './ArticleDetailsComments';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const comments: ArticleDetailsCommentsSchema = {
   ids: ['1', '2'],
@@ -46,6 +47,9 @@ export default {
 const Template: ComponentStory<typeof ArticleDetailsComments> = args => <ArticleDetailsComments {...args} />;
 
 export const Normal = Template.bind({});
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
 
 export const Loading = Template.bind({});
 Loading.decorators = [

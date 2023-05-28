@@ -3,6 +3,7 @@ import FlexContainerDecorator from '@/shared/config/storybook/FlexContainerDecor
 import { ArticleBlockType, ArticleType, ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 import { ArticleListItem } from './ArticleListItem';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const article: Article = {
   id: '1',
@@ -96,8 +97,20 @@ NormalBig.args = {
   view: ArticleView.BIG,
 };
 
+export const NormalBigRedesigned = Template.bind({});
+NormalBigRedesigned.args = {
+  view: ArticleView.BIG,
+};
+NormalBigRedesigned.decorators = [RedesignDecorator];
+
 export const NormalSmall = Template.bind({});
 NormalSmall.args = {
   view: ArticleView.SMALL,
 };
 NormalSmall.decorators = [FlexContainerDecorator];
+
+export const NormalSmallRedesigned = Template.bind({});
+NormalSmallRedesigned.args = {
+  view: ArticleView.SMALL,
+};
+NormalSmallRedesigned.decorators = [RedesignDecorator];

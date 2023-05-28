@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Avatar } from './Avatar';
 import avatar from '../../../assets/tests/avatar.png';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/redesigned/Avatar',
@@ -11,12 +12,13 @@ export default {
   args: {
     src: avatar,
   },
+  decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Avatar>;
 
 const Template: ComponentStory<typeof Avatar> = args => <Avatar {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Normal = Template.bind({});
+Normal.args = {
   size: 150,
 };
 

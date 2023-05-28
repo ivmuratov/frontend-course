@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Flex } from './Flex';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/redesigned/Flex',
@@ -18,6 +19,7 @@ export default {
       </>
     ),
   },
+  decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Flex>;
 
 const Template: ComponentStory<typeof Flex> = args => <Flex {...args} />;

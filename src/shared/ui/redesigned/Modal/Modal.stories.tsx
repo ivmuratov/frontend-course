@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Modal } from './Modal';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/redesigned/Modal',
@@ -15,8 +16,9 @@ export default {
         doloribus autem voluptatem beatae magnam
         minus magni distinctio cupiditate amet et eius quisquam possimus porro.`,
   },
+  decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Modal>;
 
 const Template: ComponentStory<typeof Modal> = args => <Modal {...args} />;
 
-export const Primary = Template.bind({});
+export const Normal = Template.bind({});

@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleBlockType, ArticleType, ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 import { ArticleList } from './ArticleList';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const article: Article = {
   id: '1',
@@ -98,10 +99,22 @@ NormalBig.args = {
   view: ArticleView.BIG,
 };
 
+export const NormalBigRedesigned = Template.bind({});
+NormalBigRedesigned.args = {
+  view: ArticleView.BIG,
+};
+NormalBigRedesigned.decorators = [RedesignDecorator];
+
 export const NormalSmall = Template.bind({});
 NormalSmall.args = {
   view: ArticleView.SMALL,
 };
+
+export const NormalSmallRedesigned = Template.bind({});
+NormalSmallRedesigned.args = {
+  view: ArticleView.SMALL,
+};
+NormalSmallRedesigned.decorators = [RedesignDecorator];
 
 export const LoadingBig = Template.bind({});
 LoadingBig.args = {
@@ -110,9 +123,25 @@ LoadingBig.args = {
   view: ArticleView.BIG,
 };
 
+export const LoadingBigRedesigned = Template.bind({});
+LoadingBigRedesigned.args = {
+  isLoading: true,
+  articles: undefined,
+  view: ArticleView.BIG,
+};
+LoadingBigRedesigned.decorators = [RedesignDecorator];
+
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
   isLoading: true,
   articles: undefined,
   view: ArticleView.SMALL,
 };
+
+export const LoadingSmallRedesigned = Template.bind({});
+LoadingSmallRedesigned.args = {
+  isLoading: true,
+  articles: undefined,
+  view: ArticleView.SMALL,
+};
+LoadingSmallRedesigned.decorators = [RedesignDecorator];

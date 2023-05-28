@@ -4,6 +4,7 @@ import { Currency } from '@/entities/Currency';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Profile } from '@/entities/Profile';
 import ProfilePage from './ProfilePage';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const profileData: Profile = {
   username: 'admin',
@@ -34,6 +35,9 @@ const Template: ComponentStory<typeof ProfilePage> = args => <ProfilePage {...ar
 
 export const Normal = Template.bind({});
 
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
+
 export const Loading = Template.bind({});
 Loading.decorators = [
   StoreDecorator({
@@ -43,6 +47,16 @@ Loading.decorators = [
   }),
 ];
 
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.decorators = [
+  StoreDecorator({
+    profile: {
+      isLoading: true,
+    },
+  }),
+  RedesignDecorator,
+];
+
 export const Error = Template.bind({});
 Error.decorators = [
   StoreDecorator({
@@ -50,4 +64,14 @@ Error.decorators = [
       error: 'error',
     },
   }),
+];
+
+export const ErrorRedesigned = Template.bind({});
+ErrorRedesigned.decorators = [
+  StoreDecorator({
+    profile: {
+      error: 'error',
+    },
+  }),
+  RedesignDecorator,
 ];

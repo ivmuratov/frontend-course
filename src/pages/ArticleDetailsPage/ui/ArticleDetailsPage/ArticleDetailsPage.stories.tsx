@@ -3,6 +3,7 @@ import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleDetailsCommentsSchema } from '@/features/ArticleDetailsComments';
 import ArticleDetailsPage from './ArticleDetailsPage';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const article: Article = {
   id: '1',
@@ -127,6 +128,9 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = args => <ArticleDeta
 
 export const Normal = Template.bind({});
 
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
+
 export const Loading = Template.bind({});
 Loading.decorators = [
   StoreDecorator({
@@ -140,4 +144,20 @@ Loading.decorators = [
       },
     },
   }),
+];
+
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      isLoading: true,
+    },
+    articleDetailsIndex: {
+      comments: {
+        ...comments,
+        isLoading: true,
+      },
+    },
+  }),
+  RedesignDecorator,
 ];

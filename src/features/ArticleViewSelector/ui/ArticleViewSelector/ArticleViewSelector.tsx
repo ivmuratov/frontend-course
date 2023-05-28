@@ -50,7 +50,7 @@ export const ArticleViewSelector = memo(({ className, view, onViewClick }: Artic
 
   return (
     <ToggleFeatures
-      feature='isArticleRatingEnabled'
+      feature='isAppRedesigned'
       on={
         <Card className={classNames(cls.ArticleViewSelectorRedesigned, {}, [className])} border='round'>
           <HStack gap='8'>

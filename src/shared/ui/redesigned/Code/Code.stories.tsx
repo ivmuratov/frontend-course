@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Code } from './Code';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/redesigned/Code',
@@ -19,9 +20,9 @@ export default {
 
 const Template: ComponentStory<typeof Code> = (args) => <Code {...args} />;`,
   },
+  decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Code>;
 
 const Template: ComponentStory<typeof Code> = args => <Code {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Normal = Template.bind({});

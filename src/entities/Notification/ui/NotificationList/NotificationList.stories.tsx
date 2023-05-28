@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Notification } from '../../model/types/notification';
 import { NotificationList } from './NotificationList';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const notification: Notification = {
   id: '1',
@@ -20,33 +21,44 @@ export default {
 
 const Template: ComponentStory<typeof NotificationList> = args => <NotificationList {...args} />;
 
+const mockData = {
+  url: `${__API__}/notifications`,
+  method: 'GET',
+  status: 200,
+  response: new Array(3).fill(0).map((_, index) => ({
+    ...notification,
+    id: `${index}`,
+  })),
+};
+
 export const Normal = Template.bind({});
 Normal.parameters = {
-  mockData: [
-    {
-      url: `${__API__}/notifications`,
-      method: 'GET',
-      status: 200,
-      response: new Array(3).fill(0).map((_, index) => ({
-        ...notification,
-        id: `${index}`,
-      })),
-    },
-  ],
+  mockData: [mockData],
 };
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.parameters = {
+  mockData: [mockData],
+};
+NormalRedesigned.decorators = [RedesignDecorator];
 
 export const NormalWithDelay = Template.bind({});
 NormalWithDelay.parameters = {
   mockData: [
     {
-      url: `${__API__}/notifications`,
-      method: 'GET',
-      status: 200,
+      ...mockData,
       delay: 10000,
-      response: new Array(3).fill(0).map((_, index) => ({
-        ...notification,
-        id: `${index}`,
-      })),
     },
   ],
 };
+
+export const NormalWithDelayRedesigned = Template.bind({});
+NormalWithDelayRedesigned.parameters = {
+  mockData: [
+    {
+      ...mockData,
+      delay: 10000,
+    },
+  ],
+};
+NormalWithDelayRedesigned.decorators = [RedesignDecorator];

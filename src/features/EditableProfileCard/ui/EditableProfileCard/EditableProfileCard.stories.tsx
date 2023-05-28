@@ -5,6 +5,7 @@ import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { Profile } from '@/entities/Profile';
 import { EditableProfileCard } from './EditableProfileCard';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const profile: Profile = {
   id: '1',
@@ -38,4 +39,6 @@ export default {
 const Template: ComponentStory<typeof EditableProfileCard> = args => <EditableProfileCard {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];

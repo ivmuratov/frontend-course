@@ -2,6 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Article } from '@/entities/Article';
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const article: Omit<Article, 'id'> = {
   user: { id: '1', username: '123' },
@@ -24,7 +25,7 @@ export default {
   parameters: {
     mockData: [
       {
-        url: `${__API__}/articles?_limit=3`,
+        url: `${__API__}/articles?_limit=3&_expand=user`,
         method: 'GET',
         status: 200,
         response: [
@@ -41,3 +42,6 @@ export default {
 const Template: ComponentStory<typeof ArticleRecommendationsList> = args => <ArticleRecommendationsList {...args} />;
 
 export const Normal = Template.bind({});
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];

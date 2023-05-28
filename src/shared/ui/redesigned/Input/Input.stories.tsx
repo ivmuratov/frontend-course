@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Input } from './Input';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/redesigned/Input',
@@ -8,12 +9,25 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  args: {
+    placeholder: 'input',
+  },
+  decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = args => <Input {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  placeholder: 'text',
-  value: '123123',
+export const NormalS = Template.bind({});
+NormalS.args = {
+  size: 's',
+};
+
+export const NormalM = Template.bind({});
+NormalM.args = {
+  size: 'm',
+};
+
+export const NormalL = Template.bind({});
+NormalL.args = {
+  size: 'l',
 };

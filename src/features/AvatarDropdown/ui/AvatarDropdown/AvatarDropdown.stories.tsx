@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { AvatarDropdown } from './AvatarDropdown';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { UserRole } from '@/entities/User';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'features/AvatarDropdown',
@@ -31,3 +32,6 @@ export default {
 const Template: ComponentStory<typeof AvatarDropdown> = args => <AvatarDropdown {...args} />;
 
 export const Normal = Template.bind({});
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];

@@ -3,6 +3,7 @@ import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { ProfileCard } from './ProfileCard';
 import { Profile } from '../../model/types/profile';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const profile: Profile = {
   username: 'admin',
@@ -31,12 +32,27 @@ const Template: ComponentStory<typeof ProfileCard> = args => <ProfileCard {...ar
 
 export const Normal = Template.bind({});
 
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
+
 export const Loading = Template.bind({});
 Loading.args = {
   isLoading: true,
 };
 
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.args = {
+  isLoading: true,
+};
+LoadingRedesigned.decorators = [RedesignDecorator];
+
 export const Error = Template.bind({});
 Error.args = {
   error: 'error',
 };
+
+export const ErrorRedesigned = Template.bind({});
+ErrorRedesigned.args = {
+  error: 'error',
+};
+ErrorRedesigned.decorators = [RedesignDecorator];

@@ -3,6 +3,7 @@ import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecora
 import ArticleDetails from './ArticleDetails';
 import { Article } from '../../model/types/article';
 import { ArticleBlockType, ArticleType } from '../../model/consts/consts';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 const article: Article = {
   id: '1',
@@ -100,6 +101,16 @@ Normal.decorators = [
   }),
 ];
 
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      data: article,
+    },
+  }),
+  RedesignDecorator,
+];
+
 export const Loading = Template.bind({});
 Loading.decorators = [
   StoreDecorator({
@@ -109,6 +120,16 @@ Loading.decorators = [
   }),
 ];
 
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      isLoading: true,
+    },
+  }),
+  RedesignDecorator,
+];
+
 export const Error = Template.bind({});
 Error.decorators = [
   StoreDecorator({
@@ -116,4 +137,14 @@ Error.decorators = [
       error: 'error',
     },
   }),
+];
+
+export const ErrorRedesigned = Template.bind({});
+ErrorRedesigned.decorators = [
+  StoreDecorator({
+    articleDetails: {
+      error: 'error',
+    },
+  }),
+  RedesignDecorator,
 ];
