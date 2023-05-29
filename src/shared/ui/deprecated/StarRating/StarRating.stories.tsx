@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { StarRating } from './StarRating';
+import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
   title: 'shared/deprecated/StarRating',
@@ -12,5 +13,7 @@ export default {
 
 const Template: ComponentStory<typeof StarRating> = args => <StarRating {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Normal = Template.bind({});
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.decorators = [RedesignDecorator];
