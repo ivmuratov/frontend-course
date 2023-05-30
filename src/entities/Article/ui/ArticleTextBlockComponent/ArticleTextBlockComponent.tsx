@@ -22,6 +22,7 @@ export const ArticleTextBlockComponent = memo(({ className, block }: ArticleText
     )}
     {block.paragraphs.map(paragraph => (
       <ToggleFeatures
+        key={paragraph}
         feature='isAppRedesigned'
         on={<Text key={paragraph} className={cls.paragraph} text={paragraph} />}
         off={<TextDeprecated key={paragraph} className={cls.paragraph} text={paragraph} />}
