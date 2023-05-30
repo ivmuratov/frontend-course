@@ -122,6 +122,11 @@ Loading.decorators = [
 ];
 
 export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.parameters = {
+  loki: {
+    skip: true,
+  },
+};
 LoadingRedesigned.decorators = [
   StoreDecorator({
     articlesPage: {

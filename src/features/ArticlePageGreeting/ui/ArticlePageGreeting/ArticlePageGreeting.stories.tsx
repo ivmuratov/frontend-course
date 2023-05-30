@@ -11,6 +11,11 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator({})],
+  parameters: {
+    loki: {
+      skip: true,
+    },
+  },
 } as ComponentMeta<typeof ArticlePageGreeting>;
 
 const Template: ComponentStory<typeof ArticlePageGreeting> = () => <ArticlePageGreeting />;
