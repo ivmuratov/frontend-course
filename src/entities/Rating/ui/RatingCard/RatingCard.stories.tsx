@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    title: 'Title',
+    title: 'Рейтинг',
   },
 } as ComponentMeta<typeof RatingCard>;
 
@@ -34,12 +34,12 @@ WithRateRedesigned.decorators = [RedesignDecorator];
 export const WithFeedback = Template.bind({});
 WithFeedback.args = {
   hasFeedback: true,
-  feedbackTitle: 'Feedback title',
+  feedbackTitle: 'Отзыв',
 };
 
 export const WithFeedbackRedesigned = Template.bind({});
 WithFeedbackRedesigned.args = {
   hasFeedback: true,
-  feedbackTitle: 'Feedback title',
+  feedbackTitle: 'Отзыв',
 };
 WithFeedbackRedesigned.decorators = [RedesignDecorator];

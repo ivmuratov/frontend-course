@@ -86,17 +86,17 @@ const comments: ArticleDetailsCommentsSchema = {
       id: '1',
       user: {
         id: '1',
-        username: 'admin',
+        username: 'Админ',
       },
-      text: 'comment by admin',
+      text: 'Комментарий Админа',
     },
     2: {
       id: '2',
       user: {
         id: '2',
-        username: 'manager',
+        username: 'Менеджер',
       },
-      text: 'comment by manager',
+      text: 'Комментарий Менеджера',
     },
   },
 };

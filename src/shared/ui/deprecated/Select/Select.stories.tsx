@@ -27,7 +27,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    label: 'Label',
+    label: 'Метка',
     options,
   },
 } as ComponentMeta<typeof Select>;

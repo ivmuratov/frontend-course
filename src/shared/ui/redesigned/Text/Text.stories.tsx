@@ -10,7 +10,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    title: 'Title',
+    title: 'Заголовок',
     text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Repellendus laudantium, consequuntur, provident ut eum sint
         doloribus autem voluptatem beatae magnam
@@ -77,7 +77,7 @@ ErrorL.args = {
 
 export const OnlyTitle = Template.bind({});
 OnlyTitle.args = {
-  title: 'Title',
+  title: 'Заголовок',
   text: undefined,
 };
 

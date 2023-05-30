@@ -60,8 +60,8 @@ export const ArticleSortSelector = memo(({ className, order, sort, onChangeOrder
         <div className={classNames(cls.ArticleSortSelectorRedesigned, {}, [className])}>
           <VStack gap='8'>
             <Text text={t('sort by')} />
-            <ListBox items={sortFieldOptions} value={sort} onChange={onChangeSort} />
-            <ListBox items={orderOptions} value={order} onChange={onChangeOrder} />
+            <ListBox<ArticleSortField> items={sortFieldOptions} value={sort} onChange={onChangeSort} />
+            <ListBox<SortOrder> items={orderOptions} value={order} onChange={onChangeOrder} />
           </VStack>
         </div>
       }

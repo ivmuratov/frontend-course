@@ -11,7 +11,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    children: <Text title='Title' text='text' />,
+    children: <Text title='Заголовок' text='Текст.....' />,
   },
   decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Card>;

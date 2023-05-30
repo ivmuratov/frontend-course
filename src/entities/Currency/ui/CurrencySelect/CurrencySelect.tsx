@@ -48,7 +48,7 @@ export const CurrencySelect = memo(({ className, value, onChange, readonly }: Cu
           defaultValue={t('currency')}
           items={options}
           readonly={readonly}
-          direction='top right'
+          direction={__PROJECT__ === 'storybook' ? 'bottom right' : 'top right'}
           label={t('currency')}
           onChange={onChangeHandler}
         />
@@ -60,7 +60,7 @@ export const CurrencySelect = memo(({ className, value, onChange, readonly }: Cu
           defaultValue={t('currency')}
           items={options}
           readonly={readonly}
-          direction='top right'
+          direction={__PROJECT__ === 'storybook' ? 'bottom right' : 'top right'}
           label={t('currency')}
           onChange={onChangeHandler}
         />

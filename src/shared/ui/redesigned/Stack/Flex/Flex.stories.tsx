@@ -12,10 +12,10 @@ export default {
   args: {
     children: (
       <>
-        <div>First</div>
-        <div>Second</div>
-        <div>Third</div>
-        <div>Fourth</div>
+        <div>Первый</div>
+        <div>Второй</div>
+        <div>Третий</div>
+        <div>Четвертый</div>
       </>
     ),
   },

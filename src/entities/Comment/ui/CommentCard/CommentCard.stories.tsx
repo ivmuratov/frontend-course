@@ -6,10 +6,10 @@ import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/Redes
 
 const comment: Comment = {
   id: '1',
-  text: 'Hello World',
+  text: 'Коммент Админа',
   user: {
     id: '1',
-    username: 'Vasya',
+    username: 'Админ',
   },
 };
 

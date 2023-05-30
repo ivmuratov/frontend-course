@@ -7,12 +7,12 @@ import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/Redes
 
 const profile: Profile = {
   username: 'admin',
-  age: 26,
-  first: 'Ivan',
-  lastname: 'Muratov',
-  currency: Currency.RUB,
-  country: Country.Russia,
-  city: 'Novosibirsk',
+  age: 100,
+  first: 'Василий',
+  lastname: 'Васильев',
+  currency: Currency.USD,
+  country: Country.Kazakhstan,
+  city: 'Урюпинск',
   avatar:
     'https://sun6-23.userapi.com/s/v1/if1/X0uTfZikqaAno3o4QMMElC8bvl50LZhZOJrpkw1x7pNQAul4DJwFx7O8IIHW5utRYjcx-w.jpg?size=900x900&quality=96&crop=0,0,900,900&ava=1',
 };

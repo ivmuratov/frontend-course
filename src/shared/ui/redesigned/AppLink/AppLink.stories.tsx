@@ -10,7 +10,7 @@ export default {
   },
   args: {
     to: '/',
-    children: 'link',
+    children: 'Ссылка',
   },
   decorators: [RedesignDecorator],
 } as ComponentMeta<typeof AppLink>;

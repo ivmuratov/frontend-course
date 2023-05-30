@@ -8,9 +8,9 @@ import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/Redes
 
 const profileData: Profile = {
   username: 'admin',
-  age: 26,
-  first: 'Ivan',
-  lastname: 'Muratov',
+  age: 100,
+  first: 'Василий',
+  lastname: 'Васильев',
   currency: Currency.RUB,
   country: Country.Russia,
   city: 'Novosibirsk',

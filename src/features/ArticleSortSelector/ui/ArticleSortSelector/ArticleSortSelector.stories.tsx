@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { ArticleSortSelector } from './ArticleSortSelector';
 import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
+import { ArticleSortSelector } from './ArticleSortSelector';
 
 export default {
   title: 'features/Article/ArticleSortSelector',

@@ -10,7 +10,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   args: {
-    children: 'button',
+    children: 'Кнопка',
   },
   decorators: [RedesignDecorator],
 } as ComponentMeta<typeof Button>;

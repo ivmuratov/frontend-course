@@ -14,15 +14,15 @@ export default {
     tabs: [
       {
         value: 'tab 1',
-        content: 'tab 1',
+        content: 'таб 1',
       },
       {
         value: 'tab 2',
-        content: 'selected',
+        content: 'выбранный',
       },
       {
         value: 'tab 3',
-        content: 'tab 3',
+        content: 'таб 3',
       },
     ],
     value: 'tab 2',

@@ -5,8 +5,8 @@ import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/Redes
 
 const notification: Notification = {
   id: '1',
-  title: 'Notification',
-  description: 'Like and leave a comment',
+  title: 'Уведомление',
+  description: 'Описание уведомления',
 };
 
 export default {

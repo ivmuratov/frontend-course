@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { CountrySelect } from './CountrySelect';
 import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
+import { Country } from '../../model/types/country';
+import { CountrySelect } from './CountrySelect';
 
 export default {
   title: 'entities/CountrySelect',
@@ -8,7 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  args: {},
+  args: {
+    value: Country.Russia,
+  },
 } as ComponentMeta<typeof CountrySelect>;
 
 const Template: ComponentStory<typeof CountrySelect> = args => <CountrySelect {...args} />;

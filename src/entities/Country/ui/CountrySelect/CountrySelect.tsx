@@ -56,7 +56,7 @@ export const CountrySelect = memo(({ className, value, onChange, readonly }: Cou
           defaultValue={t('country')}
           items={options}
           readonly={readonly}
-          direction='top right'
+          direction={__PROJECT__ === 'storybook' ? 'bottom right' : 'top right'}
           label={t('country')}
           onChange={onChangeHandler}
         />
@@ -68,7 +68,7 @@ export const CountrySelect = memo(({ className, value, onChange, readonly }: Cou
           defaultValue={t('country')}
           items={options}
           readonly={readonly}
-          direction='top right'
+          direction={__PROJECT__ === 'storybook' ? 'bottom right' : 'top right'}
           label={t('country')}
           onChange={onChangeHandler}
         />

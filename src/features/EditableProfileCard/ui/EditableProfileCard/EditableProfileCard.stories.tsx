@@ -9,13 +9,13 @@ import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/Redes
 
 const profile: Profile = {
   id: '1',
-  first: 'Ivan',
-  lastname: 'Ivanov',
-  age: 30,
-  city: 'Novosibirsk',
-  currency: Currency.RUB,
-  country: Country.Russia,
-  username: '12345',
+  first: 'Василий',
+  lastname: 'Васильев',
+  age: 100,
+  city: 'Урюпинск',
+  currency: Currency.USD,
+  country: Country.Kazakhstan,
+  username: 'zxc',
 };
 
 export default {
