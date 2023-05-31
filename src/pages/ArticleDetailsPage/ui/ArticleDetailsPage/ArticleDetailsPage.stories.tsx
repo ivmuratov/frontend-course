@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ArticleDetailsCommentsSchema } from '@/features/ArticleDetailsComments';
+import { ArticleDetailsCommentsSchema } from '../../model/types/articleDetailsCommentsSchema';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
@@ -117,7 +117,7 @@ export default {
       articleDetails: {
         data: article,
       },
-      articleDetailsIndex: {
+      articleDetailsPage: {
         comments,
       },
     }),
@@ -137,7 +137,7 @@ Loading.decorators = [
     articleDetails: {
       isLoading: true,
     },
-    articleDetailsIndex: {
+    articleDetailsPage: {
       comments: {
         ...comments,
         isLoading: true,
@@ -152,7 +152,7 @@ LoadingRedesigned.decorators = [
     articleDetails: {
       isLoading: true,
     },
-    articleDetailsIndex: {
+    articleDetailsPage: {
       comments: {
         ...comments,
         isLoading: true,

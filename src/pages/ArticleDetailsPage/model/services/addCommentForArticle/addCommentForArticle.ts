@@ -6,7 +6,7 @@ import { getUserAuthData } from '@/entities/User';
 import { fetchArticleCommentsById } from '../fetchArticleCommentsById/fetchArticleCommentsById';
 
 export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfig<string>>(
-  'articleDetailsComments/addCommentForArticle',
+  'articleDetailsPage/addCommentForArticle',
   async (text, thunkApi) => {
     const { extra, dispatch, rejectWithValue, getState } = thunkApi;
     try {
@@ -22,12 +22,13 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
         userId: userData.id,
         text,
       });
+
       if (!response.data) {
         throw new Error();
-      } else {
-        dispatch(fetchArticleCommentsById(article.id));
-        return response.data;
       }
+
+      dispatch(fetchArticleCommentsById(article.id));
+      return response.data;
     } catch (e) {
       return rejectWithValue('error');
     }

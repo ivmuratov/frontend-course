@@ -3,7 +3,7 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Article } from '@/entities/Article';
 
 export const fetchArticleRecommendations = createAsyncThunk<Article[], void, ThunkConfig<string>>(
-  'articleDetailsComments/fetchArticleRecommendations',
+  'articleDetailsPage/fetchArticleRecommendations',
   async (_, thunkApi) => {
     const { extra, rejectWithValue } = thunkApi;
 
@@ -13,11 +13,12 @@ export const fetchArticleRecommendations = createAsyncThunk<Article[], void, Thu
           _limit: 4,
         },
       });
+
       if (!response.data) {
         throw new Error();
-      } else {
-        return response.data;
       }
+
+      return response.data;
     } catch (e) {
       return rejectWithValue('error');
     }

@@ -3,14 +3,14 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Comment } from '@/entities/Comment';
 import { fetchArticleCommentsById } from '../services/fetchArticleCommentsById/fetchArticleCommentsById';
-import { ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema';
+import { ArticleDetailsCommentsSchema } from '../types/articleDetailsCommentsSchema';
 
 const commentsAdapter = createEntityAdapter<Comment>({
   selectId: comment => comment.id,
 });
 
 export const getArticleDetailsComments = commentsAdapter.getSelectors<StateSchema>(
-  state => state.articleDetailsIndex?.comments || commentsAdapter.getInitialState(),
+  state => state.articleDetailsPage?.comments || commentsAdapter.getInitialState(),
 );
 
 const articleDetailsCommentsSlice = createSlice({

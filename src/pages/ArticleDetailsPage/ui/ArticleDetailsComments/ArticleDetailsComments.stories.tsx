@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ArticleDetailsCommentsSchema } from '@/features/ArticleDetailsComments';
+import { ArticleDetailsCommentsSchema } from '../../model/types/articleDetailsCommentsSchema';
 import { ArticleDetailsComments } from './ArticleDetailsComments';
 import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
@@ -37,7 +37,7 @@ export default {
   },
   decorators: [
     StoreDecorator({
-      articleDetailsIndex: {
+      articleDetailsPage: {
         comments,
       },
     }),
@@ -54,7 +54,7 @@ NormalRedesigned.decorators = [RedesignDecorator];
 export const Loading = Template.bind({});
 Loading.decorators = [
   StoreDecorator({
-    articleDetailsIndex: {
+    articleDetailsPage: {
       comments: {
         ...comments,
         isLoading: true,

@@ -5,11 +5,11 @@ import { CounterSchema } from '@/entities/Counter';
 import { ProfileSchema } from '@/features/EditableProfileCard';
 import { UserSchema } from '@/entities/User';
 import { AddCommentFormSchema } from '@/features/AddCommentForm';
-import { ArticleDetailsIndexSchema } from '@/features/ArticleDetailsComments';
 import { LoginSchema } from '@/features/AuthByUsername';
 import { ScrollSaveSchema } from '@/features/ScrollSave';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -23,7 +23,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
-  articleDetailsIndex?: ArticleDetailsIndexSchema;
+  articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
