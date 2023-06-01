@@ -8,10 +8,10 @@ import { NotificationList } from '@/entities/Notification';
 import { Drawer } from '@/shared/ui/redesigned/Drawer';
 import { ToggleFeatures } from '@/shared/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Popover } from '@/shared/ui/redesigned/Popups';
 import NotificationIconDeprecated from '@/shared/assets/icons/notification.svg';
 import NotificationIcon from '@/shared/assets/icons/redesigned/notification.svg';
 import cls from './NotificationButton.module.scss';
-import { Popover } from '@/shared/ui/redesigned/Popups';
 
 interface NotificationButtonProps {
   className?: string;

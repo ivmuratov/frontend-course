@@ -5,15 +5,16 @@ import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { AppLink as AppLinkDeprecated, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
-import cls from './Navbar.module.scss';
 import { ToggleFeatures, toggleFeatures } from '@/shared/features';
 import { Button } from '@/shared/ui/redesigned/Button';
+import cls from './Navbar.module.scss';
+import { CreateArticleButton } from '@/features/CreateArticleButton';
 
 interface NavbarProps {
   className?: string;
@@ -47,6 +48,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         on={
           <header className={classNames(mainClass, {}, [className])}>
             <HStack className={cls.actions} gap='16'>
+              <CreateArticleButton />
               <NotificationButton />
               <AvatarDropdown />
             </HStack>
@@ -55,9 +57,9 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         off={
           <header className={classNames(mainClass, {}, [className])}>
             <Text className={cls.appName} theme={TextTheme.INVERTED} title='Ulbi TV' />
-            <AppLink className={cls.createBtn} theme={AppLinkTheme.SECONDARY} to={getRouteArticleCreate()}>
+            <AppLinkDeprecated className={cls.createBtn} theme={AppLinkTheme.SECONDARY} to={getRouteArticleCreate()}>
               {t('create article')}
-            </AppLink>
+            </AppLinkDeprecated>
             <HStack className={cls.actions} gap='16'>
               <NotificationButton />
               <AvatarDropdown />

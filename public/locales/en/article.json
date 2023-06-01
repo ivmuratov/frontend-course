@@ -10,5 +10,15 @@
   "edit": "Edit",
   "edit article by id": "Edit article by id",
   "create article": "Create article",
-  "article rating coming soon": "Article rating coming soon..."
+  "article rating coming soon": "Article rating coming soon...",
+  "article name": "Article name",
+  "article subtitle": "Article subtitle",
+  "article image": "Article image",
+  "it": "IT",
+  "all articles": "All articles",
+  "economics": "Economics",
+  "science": "Science",
+  "select article type": "Select article type",
+  "save": "Save",
+  "clear": "Clear"
 }

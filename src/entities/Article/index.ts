@@ -3,7 +3,7 @@ import { fetchArticleById } from './model/services/fetchArticleById/fetchArticle
 import { getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError } from './model/selectors/articleDetails';
 import { ArticleView, ArticleSortField, ArticleType, ArticleBlockType } from './model/consts/consts';
 import { ArticleList } from './ui/ArticleList/ArticleList';
-import type { Article, ArticleDetailsSchema } from './model/types/article';
+import type { ArticleBlock, Article, ArticleDetailsSchema } from './model/types/article';
 
 export {
   ArticleDetails,
@@ -17,5 +17,6 @@ export {
   ArticleSortField,
   Article,
   ArticleType,
+  ArticleBlock,
   ArticleDetailsSchema,
 };

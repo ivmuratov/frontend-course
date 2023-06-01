@@ -10,5 +10,15 @@
   "edit": "Редактировать",
   "edit article by id": "Редактирование статьи по id",
   "create article": "Создание статьи",
-  "article rating coming soon": "Оценка статей скоро появится..."
+  "article rating coming soon": "Оценка статей скоро появится...",
+  "article name": "Название статьи",
+  "article subtitle": "Подзаголовок статьи",
+  "article image": "Картинка статьи",
+  "it": "ИТ",
+  "all articles": "Все статьи",
+  "economics": "Экономика",
+  "science": "Наука",
+  "select article type": "Выберите тип статьи",
+  "save": "Сохранить",
+  "clear": "Очистить"
 }
