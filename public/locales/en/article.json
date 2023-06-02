@@ -20,5 +20,8 @@
   "science": "Science",
   "select article type": "Select article type",
   "save": "Save",
-  "clear": "Clear"
+  "clear": "Clear",
+  "paragraph": "Paragraph",
+  "paragraph title": "Paragraph title",
+  "paragraph text": "Paragraph text"
 }

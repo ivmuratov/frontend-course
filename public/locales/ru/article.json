@@ -20,5 +20,8 @@
   "science": "Наука",
   "select article type": "Выберите тип статьи",
   "save": "Сохранить",
-  "clear": "Очистить"
+  "clear": "Очистить",
+  "paragraph": "Параграф",
+  "paragraph title": "Заголовк параграфа",
+  "paragraph text": "Текст параграфа"
 }

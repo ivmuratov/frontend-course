@@ -1,0 +1,23 @@
+.TextAreaWrapper {
+  width: 100%;
+  border-radius: 25px;
+  padding: 8px 16px;
+  border: 2px solid var(--icon-redesigned);
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  color: var(--text-redesigned);
+  background: none;
+
+  &::placeholder {
+    color: var(--hint-redesigned);
+  }
+}
+
+.focused {
+  border: 2px solid var(--accent-redesigned);
+}
