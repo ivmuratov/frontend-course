@@ -23,5 +23,8 @@
   "clear": "Очистить",
   "paragraph": "Параграф",
   "paragraph title": "Заголовк параграфа",
-  "paragraph text": "Текст параграфа"
+  "paragraph text": "Текст параграфа",
+  "confirm the creation of the article": "Подтвердите создание статьи",
+  "ok": "Ок",
+  "cancel": "Отмена"
 }

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -25,6 +25,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { createArticle } from '../../model/services/createArticle';
 import { ArticleTextBlockForm } from '../ArticleTextBlockForm/ArticleTextBlockForm';
+import { Modal } from '@/shared/ui/redesigned/Modal';
 
 const initialReducers: ReducersList = {
   createArticleForm: createArticleFormReducer,
@@ -40,6 +41,10 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
+
+  const [isReadyArticleBlock, setIsReadyArticleBlock] = useState(false);
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const userData = useSelector(getUserAuthData);
 
@@ -58,6 +63,16 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
   const checkedTypeScience = useSelector(getCreateArticleFormCheckTypeScience);
 
   const checkedTypeEconomics = useSelector(getCreateArticleFormCheckTypeEconomics);
+
+  const onOpenModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const onCloseModal = () => {
+    setIsOpenModal(false);
+    setIsReadyArticleBlock(false);
+    dispatch(createArticleFormActions.clearBlock());
+  };
 
   const onChangeTitleHandler = (value: string) => {
     dispatch(createArticleFormActions.setTitle(value));
@@ -83,7 +98,12 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
     dispatch(createArticleFormActions.setCheckTypeEconomics(!checkedTypeEconomics));
   };
 
-  const saveHandler = async () => {
+  const saveHandler = () => {
+    setIsReadyArticleBlock(true);
+    onOpenModal();
+  };
+
+  const createHandler = async () => {
     const response = await dispatch(
       createArticle({
         userId: userData?.id,
@@ -129,17 +149,26 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
               />
             </HStack>
           </VStack>
-          <ArticleTextBlockForm />
+          <ArticleTextBlockForm title isReadyArticleBlock={isReadyArticleBlock} />
+          <ArticleTextBlockForm isReadyArticleBlock={isReadyArticleBlock} />
           <HStack justify='end' gap='8' max>
-            <Button color='success' onClick={saveHandler}>
-              {t('save')}
-            </Button>
+            <Button onClick={saveHandler}>{t('save')}</Button>
             <Button color='error' onClick={clearHandler}>
               {t('clear')}
             </Button>
           </HStack>
         </VStack>
       </Card>
+      <Modal isOpen={isOpenModal} onClose={onCloseModal}>
+        <VStack gap='24'>
+          <Text title={t('confirm the creation of the article')} />
+          <HStack justify='end' gap='8' max>
+            <Button color='success' onClick={createHandler}>
+              {t('ok')}
+            </Button>
+          </HStack>
+        </VStack>
+      </Modal>
     </DynamicModuleLoader>
   );
 });

@@ -56,8 +56,11 @@ export const createArticleFormSlice = createSlice({
         state.form.type = state.form.type.filter(value => value !== ArticleType.ECONOMICS);
       }
     },
-    setBlocks: (state, action: PayloadAction<ArticleBlock[]>) => {
-      state.form.blocks = action.payload;
+    setBlock: (state, action: PayloadAction<ArticleBlock>) => {
+      state.form.blocks = [...state.form.blocks, action.payload];
+    },
+    clearBlock: state => {
+      state.form.blocks = [];
     },
     clearForm: state => {
       state.form.title = '';
