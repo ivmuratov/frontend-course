@@ -28,6 +28,7 @@ import { Modal } from '@/shared/ui/redesigned/Modal';
 import { ArticleBlockType } from '@/entities/Article';
 import { ArticleTextBlockForm } from '../ArticleTextBlockForm/ArticleTextBlockForm';
 import { ArticleImageBlockForm } from '../ArticleImageBlockForm/ArticleImageBlockForm';
+import { ArticleCodeBlockForm } from '../ArticleCodeBlockForm/ArticleCodeBlockForm';
 
 const initialReducers: ReducersList = {
   createArticleForm: createArticleFormReducer,
@@ -88,6 +89,10 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
 
   const addArticleImageBlockForm = () => {
     setArticleBlockForms(prev => [...prev, ArticleBlockType.IMAGE]);
+  };
+
+  const addArticleCodeBlockForm = () => {
+    setArticleBlockForms(prev => [...prev, ArticleBlockType.CODE]);
   };
 
   const onChangeTitleHandler = (value: string) => {
@@ -179,6 +184,14 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
                     removeFormHandler={removeBlockFormHandler(index)}
                   />
                 );
+              case ArticleBlockType.CODE:
+                return (
+                  <ArticleCodeBlockForm
+                    key={index}
+                    isReadyArticleBlock={isReadyArticleBlock}
+                    removeFormHandler={removeBlockFormHandler(index)}
+                  />
+                );
               default:
                 return null;
             }
@@ -186,6 +199,7 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
           <HStack gap='8'>
             <Button onClick={addArticleTextBlockForm}>{t('add paragraph')}</Button>
             <Button onClick={addArticleImageBlockForm}>{t('add image')}</Button>
+            <Button onClick={addArticleCodeBlockForm}>{t('add code')}</Button>
           </HStack>
           <HStack justify='end' gap='8' max>
             <Button color='success' onClick={saveHandler}>
