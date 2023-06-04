@@ -24,8 +24,10 @@ import { createArticleFormActions, createArticleFormReducer } from '../../model/
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { createArticle } from '../../model/services/createArticle';
-import { ArticleTextBlockForm } from '../ArticleTextBlockForm/ArticleTextBlockForm';
 import { Modal } from '@/shared/ui/redesigned/Modal';
+import { ArticleBlockType } from '@/entities/Article';
+import { ArticleTextBlockForm } from '../ArticleTextBlockForm/ArticleTextBlockForm';
+import { ArticleImageBlockForm } from '../ArticleImageBlockForm/ArticleImageBlockForm';
 
 const initialReducers: ReducersList = {
   createArticleForm: createArticleFormReducer,
@@ -45,6 +47,8 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
   const [isReadyArticleBlock, setIsReadyArticleBlock] = useState(false);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const [articleBlockForms, setArticleBlockForms] = useState<ArticleBlockType[]>([]);
 
   const userData = useSelector(getUserAuthData);
 
@@ -72,6 +76,18 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
     setIsOpenModal(false);
     setIsReadyArticleBlock(false);
     dispatch(createArticleFormActions.clearBlock());
+  };
+
+  const removeBlockFormHandler = (indexToRemove: number) => () => {
+    setArticleBlockForms(prev => prev.filter((_, index) => index !== indexToRemove));
+  };
+
+  const addArticleTextBlockForm = () => {
+    setArticleBlockForms(prev => [...prev, ArticleBlockType.TEXT]);
+  };
+
+  const addArticleImageBlockForm = () => {
+    setArticleBlockForms(prev => [...prev, ArticleBlockType.IMAGE]);
   };
 
   const onChangeTitleHandler = (value: string) => {
@@ -122,10 +138,6 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
     }
   };
 
-  const clearHandler = () => {
-    dispatch(createArticleFormActions.clearForm());
-  };
-
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <Card className={className} border='partial' padding='16'>
@@ -149,12 +161,35 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
               />
             </HStack>
           </VStack>
-          <ArticleTextBlockForm title isReadyArticleBlock={isReadyArticleBlock} />
-          <ArticleTextBlockForm isReadyArticleBlock={isReadyArticleBlock} />
+          {articleBlockForms.map((block, index) => {
+            switch (block) {
+              case ArticleBlockType.TEXT:
+                return (
+                  <ArticleTextBlockForm
+                    key={index}
+                    isReadyArticleBlock={isReadyArticleBlock}
+                    removeFormHandler={removeBlockFormHandler(index)}
+                  />
+                );
+              case ArticleBlockType.IMAGE:
+                return (
+                  <ArticleImageBlockForm
+                    key={index}
+                    isReadyArticleBlock={isReadyArticleBlock}
+                    removeFormHandler={removeBlockFormHandler(index)}
+                  />
+                );
+              default:
+                return null;
+            }
+          })}
+          <HStack gap='8'>
+            <Button onClick={addArticleTextBlockForm}>{t('add paragraph')}</Button>
+            <Button onClick={addArticleImageBlockForm}>{t('add image')}</Button>
+          </HStack>
           <HStack justify='end' gap='8' max>
-            <Button onClick={saveHandler}>{t('save')}</Button>
-            <Button color='error' onClick={clearHandler}>
-              {t('clear')}
+            <Button color='success' onClick={saveHandler}>
+              {t('save')}
             </Button>
           </HStack>
         </VStack>

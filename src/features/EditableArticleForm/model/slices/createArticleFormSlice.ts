@@ -62,13 +62,6 @@ export const createArticleFormSlice = createSlice({
     clearBlock: state => {
       state.form.blocks = [];
     },
-    clearForm: state => {
-      state.form.title = '';
-      state.form.subtitle = '';
-      state.form.img = '';
-      state.form.type = [];
-      state.form.blocks = [];
-    },
   },
   extraReducers: builder => {
     builder

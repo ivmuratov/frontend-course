@@ -26,5 +26,11 @@
   "paragraph text": "Paragraph text",
   "confirm the creation of the article": "Confirm the creation of the article",
   "ok": "Ok",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "add paragraph": "Add paragraph",
+  "add image": "Add image",
+  "image": "Image",
+  "image title": "Image title",
+  "image source": "Image source",
+  "remove form": "Remove form"
 }

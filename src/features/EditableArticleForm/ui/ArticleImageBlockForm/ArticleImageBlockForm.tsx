@@ -1,45 +1,44 @@
 import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TextArea } from '@/shared/ui/redesigned/TextArea';
+import { ArticleBlockType, ArticleImageBlock } from '@/entities/Article';
 import { Text } from '@/shared/ui/redesigned/Text';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { createArticleFormActions } from '../../model/slices/createArticleFormSlice';
-import { ArticleBlockType, ArticleTextBlock } from '@/entities/Article';
 import { getRandomID } from '../../lib/helpers/getRandomID';
 import { Button } from '@/shared/ui/redesigned/Button';
 
-interface ArticleTextBlockFormProps {
+interface ArticleImageBlockFormProps {
   className?: string;
   isReadyArticleBlock: boolean;
   removeFormHandler: () => void;
 }
 
-export const ArticleTextBlockForm = memo(({ className, isReadyArticleBlock, removeFormHandler }: ArticleTextBlockFormProps) => {
+export const ArticleImageBlockForm = memo(({ className, isReadyArticleBlock, removeFormHandler }: ArticleImageBlockFormProps) => {
   const { t } = useTranslation('article');
 
-  const [paragraphTitle, setParagraphTitle] = useState<string | undefined>(undefined);
+  const [imageTitle, setImageTitle] = useState('');
 
-  const [paragraphText, setParagraphText] = useState('');
+  const [imageSrc, setImageSrc] = useState('');
 
   const dispatch = useAppDispatch();
 
-  const onChangeParagraphTitleHandler = (value: string) => {
-    setParagraphTitle(value);
+  const onChangeImageTitleHandler = (value: string) => {
+    setImageTitle(value);
   };
 
-  const onChangeParagraphTextHandler = (value: string) => {
-    setParagraphText(value);
+  const onChangeImageSrcTextHandler = (value: string) => {
+    setImageSrc(value);
   };
 
   useEffect(() => {
     if (isReadyArticleBlock) {
-      const block: ArticleTextBlock = {
+      const block: ArticleImageBlock = {
         id: getRandomID(),
-        type: ArticleBlockType.TEXT,
-        title: paragraphTitle,
-        paragraphs: [paragraphText],
+        type: ArticleBlockType.IMAGE,
+        title: imageTitle,
+        src: imageSrc,
       };
       dispatch(createArticleFormActions.setBlock(block));
     }
@@ -49,13 +48,13 @@ export const ArticleTextBlockForm = memo(({ className, isReadyArticleBlock, remo
   return (
     <VStack className={className} gap='16' max>
       <HStack justify='between' max>
-        <Text text={t('paragraph')} />
+        <Text text={t('image')} />
         <Button color='error' onClick={removeFormHandler}>
           {t('remove form')}
         </Button>
       </HStack>
-      <Input value={paragraphTitle} onChange={onChangeParagraphTitleHandler} placeholder={t('paragraph title')} />
-      <TextArea value={paragraphText} onChange={onChangeParagraphTextHandler} placeholder={t('paragraph text')} rows={5} />
+      <Input value={imageTitle} onChange={onChangeImageTitleHandler} placeholder={t('image title')} />
+      <Input value={imageSrc} onChange={onChangeImageSrcTextHandler} placeholder={t('image source')} />
     </VStack>
   );
 });

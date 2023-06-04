@@ -22,9 +22,15 @@
   "save": "Сохранить",
   "clear": "Очистить",
   "paragraph": "Параграф",
-  "paragraph title": "Заголовк параграфа",
+  "paragraph title": "Заголовок параграфа",
   "paragraph text": "Текст параграфа",
   "confirm the creation of the article": "Подтвердите создание статьи",
   "ok": "Ок",
-  "cancel": "Отмена"
+  "cancel": "Отмена",
+  "add paragraph": "Добавить параграф",
+  "add image": "Добавить картинку",
+  "image": "Картинка",
+  "image title": "Заголовок картинки",
+  "image source": "Ссылка на картинку",
+  "remove form": "Удалить форму"
 }
