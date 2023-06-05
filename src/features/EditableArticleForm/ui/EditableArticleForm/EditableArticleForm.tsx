@@ -6,7 +6,6 @@ import { getUserAuthData } from '@/entities/User';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { Button } from '@/shared/ui/redesigned/Button';
-import { Card } from '@/shared/ui/redesigned/Card';
 import { Checkbox } from '@/shared/ui/redesigned/Checkbox';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { getRouteArticleDetails } from '@/shared/const/router';
@@ -145,73 +144,71 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-      <Card className={className} border='partial' padding='16'>
-        <VStack gap='32'>
-          <Text title={t('create article')} />
-          <VStack gap='16' max>
-            <Input value={title} placeholder={t('article name')} onChange={onChangeTitleHandler} />
-            <Input value={subtitle} placeholder={t('article subtitle')} onChange={onChangeSubtitleHandler} />
-            <Input value={img} placeholder={t('article image')} onChange={onChangeImageHandler} />
-          </VStack>
-          <VStack gap='8'>
-            <Text text={t('select article type')} />
-            <HStack gap='16'>
-              <Checkbox name='IT' label={t('it')} checked={checkedTypeIT} onChange={onChangeTypeITHandler} />
-              <Checkbox name='SCIENCE' label={t('science')} checked={checkedTypeScience} onChange={onChangeTypeScienceHandler} />
-              <Checkbox
-                name='ECONOMICS'
-                label={t('economics')}
-                checked={checkedTypeEconomics}
-                onChange={onChangeTypeEconomicsHandler}
-              />
-            </HStack>
-          </VStack>
-          {articleBlockForms.map((block, index) => {
-            switch (block) {
-              case ArticleBlockType.TEXT:
-                return (
-                  <ArticleTextBlockForm
-                    key={index}
-                    isReadyArticleBlock={isReadyArticleBlock}
-                    removeFormHandler={removeBlockFormHandler(index)}
-                  />
-                );
-              case ArticleBlockType.IMAGE:
-                return (
-                  <ArticleImageBlockForm
-                    key={index}
-                    isReadyArticleBlock={isReadyArticleBlock}
-                    removeFormHandler={removeBlockFormHandler(index)}
-                  />
-                );
-              case ArticleBlockType.CODE:
-                return (
-                  <ArticleCodeBlockForm
-                    key={index}
-                    isReadyArticleBlock={isReadyArticleBlock}
-                    removeFormHandler={removeBlockFormHandler(index)}
-                  />
-                );
-              default:
-                return null;
-            }
-          })}
-          <HStack gap='8'>
-            <Button onClick={addArticleTextBlockForm}>{t('add paragraph')}</Button>
-            <Button onClick={addArticleImageBlockForm}>{t('add image')}</Button>
-            <Button onClick={addArticleCodeBlockForm}>{t('add code')}</Button>
-          </HStack>
-          <HStack justify='end' gap='8' max>
-            <Button color='success' onClick={saveHandler}>
-              {t('save')}
-            </Button>
+      <VStack gap='32'>
+        <VStack gap='16' max>
+          <Input value={title} placeholder={t('article name')} onChange={onChangeTitleHandler} />
+          <Input value={subtitle} placeholder={t('article subtitle')} onChange={onChangeSubtitleHandler} />
+          <Input value={img} placeholder={t('article image')} onChange={onChangeImageHandler} />
+        </VStack>
+        <VStack gap='8'>
+          <Text text={t('select article type')} />
+          <HStack gap='16'>
+            <Checkbox name='IT' label={t('it')} checked={checkedTypeIT} onChange={onChangeTypeITHandler} />
+            <Checkbox name='SCIENCE' label={t('science')} checked={checkedTypeScience} onChange={onChangeTypeScienceHandler} />
+            <Checkbox
+              name='ECONOMICS'
+              label={t('economics')}
+              checked={checkedTypeEconomics}
+              onChange={onChangeTypeEconomicsHandler}
+            />
           </HStack>
         </VStack>
-      </Card>
+        {articleBlockForms.map((block, index) => {
+          switch (block) {
+            case ArticleBlockType.TEXT:
+              return (
+                <ArticleTextBlockForm
+                  key={index}
+                  isReadyArticleBlock={isReadyArticleBlock}
+                  removeFormHandler={removeBlockFormHandler(index)}
+                />
+              );
+            case ArticleBlockType.IMAGE:
+              return (
+                <ArticleImageBlockForm
+                  key={index}
+                  isReadyArticleBlock={isReadyArticleBlock}
+                  removeFormHandler={removeBlockFormHandler(index)}
+                />
+              );
+            case ArticleBlockType.CODE:
+              return (
+                <ArticleCodeBlockForm
+                  key={index}
+                  isReadyArticleBlock={isReadyArticleBlock}
+                  removeFormHandler={removeBlockFormHandler(index)}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
+        <HStack gap='8'>
+          <Button onClick={addArticleTextBlockForm}>{t('add paragraph')}</Button>
+          <Button onClick={addArticleImageBlockForm}>{t('add image')}</Button>
+          <Button onClick={addArticleCodeBlockForm}>{t('add code')}</Button>
+        </HStack>
+        <HStack justify='end' max>
+          <Button color='success' onClick={saveHandler}>
+            {t('save')}
+          </Button>
+        </HStack>
+      </VStack>
+
       <Modal isOpen={isOpenModal} onClose={onCloseModal}>
         <VStack gap='24'>
           <Text title={t('confirm the creation of the article')} />
-          <HStack justify='end' gap='8' max>
+          <HStack justify='end' max>
             <Button color='success' onClick={createHandler}>
               {t('ok')}
             </Button>

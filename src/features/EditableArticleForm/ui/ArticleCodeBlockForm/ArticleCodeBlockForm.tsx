@@ -1,18 +1,16 @@
 import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleBlockType, ArticleCodeBlock } from '@/entities/Article';
-import { Text } from '@/shared/ui/redesigned/Text';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { createArticleFormActions } from '../../model/slices/createArticleFormSlice';
 import { getRandomID } from '../../lib/helpers/getRandomID';
-import { Button } from '@/shared/ui/redesigned/Button';
 import { TextArea } from '@/shared/ui/redesigned/TextArea';
+import { ArticleBlockFormBaseProps } from '../../model/types/articleBlockFormBaseProps';
+import { ArticleBlockFormHeader } from '../ArticleBlockFormHeader/ArticleBlockFormHeader';
 
-interface ArticleCodeBlockFormProps {
+interface ArticleCodeBlockFormProps extends ArticleBlockFormBaseProps {
   className?: string;
-  isReadyArticleBlock: boolean;
-  removeFormHandler: () => void;
 }
 
 export const ArticleCodeBlockForm = memo(({ className, isReadyArticleBlock, removeFormHandler }: ArticleCodeBlockFormProps) => {
@@ -40,12 +38,7 @@ export const ArticleCodeBlockForm = memo(({ className, isReadyArticleBlock, remo
 
   return (
     <VStack className={className} gap='16' max>
-      <HStack justify='between' max>
-        <Text text={t('code')} />
-        <Button color='error' onClick={removeFormHandler}>
-          {t('remove form')}
-        </Button>
-      </HStack>
+      <ArticleBlockFormHeader title={t('code')} onClickHandler={removeFormHandler} />
       <TextArea value={code} onChange={onChangeCodeHandler} placeholder={t('code')} rows={5} />
     </VStack>
   );

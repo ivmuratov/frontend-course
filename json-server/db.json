@@ -591,25 +591,6 @@
         }
       ],
       "id": "9MxVj4p"
-    },
-    {
-      "userId": "1",
-      "title": "React ",
-      "subtitle": "Пишем функциональные компоненты",
-      "img": "https://i.pinimg.com/originals/d6/d2/74/d6d2740428483496bd2a31dadeea8d4b.jpg",
-      "views": 1,
-      "createdAt": "04.06.2023",
-      "type": [
-        "IT"
-      ],
-      "blocks": [
-        {
-          "id": "821036269",
-          "type": "CODE",
-          "code": "export const ArticleCodeBlockForm = memo(({ className, isReadyArticleBlock, removeFormHandler }: ArticleCodeBlockFormProps) => {\n  const { t } = useTranslation('article');\n\n  const [code, setCode] = useState('');\n\n  const dispatch = useAppDispatch();\n\n  const onChangeCodeHandler = (value: string) => {\n    setCode(value);\n  };\n\n  useEffect(() => {\n    if (isReadyArticleBlock) {\n      const block: ArticleCodeBlock = {\n        id: getRandomID(),\n        type: ArticleBlockType.CODE,\n        code,\n      };\n      dispatch(createArticleFormActions.setBlock(block));\n    }\n    // eslint-disable-next-line react-hooks/exhaustive-deps\n  }, [isReadyArticleBlock]);\n\n  return (\n    <VStack className={className} gap='16' max>\n      <HStack justify='between' max>\n        <Text text={t('code')} />\n        <Button color='error' onClick={removeFormHandler}>\n          {t('remove form')}\n        </Button>\n      </HStack>\n      <TextArea value={code} onChange={onChangeCodeHandler} placeholder={t('code')} rows={5} />\n    </VStack>\n  );\n});"
-        }
-      ],
-      "id": "-MlVFdn"
     }
   ],
   "comments": [
@@ -712,7 +693,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
         "isArticlesPageWasOpened": true
       },

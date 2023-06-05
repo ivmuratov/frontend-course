@@ -1,9 +1,10 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Page } from '@/widgets/Page';
 import { EditableArticleForm } from '@/features/EditableArticleForm';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Card } from '@/shared/ui/redesigned/Card';
 import cls from './ArticleEditPage.module.scss';
 
 interface ArticleEditPageProps {
@@ -19,15 +20,18 @@ const ArticleEditPage: FC<ArticleEditPageProps> = ({ className }) => {
 
   if (isEdit) {
     return (
-      <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
+      <Page className={className}>
         {t('edit article by id')} {id}
       </Page>
     );
   }
 
   return (
-    <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
-      <EditableArticleForm />
+    <Page className={className}>
+      <Card className={className} border='partial' padding='16'>
+        <Text className={cls.title} title={t('create article')} />
+        <EditableArticleForm />
+      </Card>
     </Page>
   );
 };
