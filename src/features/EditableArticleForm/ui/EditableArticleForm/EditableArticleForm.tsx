@@ -144,7 +144,7 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-      <VStack gap='32'>
+      <VStack className={className} gap='32'>
         <VStack gap='16' max>
           <Input value={title} placeholder={t('article name')} onChange={onChangeTitleHandler} />
           <Input value={subtitle} placeholder={t('article subtitle')} onChange={onChangeSubtitleHandler} />

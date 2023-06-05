@@ -3,7 +3,7 @@ import { CreateArticleButton } from './CreateArticleButton';
 import RedesignDecorator from '@/shared/config/storybook/RedesignDecorator/RedesignDecorator';
 
 export default {
-  title: 'features/CreateArticleButton',
+  title: 'features/Article/CreateArticleButton',
   component: CreateArticleButton,
   argTypes: {
     backgroundColor: { control: 'color' },
