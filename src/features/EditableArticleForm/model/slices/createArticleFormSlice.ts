@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CreateArticleFormSchema } from '../types/createArticleForm';
-import { ArticleBlock, ArticleType } from '@/entities/Article';
+import { ArticleType, ArticleTextBlock, ArticleBlockType, ArticleImageBlock, ArticleCodeBlock } from '@/entities/Article';
 import { createArticle } from '../services/createArticle';
+import { getRandomID } from '../../lib/helpers/getRandomID';
 
 const initialState: CreateArticleFormSchema = {
   form: {
@@ -35,7 +36,7 @@ export const createArticleFormSlice = createSlice({
     setCheckTypeIT: (state, action: PayloadAction<boolean>) => {
       state.form.checkTypeIT = action.payload;
       if (state.form.checkTypeIT) {
-        state.form.type = [...state.form.type, ArticleType.IT];
+        state.form.type.push(ArticleType.IT);
       } else {
         state.form.type = state.form.type.filter(value => value !== ArticleType.IT);
       }
@@ -43,7 +44,7 @@ export const createArticleFormSlice = createSlice({
     setCheckTypeScience: (state, action: PayloadAction<boolean>) => {
       state.form.checkTypeScience = action.payload;
       if (state.form.checkTypeScience) {
-        state.form.type = [...state.form.type, ArticleType.SCIENCE];
+        state.form.type.push(ArticleType.SCIENCE);
       } else {
         state.form.type = state.form.type.filter(value => value !== ArticleType.SCIENCE);
       }
@@ -51,16 +52,54 @@ export const createArticleFormSlice = createSlice({
     setCheckTypeEconomics: (state, action: PayloadAction<boolean>) => {
       state.form.checkTypeEconomics = action.payload;
       if (state.form.checkTypeEconomics) {
-        state.form.type = [...state.form.type, ArticleType.ECONOMICS];
+        state.form.type.push(ArticleType.ECONOMICS);
       } else {
         state.form.type = state.form.type.filter(value => value !== ArticleType.ECONOMICS);
       }
     },
-    setBlock: (state, action: PayloadAction<ArticleBlock>) => {
-      state.form.blocks = [...state.form.blocks, action.payload];
+    addTextBlock: state => {
+      const block: ArticleTextBlock = {
+        id: getRandomID(),
+        type: ArticleBlockType.TEXT,
+        paragraphs: [''],
+      };
+      state.form.blocks.push(block);
     },
-    clearBlock: state => {
-      state.form.blocks = [];
+    addImageBlock: state => {
+      const block: ArticleImageBlock = {
+        id: getRandomID(),
+        type: ArticleBlockType.IMAGE,
+        src: '',
+        title: '',
+      };
+      state.form.blocks.push(block);
+    },
+    addCodeBlock: state => {
+      const textBlock: ArticleCodeBlock = {
+        id: getRandomID(),
+        type: ArticleBlockType.CODE,
+        code: '',
+      };
+      state.form.blocks.push(textBlock);
+    },
+    fillBlockTitle: (state, action: PayloadAction<{ id: number; title: string }>) => {
+      const block = state.form.blocks[action.payload.id] as ArticleTextBlock | ArticleImageBlock;
+      block.title = action.payload.title;
+    },
+    fillBlockParagraph: (state, action: PayloadAction<{ id: number; paragraph: string }>) => {
+      const block = state.form.blocks[action.payload.id] as ArticleTextBlock;
+      block.paragraphs[0] = action.payload.paragraph;
+    },
+    fillBlockSrc: (state, action: PayloadAction<{ id: number; src: string }>) => {
+      const block = state.form.blocks[action.payload.id] as ArticleImageBlock;
+      block.src = action.payload.src;
+    },
+    fillBlockCode: (state, action: PayloadAction<{ id: number; code: string }>) => {
+      const block = state.form.blocks[action.payload.id] as ArticleCodeBlock;
+      block.code = action.payload.code;
+    },
+    removeBlock: (state, action: PayloadAction<number>) => {
+      state.form.blocks = state.form.blocks.filter((_, index) => index !== action.payload);
     },
   },
   extraReducers: builder => {

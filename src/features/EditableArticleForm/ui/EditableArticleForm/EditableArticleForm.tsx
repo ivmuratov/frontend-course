@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +23,6 @@ import { createArticleFormActions, createArticleFormReducer } from '../../model/
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { createArticle } from '../../model/services/createArticle';
-import { Modal } from '@/shared/ui/redesigned/Modal';
 import { ArticleBlockType } from '@/entities/Article';
 import { ArticleTextBlockForm } from '../ArticleTextBlockForm/ArticleTextBlockForm';
 import { ArticleImageBlockForm } from '../ArticleImageBlockForm/ArticleImageBlockForm';
@@ -44,12 +43,6 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
 
   const dispatch = useAppDispatch();
 
-  const [isReadyArticleBlock, setIsReadyArticleBlock] = useState(false);
-
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const [articleBlockForms, setArticleBlockForms] = useState<ArticleBlockType[]>([]);
-
   const userData = useSelector(getUserAuthData);
 
   const title = useSelector(getCreateArticleFormTitle);
@@ -68,30 +61,20 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
 
   const checkedTypeEconomics = useSelector(getCreateArticleFormCheckTypeEconomics);
 
-  const onOpenModal = () => {
-    setIsOpenModal(true);
-  };
-
-  const onCloseModal = () => {
-    setIsOpenModal(false);
-    setIsReadyArticleBlock(false);
-    dispatch(createArticleFormActions.clearBlock());
-  };
-
   const removeBlockFormHandler = (indexToRemove: number) => () => {
-    setArticleBlockForms(prev => prev.filter((_, index) => index !== indexToRemove));
+    dispatch(createArticleFormActions.removeBlock(indexToRemove));
   };
 
   const addArticleTextBlockForm = () => {
-    setArticleBlockForms(prev => [...prev, ArticleBlockType.TEXT]);
+    dispatch(createArticleFormActions.addTextBlock());
   };
 
   const addArticleImageBlockForm = () => {
-    setArticleBlockForms(prev => [...prev, ArticleBlockType.IMAGE]);
+    dispatch(createArticleFormActions.addImageBlock());
   };
 
   const addArticleCodeBlockForm = () => {
-    setArticleBlockForms(prev => [...prev, ArticleBlockType.CODE]);
+    dispatch(createArticleFormActions.addCodeBlock());
   };
 
   const onChangeTitleHandler = (value: string) => {
@@ -118,12 +101,7 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
     dispatch(createArticleFormActions.setCheckTypeEconomics(!checkedTypeEconomics));
   };
 
-  const saveHandler = () => {
-    setIsReadyArticleBlock(true);
-    onOpenModal();
-  };
-
-  const createHandler = async () => {
+  const saveHandler = async () => {
     const response = await dispatch(
       createArticle({
         userId: userData?.id,
@@ -163,32 +141,14 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
             />
           </HStack>
         </VStack>
-        {articleBlockForms.map((block, index) => {
-          switch (block) {
+        {blocks.map((block, index) => {
+          switch (block.type) {
             case ArticleBlockType.TEXT:
-              return (
-                <ArticleTextBlockForm
-                  key={index}
-                  isReadyArticleBlock={isReadyArticleBlock}
-                  removeFormHandler={removeBlockFormHandler(index)}
-                />
-              );
+              return <ArticleTextBlockForm key={index} blockFormId={index} removeFormHandler={removeBlockFormHandler(index)} />;
             case ArticleBlockType.IMAGE:
-              return (
-                <ArticleImageBlockForm
-                  key={index}
-                  isReadyArticleBlock={isReadyArticleBlock}
-                  removeFormHandler={removeBlockFormHandler(index)}
-                />
-              );
+              return <ArticleImageBlockForm key={index} blockFormId={index} removeFormHandler={removeBlockFormHandler(index)} />;
             case ArticleBlockType.CODE:
-              return (
-                <ArticleCodeBlockForm
-                  key={index}
-                  isReadyArticleBlock={isReadyArticleBlock}
-                  removeFormHandler={removeBlockFormHandler(index)}
-                />
-              );
+              return <ArticleCodeBlockForm key={index} blockFormId={index} removeFormHandler={removeBlockFormHandler(index)} />;
             default:
               return null;
           }
@@ -204,17 +164,6 @@ export const EditableArticleForm = memo(({ className }: CreateArticleFormProps) 
           </Button>
         </HStack>
       </VStack>
-
-      <Modal isOpen={isOpenModal} onClose={onCloseModal}>
-        <VStack gap='24'>
-          <Text title={t('confirm the creation of the article')} />
-          <HStack justify='end' max>
-            <Button color='success' onClick={createHandler}>
-              {t('ok')}
-            </Button>
-          </HStack>
-        </VStack>
-      </Modal>
     </DynamicModuleLoader>
   );
 });

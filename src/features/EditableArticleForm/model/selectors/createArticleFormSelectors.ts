@@ -10,6 +10,8 @@ export const getCreateArticleFormType = (state: StateSchema) => state.createArti
 
 export const getCreateArticleFormBlocks = (state: StateSchema) => state.createArticleForm?.form.blocks ?? [];
 
+export const getCreateArticleFormBlockById = (id: number) => (state: StateSchema) => state.createArticleForm?.form.blocks[id];
+
 export const getCreateArticleFormCheckTypeIT = (state: StateSchema) => state.createArticleForm?.form.checkTypeIT ?? false;
 
 export const getCreateArticleFormCheckTypeScience = (state: StateSchema) =>

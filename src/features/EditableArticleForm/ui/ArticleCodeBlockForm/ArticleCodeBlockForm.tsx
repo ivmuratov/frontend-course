@@ -1,40 +1,29 @@
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArticleBlockType, ArticleCodeBlock } from '@/entities/Article';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { VStack } from '@/shared/ui/redesigned/Stack';
-import { createArticleFormActions } from '../../model/slices/createArticleFormSlice';
-import { getRandomID } from '../../lib/helpers/getRandomID';
 import { TextArea } from '@/shared/ui/redesigned/TextArea';
 import { ArticleBlockFormBaseProps } from '../../model/types/articleBlockFormBaseProps';
 import { ArticleBlockFormHeader } from '../ArticleBlockFormHeader/ArticleBlockFormHeader';
+import { createArticleFormActions } from '../../model/slices/createArticleFormSlice';
+import { ArticleCodeBlock } from '@/entities/Article';
+import { getCreateArticleFormBlockById } from '../../model/selectors/createArticleFormSelectors';
 
 interface ArticleCodeBlockFormProps extends ArticleBlockFormBaseProps {
   className?: string;
 }
 
-export const ArticleCodeBlockForm = memo(({ className, isReadyArticleBlock, removeFormHandler }: ArticleCodeBlockFormProps) => {
+export const ArticleCodeBlockForm = memo(({ className, blockFormId, removeFormHandler }: ArticleCodeBlockFormProps) => {
   const { t } = useTranslation('article');
 
-  const [code, setCode] = useState('');
+  const { code } = useSelector(getCreateArticleFormBlockById(blockFormId)) as ArticleCodeBlock;
 
   const dispatch = useAppDispatch();
 
   const onChangeCodeHandler = (value: string) => {
-    setCode(value);
+    dispatch(createArticleFormActions.fillBlockCode({ id: blockFormId, code: value }));
   };
-
-  useEffect(() => {
-    if (isReadyArticleBlock) {
-      const block: ArticleCodeBlock = {
-        id: getRandomID(),
-        type: ArticleBlockType.CODE,
-        code,
-      };
-      dispatch(createArticleFormActions.setBlock(block));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isReadyArticleBlock]);
 
   return (
     <VStack className={className} gap='16' max>

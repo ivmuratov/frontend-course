@@ -1,4 +1,4 @@
 export interface ArticleBlockFormBaseProps {
-  isReadyArticleBlock: boolean;
+  blockFormId: number;
   removeFormHandler: () => void;
 }
